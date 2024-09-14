@@ -1,0 +1,227 @@
+
+html, body {
+    height: 100%; 
+    margin: 0;
+}
+
+.main{
+    display: flex;
+}
+
+.menu{
+    background-color: rgb(255, 255, 255);
+    width: 20%; 
+    height: 100%;
+    position: fixed
+}
+
+.dashboard{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin-left: 20%; 
+    height: 100%;
+}
+
+
+.menu_item{
+    height: 40px ;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 20px;
+
+}
+
+.menu_item:hover{
+    background-color: rgb(212, 209, 209);
+}
+.menu_items{
+    margin-top: 35px;
+}
+
+.menu_icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.menu_item_text{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 2px;
+
+}
+
+.icon{
+    height: 80px;
+    width: 90%; 
+    margin-top: 50px;
+    background-color: transparent;
+    margin-left: 20%;
+}
+
+.logo_image{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 1px;
+    margin-top: -28px;
+}
+
+.logo_text{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+}
+
+.logout_button{
+    width: 70px;
+    height: 40px;
+    margin-top: 90%;
+    margin-left: 70%;
+    border-radius: 20px;
+    background-color: rgb(240, 71, 101);
+    border: 1px solid rgb(240, 71, 101);
+    color: white;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+.logout_button:hover{
+    background-color: rgb(255, 113, 139);
+    border: 1px solid rgb(255, 113, 139);
+}
+
+.logout_image{
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+.search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.input_search {
+    flex: 1; 
+    max-width: 20%; 
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(236, 235, 235);
+    border: 1px solid rgb(196, 194, 195);
+    padding-left: 20px;
+    color: rgb(111, 109, 109);
+    margin-left: 50%;
+
+}
+
+.search_button {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 20px;
+    background-color: rgb(255, 113, 139);
+    border: 1px solid rgb(255, 113, 139);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+.search_button:hover {
+    background-color: rgb(240, 71, 101);
+    border: 1px solid rgb(240, 71, 101);
+}
+
+.search_icon{
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    margin-left: 2px;
+    
+}
+
+.favorites_title{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(134, 134, 134);
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 5%;
+}
+
+.favorites_list{
+    margin-top: 20px;
+    margin-left: 8%;
+    margin-bottom: 10%;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    background-color:transparent;
+}
+
+.favorites_item{
+    width: 22%;
+    height: 300px;
+    margin-top: 25px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.favorites_item:hover{
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.book_image{
+    width: 120px;
+    height: 160px;
+    margin-left: 30%;
+    margin-top: 40px;
+
+}
+
+.book_title{
+    height: 20px;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.book_author{
+    margin-top: -10px;
+    height: 10px;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+}
+
+.fav_button{
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin-right: 12px;
+    margin-top: 10px;
+  
+}

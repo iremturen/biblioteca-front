@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="/css/now_reading.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="menu">
+            <div class="icon">
+                <img src="/images/logo.png" class="logo_image">
+                <div class="logo_text">iblioteca</div>
+            </div>
+            <div class="menu_items">
+                <div class="menu_item" id="homepage">
+                    <img src="/images/home.png" class="menu_icon">
+                    <div class="menu_item_text">Homepage</div>
+                </div>
+                <div class="menu_item" id="explore">
+                    <img src="/images/search.png" class="menu_icon">
+                    <div class="menu_item_text">Explore</div>
+                </div>
+                <div class="menu_item" id="collections">
+                    <img src="/images/collection.png" class="menu_icon">
+                    <div class="menu_item_text">Collections</div>
+                </div>
+                <div class="menu_item" id="favorites">
+                    <img src="/images/fav.png" class="menu_icon">
+                    <div class="menu_item_text">Favorites</div>
+                </div>
+                <div class="menu_item" id="settings">
+                    <img src="/images/settings.png" class="menu_icon">
+                    <div class="menu_item_text">Settings</div>
+                </div>
+                <div class="menu_item" id="account">
+                    <img src="/images/person.png" class="menu_icon">
+                    <div class="menu_item_text">My Account</div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard">
+            <div class="top">
+                <p class="title">What Am I Reading</p>
+                <input type="text" class="search" id="search" placeholder="Search"></input>
+            </div>
+            <div class="books" id="books">
+                <div class="book_item" id="book_item">
+                    <img src="/images/book.jpg" class="book_image" id="book_image">
+                    <div class="book_info">
+                        <p class="book_title">The Great Gatsby</p>
+                        <div class="info">
+                            <p class="info_title">Author:</p>
+                            <p id="author" class="info_main"></p>
+                        </div>
+                        <div class="info">
+                            <p class="info_title">Book Page:</p>
+                            <p id="bookPage" class="info_main"></p>
+                        </div>
+                        <div class="info">
+                            <p class="info_title">Publishing House:</p>
+                            <p id="pHouse" class="info_main"></p>
+                        </div>
+                        <div class="info"> 
+                            <p class="info_title">Publishing Year:</p>
+                            <p id="pYear" class="info_main"></p>
+                        </div>
+                        <div class="info">
+                            <p class="info_title">Language:</p>
+                            <p id="language" class="info_main"></p>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="left_side">
+                <img src="/images/fav_book.png" class="fav_button" id="fav_button">
+                <img id="popupImage" class="popup-image" src="" alt="Book Image">
+                <p id="popupTitle" class="popup_title"> </p>
+            </div>
+            <div class="right_side">
+                <p class="info_title">Author:</p>
+                <p id="popupAuthor" class="info_main"></p>
+                <p class="info_title">Book Page:</p>
+                <p id="popupBookPage" class="info_main"></p>
+                <p class="info_title">Publishing House:</p>
+                <p id="popupPHouse" class="info_main"></p>
+                <p class="info_title">Publishing Year:</p>
+                <p id="popupPYear" class="info_main"></p>
+                <p class="info_title">Language:</p>
+                <p id="popupLang" class="info_main"></p>
+                <div class="add_btn" id="add_now">
+                    <img src="/images/add.png" class="add_icon">
+                    <p class="add_text">Add to What I've Read</p>
+                </div>
+                <div class="add_btn" id="add_will">
+                    <img src="/images/add.png" class="add_icon">
+                    <p class="add_text">Add to My Reading List</p>
+                </div>
+                <div class="add_btn" id="add_finished">
+                    <img src="/images/add.png" class="add_icon">
+                    <p class="add_text">Add to Finished Reads</p>
+                </div>
+            </div>
+            <span id="closePopup" class="close">&times;</span>
+
+
+        </div>
+    </div>
+    <script src="/js/now_reading.js" defer></script>
+</body>
+
+</html>

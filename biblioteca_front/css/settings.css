@@ -1,0 +1,439 @@
+html, body {
+    height: 100%; 
+    margin: 0;
+}
+
+.main{
+    display: flex;
+}
+
+.menu{
+    background-color: rgb(255, 255, 255);
+    width: 20%; 
+    height: 100%;
+    position: fixed
+}
+
+.dashboard{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin-left: 20%; 
+    height: 100%;
+}
+
+
+.menu_item{
+    height: 40px ;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 20px;
+
+}
+
+.menu_item:hover{
+    background-color: rgb(212, 209, 209);
+}
+.menu_items{
+    margin-top: 35px;
+}
+
+.menu_icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.menu_item_text{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 2px;
+
+}
+
+.icon{
+    height: 80px;
+    width: 90%; 
+    margin-top: 50px;
+    background-color: transparent;
+    margin-left: 70px;
+}
+
+.logo_image{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 1px;
+    margin-top: -28px;
+}
+
+.logo_text{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+}
+
+
+.page_title{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 70px;
+    margin-left: 5%;
+}
+
+.custom-line {
+    border: none; 
+    border-top: 2px solid rgb(206, 206, 206); 
+    width: 20%; 
+    margin-top: -20px;
+    margin-left: 40px;
+}
+
+.change_pass{
+    height: 420px ;
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(189, 189, 189);
+}
+
+.help_support{
+    height: 180px ;
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(189, 189, 189);
+}
+.theme{
+    height: 250px ;
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(189, 189, 189);
+    margin-bottom: 100px;
+}
+
+.item_title{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+    margin-top: 9px;
+    margin-left: 25px;
+}
+
+.help_item{
+    font-size: 18px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.help_item:hover{
+    color: rgb(240, 71, 101);
+}
+
+.change_title{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(94, 94, 94);
+    text-align: left;
+    margin-top: 1px;
+    margin-left: 45px;
+}
+
+.input_change{
+    height: 40px ;
+    width: 30%;
+    margin-left: 40px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-radius: 12px;
+    border: 1px solid rgb(189, 189, 189);
+    background-color: rgb(226, 226, 226);
+}
+
+.change_button {
+    height: 30px ;
+    width: 20%;
+    margin-left: 40px;
+    margin-top: 10px;
+    padding-top: 11px ;
+    border-radius: 16px;
+    text-align: center;
+    background-color: rgb(150, 150, 150);
+    color: white;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    border: none;
+}
+.change_button:hover{
+    background-color: rgb(139, 139, 139);
+}
+
+.slider_container {
+    width: 60px;
+    height: 30px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-left: 150px;
+}
+
+.slider {
+    width: 30px;
+    height: 100%;
+    background-color: #939393;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    position: absolute;
+    left: 0;
+}
+
+.slider.active {
+    transform: translateX(30px); 
+}
+
+.dark_mode{
+    font-size: 18px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 25px;
+    float: left;
+}
+
+.icon_color{
+    font-size: 18px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 25px;
+}
+
+.colors{
+    height: 30px ;
+    width: 300px;
+    margin-left: 15px;
+    margin-top: -12px;
+    border-radius: 50%;
+    float: left;
+}
+
+.pink{
+    height: 30px ;
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: rgb(240, 71, 101);
+    float: left;
+    border: 2px solid rgb(209, 209, 209);
+}
+
+.green{
+    height: 30px ;
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: rgb(82, 246, 74);
+    float: left;
+    border: 2px solid rgb(209, 209, 209);
+
+}
+
+.blue{
+    height: 30px ;
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: rgb(71, 172, 240);
+    float: left;
+    border: 2px solid rgb(209, 209, 209);
+
+}
+
+.yellow{
+    height: 30px ;
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: rgb(240, 237, 71);
+    float: left;
+    border: 2px solid rgb(209, 209, 209);
+
+}
+
+.purple{
+    height: 30px ;
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: rgb(172, 71, 240);
+    float: left;  
+    border: 2px solid rgb(209, 209, 209);
+
+}
+.orange{
+    height: 30px ;
+    width: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: rgb(240, 133, 71);
+    float: left;
+    border: 2px solid rgb(209, 209, 209);
+
+}
+
+
+.pink:hover, .green:hover, .blue:hover, .yellow:hover, .purple:hover, .orange:hover{
+    border: 2px solid rgb(133, 133, 133);
+}
+
+.popup {
+    display: none; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.popup-content_support {
+    background-color: white;
+    padding: 20px;
+    border-radius: 60px;
+    text-align: center;
+    width: 40%;
+    height: 38%;
+    position: relative;
+}
+
+.popup_faq {
+    display: none; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup_cont {
+    display: none; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-faq{
+    background-color: white;
+    padding: 20px;
+    border-radius: 60px;
+    text-align: center;
+    width: 70%;
+    max-height: 100%; 
+    overflow-y: auto; 
+    position: relative;
+}
+
+.popup-content_support{
+    background-color: white;
+    padding: 20px;
+    border-radius: 60px;
+    text-align: center;
+    width: 40%;
+    height: 38%;
+    position: relative;
+}
+
+.faq_item{
+    height: 100px;
+    width: 600px;
+    margin-left: 30px;
+}
+
+.title{
+    font-size: 20px;
+    width: 100%;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(123, 123, 123);
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.content{
+    font-size: 15px;
+    width: 100%;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(199, 199, 199);
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.title_info{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(123, 123, 123);
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.content_info{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(199, 199, 199);
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 25px;
+}

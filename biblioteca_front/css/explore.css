@@ -1,0 +1,331 @@
+
+html, body {
+    height: 100%; 
+    margin: 0;
+}
+
+.main{
+    display: flex;
+}
+
+.menu{
+    background-color: rgb(255, 255, 255);
+    width: 20%; 
+    height: 100%;
+    position: fixed
+}
+
+.dashboard{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin-left: 20%; 
+    height: 100%;
+    border-right: 2px solid gray; 
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+}
+
+
+.menu_item{
+    height: 40px ;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 20px;
+
+}
+
+.menu_item:hover{
+    background-color: rgb(212, 209, 209);
+}
+.menu_items{
+    margin-top: 35px;
+}
+
+.menu_icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.menu_item_text{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 2px;
+
+}
+
+.icon{
+    height: 80px;
+    width: 90%; 
+    margin-top: 50px;
+    background-color: transparent;
+    margin-left: 70px;
+}
+
+.logo_image{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 1px;
+    margin-top: -28px;
+}
+
+.logo_text{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+}
+
+.logout_button{
+    width: 70px;
+    height: 40px;
+    margin-top: 90%;
+    margin-left: 70%;
+    border-radius: 20px;
+    background-color: rgb(240, 71, 101);
+    border: 1px solid rgb(240, 71, 101);
+    color: white;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+.logout_button:hover{
+    background-color: rgb(255, 113, 139);
+    border: 1px solid rgb(255, 113, 139);
+}
+
+.logout_image{
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+.search{
+    width: 100%;
+    height: 100px;
+    background-color: transparent;
+}
+
+.input_search{
+    width: 60%;
+    height: 40px;
+    margin-top: 40px;
+    margin-left: 20px;
+    border-radius: 20px;
+    background-color: rgb(236, 235, 235);
+    border: 1px solid rgb(196, 194, 195);
+    padding-left: 20px;
+    margin-left: 15%;
+    color: rgb(111, 109, 109);
+}
+
+.input_search:placeholder-shown{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(196, 194, 195);
+}
+
+.search_button{
+    width: 10%;
+    height: 40px;
+    margin-top: 40px;
+    margin-left: 10px;
+    border-radius: 20px;
+    background-color: rgb(255, 113, 139);
+    border: 1px solid rgb(255, 113, 139);
+    color: white;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+.search_button:hover{
+    background-color: rgb(240, 71, 101);
+    border: 1px solid rgb(240, 71, 101);
+}
+
+.book_item{
+    width: 250px;
+    height: 300px;
+    margin-top: 25px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-left: 5%;
+
+}
+
+.book_item:hover{
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.book_image{
+    width: 50%;
+    height: 60%;
+    margin-left: 25%;
+    margin-top: 40px;
+    border: 1px solid rgb(196, 196, 196);
+
+}
+
+.book_title{
+    height: 20px;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.book_author{
+    margin-top: -10px;
+    height: 10px;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+}
+
+.popup {
+    display: none; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 60px;
+    text-align: center;
+    width: 60%;
+    height: 70%;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 50px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.popup-image {
+    width: 150px;
+    height: 230px;
+    float: left;
+    margin-left: 20%;
+    margin-top: 45px;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+.popupInfo{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.info_title{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(134, 134, 134);
+    text-align: left;
+    margin-left: 5%;
+    margin-bottom: -4%;
+}
+
+.info_main{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(50, 50, 50);
+    text-align: left;
+    margin-left: 5%;
+    
+}
+
+.left_side{
+    width: 50%;
+    float: left;
+    flex-direction: column;
+}
+
+.right_side{
+    width: 50%;
+    float: right;
+    margin-top: 10px;
+}
+
+.popup_title{
+    height: 30px;
+    width: 210px;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+    margin-left: 56px;
+    margin-top: 250px;
+}
+
+.fav_button{
+    height: 25px;
+    width: 25px;
+    margin-top: 25px;
+    margin-right: 65px;
+}
+
+.add_btn{
+    width: 250px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 5%;
+    border-radius: 20px;
+    background-color: rgb(203, 203, 203);
+}
+
+.add_btn:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+.add_text{
+    font-size: 16px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 10px;
+    padding-top: 15px;
+    
+}
+
+.add_icon{
+    height: 20px;
+    width: 20px;
+    float: left;
+    margin-left: 18px;
+    margin-top: 15px;
+    margin-right: 12px;
+}
+
+#add_now{
+    margin-top: 50px;
+}

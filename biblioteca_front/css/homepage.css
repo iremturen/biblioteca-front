@@ -1,0 +1,240 @@
+html, body {
+    height: 100%; 
+    margin: 0;
+}
+
+.main{
+    display: flex;
+}
+
+.menu{
+    background-color: rgb(255, 255, 255);
+    width: 20%; 
+    height: 100%;
+    position: fixed
+}
+
+.dashboard{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin-left: 20%; 
+    height: 100%;
+}
+
+
+.menu_item{
+    height: 40px ;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 20px;
+
+}
+
+.menu_item:hover{
+    background-color: rgb(212, 209, 209);
+}
+.menu_items{
+    margin-top: 35px;
+}
+
+.menu_icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.menu_item_text{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 2px;
+
+}
+
+.icon{
+    height: 80px;
+    width: 90%; 
+    margin-top: 50px;
+    background-color: transparent;
+    margin-left: 70px;
+}
+
+.logo_image{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 1px;
+    margin-top: -28px;
+}
+
+.logo_text{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+}
+
+.logout_button{
+    width: 70px;
+    height: 40px;
+    margin-top: 0%;
+    margin-left: 70%;
+    border-radius: 20px;
+    background-color: rgb(240, 71, 101);
+    border: 1px solid rgb(240, 71, 101);
+    color: white;
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+.logout_button:hover{
+    background-color: rgb(255, 113, 139);
+    border: 1px solid rgb(255, 113, 139);
+}
+
+.logout_image{
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+.read_info{
+    height: 250px;
+    width: 1200px;
+}
+
+.dashboard_item{
+    height: 150px;
+    width: 250px;
+    float: left;
+    border-radius: 25px;
+    background-color:  rgb(226, 226, 226);
+    margin-top: 40px;
+    margin-left:100px ;
+
+}
+
+.dashboard_item:hover{
+    background-color: rgb(236, 236, 236);
+}
+
+.dashboard_item_text{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 111, 111);
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.dashboard_item_image{
+    height: 30px;
+    width: 30px;
+    float: right;
+    margin-right: 25px;
+    margin-top: 50px;
+}
+
+.dashboard_item_number{
+    width: 30px;
+    font-size: 25px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+    margin-top: 50px;
+    margin-left: 25px;
+    float: left;
+}
+
+.new_releases{
+    height: 280px;
+    width: 100%;
+    display: flex;
+    margin-top: -20px;
+    margin-left: 5px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.custom-line {
+    border: none; 
+    border-top: 2px solid rgb(138, 136, 136); 
+    margin-top: 40px; 
+    margin-bottom: 0; 
+    width: 50%; 
+}
+
+.new_releases_title{
+    font-size: 23px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.book_item{
+    width: 180px;
+    height: 240px;
+    margin-top: 25px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-left: 2%;
+
+}
+
+.book_item:hover{
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.book_image{
+    width: 50%;
+    height: 60%;
+    margin-left: 25%;
+    margin-top: 20px;
+    border: 1px solid rgb(196, 196, 196);
+
+}
+
+.book_title{
+    height: 20px;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.book_author{
+    margin-top: -10px;
+    height: 10px;
+    font-size: 12px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.next_arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}

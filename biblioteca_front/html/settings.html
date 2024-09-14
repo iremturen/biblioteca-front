@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="/css/settings.css">
+</head>
+<body>
+    <div class="main">
+        <div class="menu">
+            <div class="icon">
+                <img src="/images/logo.png" class="logo_image" >
+                <div class="logo_text">iblioteca</div>
+            </div>
+            <div class="menu_items">
+            <div class="menu_item" id="homepage">
+                <img src="/images/home.png" class="menu_icon">
+                <div class="menu_item_text">Homepage</div>
+            </div>
+            <div class="menu_item" id="explore">
+                <img src="/images/search.png" class="menu_icon">
+                <div class="menu_item_text">Explore</div>
+            </div>
+            <div class="menu_item" id="collections">
+                <img src="/images/collection.png" class="menu_icon">
+                <div class="menu_item_text">Collections</div>
+            </div>
+            <div class="menu_item" id="favorites">
+                <img src="/images/fav.png"class="menu_icon">
+                <div class="menu_item_text">Favorites</div>
+            </div>
+            <div class="menu_item" id="settings">
+                <img src="/images/settings.png" class="menu_icon">
+                <div class="menu_item_text">Settings</div>
+            </div>
+            <div class="menu_item" id="account">
+                <img src="/images/person.png" class="menu_icon">
+                <div class="menu_item_text">My Account</div>
+            </div>
+        </div>
+        </div>
+        <div class="dashboard">
+            <p class="page_title">Settings</p>
+            <hr class="custom-line"> 
+            <div class="help_support" id="help_support">
+                <p class="item_title">Help and Support</p>
+                <p class="help_item" id="faq">Frequently Asked Questions(FAQ)</p>
+                <p class="help_item" id="line_info">Customer Support Line Information</p>
+                <p class="help_item" id="feedback_form">Feedback Form</p>
+            </div>
+            <div class="change_pass" id="change_pass">
+                <p class="item_title">Change Password</p>
+                <p class="change_title">Old Password*</p>
+                <input class="input_change" type="password" name="password" placeholder="Old Password" required>
+                <p class="change_title">New Password*</p>
+                <input class="input_change" type="password" name="password" placeholder="New Password" required>
+                <p class="change_title">Confirm Password*</p>
+                <input class="input_change" type="password" name="password" placeholder="Confirm Password" required>
+                <div id="change_button" class="change_button" type="submit">Change Password</div>
+            </div>
+            <div class="theme" id="theme">
+                <p class="item_title">Theme</p>
+                <p class="dark_mode" >Dark Mode</p>
+                <div class="slider_container" id="slider_container">
+                    <div class="slider" id="slider">
+                        <span></span>
+                    </div>
+                </div>
+                <p class="icon_color" >Customize Icon Color</p>
+                <div class="colors">
+                    <div class="pink" id="pink"></div>
+                    <div class="green" id="green"></div>
+                    <div class="blue" id="blue"></div>
+                    <div class="yellow" id="yellow"></div>
+                    <div class="orange" id="orange"></div>
+                    <div class="purple" id="purple"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="popup_faq" class="popup">
+        <div class="popup-faq">
+            <div id="faq_main" class="faq_main">
+            </div>
+        </div>
+    </div>
+
+    <div id="popup_cont" class="popup">
+        <div class="popup-content_support">
+            <div id="content_main" class="content_main">
+
+          </div>
+    </div>
+
+    <div id="popup_feed" class="popup">
+        <div class="popup-feed">
+            <div id="feed_main" class="feed_main">
+
+          </div>
+    </div>
+
+    <script src="/js/settings.js" defer></script>
+</body>
+</html>

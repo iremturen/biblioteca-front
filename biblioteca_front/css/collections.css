@@ -1,0 +1,185 @@
+html, body {
+    height: 100%; 
+    margin: 0;
+}
+
+.main{
+    display: flex;
+}
+
+.menu{
+    background-color: rgb(255, 255, 255);
+    width: 20%; 
+    height: 100%;
+    position: fixed
+}
+
+.dashboard{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin-left: 20%; 
+    height: 100%;
+    margin-bottom: 100px;
+}
+
+
+.menu_item{
+    height: 40px ;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 20px;
+
+}
+
+.menu_item:hover{
+    background-color: rgb(212, 209, 209);
+}
+.menu_items{
+    margin-top: 35px;
+}
+
+.menu_icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.menu_item_text{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 2px;
+
+}
+
+.icon{
+    height: 80px;
+    width: 90%; 
+    margin-top: 50px;
+    background-color: transparent;
+    margin-left: 70px;
+}
+
+.logo_image{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 1px;
+    margin-top: -28px;
+}
+
+.logo_text{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+}
+
+.coll_div{
+    width: 1000px;
+    height: 100%;
+    margin-top: 150px;
+    margin-left: 60px;
+    padding-bottom: 50px;
+}
+
+.collections_item{
+    width: 100%;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 70px;
+    border-radius: 5px;
+    border: 0.5px solid rgb(158, 158, 158);
+    margin-bottom: -50px;
+}
+
+.collections_item:hover{
+    box-shadow: 2px 2px 2px 2px rgba(158, 158, 158, 0.2);
+
+}
+
+.cover{
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    float: left;
+}
+
+.item_num {
+    width: 120px;
+    height: 25px;
+    background-color: rgb(240, 71, 101);
+    border-radius: 10px 0 0 10px;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 150px;
+    margin-left: 10px;
+    float: right;
+    padding-top: 5px;
+}
+
+.item_title{
+    font-size: 18px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 40px;
+    float: left;
+}
+
+
+.page_title{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(121, 120, 120);
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-top: -100px;
+}
+
+#new_btn{
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    background-color: rgb(240, 71, 101);
+    color: white;
+    font-family: 'Gill Sans', sans-serif;
+    border: none;
+    border-radius: 8px;
+    margin-left: 100%;
+    margin-top: -55px;
+    float: right;
+    padding-top: 12px;
+    padding-left: 12px;
+}
+
+#new_btn:hover{
+    background-color: rgb(233, 46, 80);
+    color: white;
+}
+
+.description{
+    width: 50%;
+    height: 100px;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(121, 120, 120);
+    text-align: left;
+    margin-top: 80px;
+    margin-left: -130px;
+    float: left;
+    word-wrap: break-word;
+
+}

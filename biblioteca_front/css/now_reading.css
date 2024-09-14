@@ -1,0 +1,186 @@
+html, body {
+    height: 100%; 
+    margin: 0;
+}
+
+.main{
+    display: flex;
+}
+
+.menu{
+    background-color: rgb(255, 255, 255);
+    width: 20%; 
+    height: 100%;
+    position: fixed
+}
+
+.dashboard{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    margin-left: 20%; 
+    height: 100%;
+}
+
+
+.menu_item{
+    height: 40px ;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding-top: 10px ;
+    border-radius: 20px;
+
+}
+
+.menu_item:hover{
+    background-color: rgb(212, 209, 209);
+}
+.menu_items{
+    margin-top: 35px;
+}
+
+.menu_icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+.menu_item_text{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-top: 2px;
+
+}
+
+.icon{
+    height: 80px;
+    width: 90%; 
+    margin-top: 50px;
+    background-color: transparent;
+    margin-left: 70px;
+}
+
+.logo_image{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 1px;
+    margin-top: -28px;
+}
+
+.logo_text{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+}
+
+.book_item{
+    width: 900px;
+    height: 200px;
+    margin-top: 25px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-left: 50px;
+    display: flex;
+
+}
+
+.book_item:hover{
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.book_image{
+    width: 100px;
+    height:150px;
+    margin-left: 40px;
+    margin-top: 20px;
+    border: 1px solid rgb(196, 196, 196);
+
+}
+
+.book_author{
+    margin-top: -10px;
+    height: 10px;
+    font-size: 12px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: center;
+}
+
+.title{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+    margin-left: 60px ;
+}
+
+.search{
+    width: 20%;
+    height: 40px;
+    border-bottom: 1px solid rgb(196, 196, 196);
+    border-top: 1px solid rgb(255, 255, 255);
+    border-left: 1px solid rgb(255, 255, 255);
+    border-right: 1px solid rgb(255, 255, 255);   
+    float: right;
+    color: rgb(108, 108, 108);
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    margin-right: 100px;
+    margin-top: -75px;
+}
+
+.top{
+    height: 80px;
+    margin-top: 50px;
+}
+
+.book_info{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 500px;
+    height: 150px;
+    background-color: #ffffff;
+}
+
+
+.info_title{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(134, 134, 134);
+    text-align: left;
+    margin-left: 5%;
+}
+
+.info_main{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(142, 67, 67);
+    text-align: left;
+    margin-left: 5px;
+    
+}
+
+.book_title{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(130, 130, 130);
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.info{
+    display: flex;
+    height: 10px;
+    margin-bottom: 6px;
+}
