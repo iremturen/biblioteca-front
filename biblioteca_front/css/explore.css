@@ -4,9 +4,6 @@ html, body {
     margin: 0;
 }
 
-.main{
-    display: flex;
-}
 
 .menu{
     background-color: rgb(255, 255, 255);
@@ -112,19 +109,21 @@ html, body {
 }
 
 .search{
-    width: 100%;
+    width: 80%;
+    margin-left: 20%; 
     height: 100px;
     background-color: transparent;
+    margin-bottom: 60px;
 }
 
 .input_search{
     width: 60%;
     height: 40px;
-    margin-top: 40px;
-    margin-left: 20px;
-    border-radius: 20px;
-    background-color: rgb(236, 235, 235);
-    border: 1px solid rgb(196, 194, 195);
+    margin-top: 20px;
+    border-bottom: 1.5px solid rgb(196, 196, 196);
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
     padding-left: 20px;
     margin-left: 15%;
     color: rgb(111, 109, 109);
@@ -139,9 +138,8 @@ html, body {
 .search_button{
     width: 10%;
     height: 40px;
-    margin-top: 40px;
     margin-left: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: rgb(255, 113, 139);
     border: 1px solid rgb(255, 113, 139);
     color: white;
@@ -210,14 +208,13 @@ html, body {
     z-index: 1000;
 }
 
-
 .popup-content {
     background-color: white;
     padding: 20px;
     border-radius: 60px;
     text-align: center;
-    width: 60%;
-    height: 70%;
+    width: 68%;
+    height: 50%;
     position: relative;
 }
 
@@ -265,15 +262,16 @@ html, body {
 }
 
 .left_side{
-    width: 50%;
+    width: 500px;
     float: left;
     flex-direction: column;
 }
 
 .right_side{
-    width: 50%;
-    float: right;
+    width: 300px;
+    float: left;
     margin-top: 10px;
+    margin-left: -150px;
 }
 
 .popup_title{
@@ -291,14 +289,13 @@ html, body {
     height: 25px;
     width: 25px;
     margin-top: 25px;
-    margin-right: 65px;
+    margin-right: 180px;
 }
 
 .add_btn{
-    width: 250px;
+    width: 200px;
     height: 50px;
     margin-top: 20px;
-    margin-left: 5%;
     border-radius: 20px;
     background-color: rgb(203, 203, 203);
 }
@@ -328,4 +325,21 @@ html, body {
 
 #add_now{
     margin-top: 50px;
+}
+
+.search_title{
+    font-size: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(111, 109, 109);
+    text-align: left;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+.add_btns{
+    width: 250px;
+    height: 400px;
+    margin-left: 5%;
+    float: right;
+    margin-right: 20px;
 }

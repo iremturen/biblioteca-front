@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accountItem = document.getElementById('account');
     const favoritesItem = document.querySelector('.favorites');
     const dashboard = document.querySelector('.dashboard');
+    const book_container = document.getElementById('book_container');
 
     const popup = document.getElementById('popup');
     const closePopup = document.getElementById('closePopup');
@@ -16,10 +17,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupPYear = document.getElementById('popupPYear');
     const popupLang = document.getElementById('popupLang');
     const fav_button = document.querySelectorAll('.fav_button');
+    const input_search=document.getElementById('input_search');
+    const search_button=document.getElementById('search_button');
+    let url= "http://localhost:8080/api/books";
 
-    fetch('http://localhost:8080/api/books')
+    search_button.addEventListener('click', () => {
+        const searchInput = input_search.value.trim();
+        if (searchInput !== "") {
+            url = `http://localhost:8080/api/books/search/${searchInput}`;
+        }else {
+            url = "http://localhost:8080/api/books"; 
+        }
+        getBooks(); 
+    });
+
+    input_search.addEventListener('keyup',(event) => {
+        if (event.key === 'Enter') {
+            search_button.click();
+        }
+    });
+
+    function getBooks() {
+     fetch(url)
         .then(response => response.json())
         .then(books => {
+            dashboard.innerHTML = '';
             books.forEach(book => {
                 const bookItem = document.createElement('div');
                 bookItem.classList.add('book_item');
@@ -29,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (book.image) {
                     bookImage.src = `data:image/jpeg;base64,${book.image}`;
                 } else {
-                    bookImage.src = '/images/image_not_found.png'; 
+                    bookImage.src = '/biblioteca_front/images/image_not_found.png'; 
                 }              
                 bookItem.appendChild(bookImage);
 
@@ -53,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (book.image) {
                                 popupImage.src = `data:image/jpeg;base64,${bookDetails.image}`;
                             } else {
-                                popupImage.src = '/images/image_not_found.png'; 
+                                popupImage.src = '/biblioteca_front/images/image_not_found.png'; 
                             }   
                             popupTitle.textContent = bookDetails.book_name;
                             popupAuthor.textContent = bookDetails.author;
@@ -66,9 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             fav_button.forEach((fav_button) => {
                                 fav_button.addEventListener('click', () => {
                                     if (fav_button.getAttribute('src') === '/images/fav_hover.png') {
-                                        fav_button.setAttribute('src', '/images/fav_book.png');
+                                        fav_button.setAttribute('src', '/biblioteca_front/images/fav_book.png');
                                     } else {
-                                        fav_button.setAttribute('src', '/images/fav_hover.png');
+                                        fav_button.setAttribute('src', '/biblioteca_front/images/fav_hover.png');
                                     }
                                 });
                             });
@@ -81,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
         .catch(error => console.error('Error fetching books:', error));
+    }
+    getBooks();
 
     function redirectTo(url) {
         window.location.href = url;
@@ -108,5 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    /*
+    search_button.addEventListener('click', () => {
+    fetch(`http://localhost:8080/api/books/search/${input_search.textContent}`)
 
+    });*/
 });

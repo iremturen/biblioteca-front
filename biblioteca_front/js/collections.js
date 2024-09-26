@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (collection.cover) {
                 cover.src = `data:image/jpeg;base64,${collection.cover}`;
             } else {
-                cover.src = '/images/image_not_found.png'; 
+                cover.src = '/biblioteca_front/images/image_not_found.png'; 
             }              
             collectionItem.appendChild(cover);
             collectionItem.dataset.collectionId = collection.collectionId;

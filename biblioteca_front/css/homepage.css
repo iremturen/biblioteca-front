@@ -193,7 +193,7 @@ html, body {
 }
 
 .book_item:hover{
-    box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 25px rgba(106, 106, 106, 0.1);
     border-radius: 20px;
 }
 

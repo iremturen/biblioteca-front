@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (book.image) {
                     bookImage.src = `data:image/jpeg;base64,${book.image}`;
                 } else {
-                    bookImage.src = '/images/image_not_found.png'; 
+                    bookImage.src = '/biblioteca_front/images/image_not_found.png'; 
                 }              
                 bookItem.appendChild(bookImage);
 

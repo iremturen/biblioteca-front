@@ -64,7 +64,7 @@
                             <p class="info_title">Publishing House:</p>
                             <p id="pHouse" class="info_main"></p>
                         </div>
-                        <div class="info"> 
+                        <div class="info">
                             <p class="info_title">Publishing Year:</p>
                             <p id="pYear" class="info_main"></p>
                         </div>
@@ -72,49 +72,26 @@
                             <p class="info_title">Language:</p>
                             <p id="language" class="info_main"></p>
                         </div>
-                        <div>
+                        <div class="progress_container">
+                            <progress id="readingProgress" value="0" max="100"></progress>
+                            <p id="progress_per" class="progress_per">0%</p>
+                        </div>
 
+                    </div>
+                    <div class="buttons">
+                        <input type="number" id="page" class="page" min="0" ></input>
+                        <button class="button" id="save">Save</button>
+                        <div class="func_btn">
+                            <img src="/biblioteca_front/images/plus2.png" class="btn_image">
+                            <p class="btn_text">Finish Book</p>
+                        </div>
+                        <div class="func_btn">
+                            <img src="/biblioteca_front/images/remove.png" class="btn_image">
+                            <p class="btn_text">Remove Book</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <div class="left_side">
-                <img src="/biblioteca_front/images/fav_book.png" class="fav_button" id="fav_button">
-                <img id="popupImage" class="popup-image" src="" alt="Book Image">
-                <p id="popupTitle" class="popup_title"> </p>
-            </div>
-            <div class="right_side">
-                <p class="info_title">Author:</p>
-                <p id="popupAuthor" class="info_main"></p>
-                <p class="info_title">Book Page:</p>
-                <p id="popupBookPage" class="info_main"></p>
-                <p class="info_title">Publishing House:</p>
-                <p id="popupPHouse" class="info_main"></p>
-                <p class="info_title">Publishing Year:</p>
-                <p id="popupPYear" class="info_main"></p>
-                <p class="info_title">Language:</p>
-                <p id="popupLang" class="info_main"></p>
-                <div class="add_btn" id="add_now">
-                    <img src="/biblioteca_front/images/add.png" class="add_icon">
-                    <p class="add_text">Add to What I've Read</p>
-                </div>
-                <div class="add_btn" id="add_will">
-                    <img src="/biblioteca_front/images/add.png" class="add_icon">
-                    <p class="add_text">Add to My Reading List</p>
-                </div>
-                <div class="add_btn" id="add_finished">
-                    <img src="/biblioteca_front/images/add.png" class="add_icon">
-                    <p class="add_text">Add to Finished Reads</p>
-                </div>
-            </div>
-            <span id="closePopup" class="close">&times;</span>
-
-
         </div>
     </div>
     <script src="/biblioteca_front/js/now_reading.js" defer></script>

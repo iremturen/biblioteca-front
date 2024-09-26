@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
     <link rel="stylesheet" href="/biblioteca_front/css/explore.css">
 </head>
+
 <body>
 
     <div class="main">
         <div class="menu">
             <div class="icon">
-                <img src="/biblioteca_front/images/logo.png" class="logo_image" >
+                <img src="/biblioteca_front/images/logo.png" class="logo_image">
                 <div class="logo_text">iblioteca</div>
             </div>
             <div class="menu_items">
-            <div class="menu_item" id="homepage">
-                <img src="/biblioteca_front/images/home.png" class="menu_icon">
-                <div class="menu_item_text">Homepage</div>
-            </div>
-            <div class="menu_item" id="explore">
-                <img src="/biblioteca_front/images/search.png" class="menu_icon">
-                <div class="menu_item_text">Explore</div>
-            </div>
-            <div class="menu_item" id="collections">
-                <img src="/biblioteca_front/images/collection.png" class="menu_icon">
-                <div class="menu_item_text">Collections</div>
-            </div>
-            <div class="menu_item" id="favorites">
-                <img src="/biblioteca_front/images/fav.png"class="menu_icon">
-                <div class="menu_item_text">Favorites</div>
-            </div>
-            <div class="menu_item" id="settings">
-                <img src="/biblioteca_front/images/settings.png" class="menu_icon">
-                <div class="menu_item_text">Settings</div>
-            </div>
-            <div class="menu_item" id="account">
-                <img src="/biblioteca_front/images/person.png" class="menu_icon">
-                <div class="menu_item_text">My Account</div>
+                <div class="menu_item" id="homepage">
+                    <img src="/biblioteca_front/images/home.png" class="menu_icon">
+                    <div class="menu_item_text">Homepage</div>
+                </div>
+                <div class="menu_item" id="explore">
+                    <img src="/biblioteca_front/images/search.png" class="menu_icon">
+                    <div class="menu_item_text">Explore</div>
+                </div>
+                <div class="menu_item" id="collections">
+                    <img src="/biblioteca_front/images/collection.png" class="menu_icon">
+                    <div class="menu_item_text">Collections</div>
+                </div>
+                <div class="menu_item" id="favorites">
+                    <img src="/biblioteca_front/images/fav.png" class="menu_icon">
+                    <div class="menu_item_text">Favorites</div>
+                </div>
+                <div class="menu_item" id="settings">
+                    <img src="/biblioteca_front/images/settings.png" class="menu_icon">
+                    <div class="menu_item_text">Settings</div>
+                </div>
+                <div class="menu_item" id="account">
+                    <img src="/biblioteca_front/images/person.png" class="menu_icon">
+                    <div class="menu_item_text">My Account</div>
+                </div>
             </div>
         </div>
+        <div class="search">
+            <input type="text" class="input_search" id="input_search" placeholder="Search">
+            <button class="search_button" id="search_button">Search</button>
+            <p class="search_title">Explore</p>
+
         </div>
         <div class="dashboard">
-            <div class="search">
-                <input type="text" class="input_search" placeholder="Search">
-                <button class="search_button">Search</button>
-            </div>            
         </div>
     </div>
 
@@ -56,37 +60,37 @@
                 <img id="popupImage" class="popup-image" src="" alt="Book Image">
                 <p id="popupTitle" class="popup_title"> </p>
             </div>
-            <div class="right_side"> 
-            <p class="info_title">Author:</p>
-            <p id="popupAuthor" class="info_main"></p>
-            <p class="info_title">Book Page:</p>
-            <p id="popupBookPage" class="info_main"></p>
-            <p class="info_title">Publishing House:</p>
-            <p id="popupPHouse" class="info_main"></p>
-            <p class="info_title">Publishing Year:</p>
-            <p id="popupPYear" class="info_main"></p>
-            <p class="info_title">Language:</p>
-            <p id="popupLang" class="info_main"></p>
-            <div class="add_btn" id="add_now">
-                <img src="/biblioteca_front/images/add.png" class="add_icon">
-                <p class="add_text">Add to What I've Read</p>
+            <div class="right_side">
+                <p class="info_title">Author:</p>
+                <p id="popupAuthor" class="info_main"></p>
+                <p class="info_title">Book Page:</p>
+                <p id="popupBookPage" class="info_main"></p>
+                <p class="info_title">Publishing House:</p>
+                <p id="popupPHouse" class="info_main"></p>
+                <p class="info_title">Publishing Year:</p>
+                <p id="popupPYear" class="info_main"></p>
+                <p class="info_title">Language:</p>
+                <p id="popupLang" class="info_main"></p>
+                <span id="closePopup" class="close">&times;</span>
             </div>
-            <div class="add_btn" id="add_will">
-                <img src="/biblioteca_front/images/add.png" class="add_icon">
-                <p class="add_text">Add to My Reading List</p>
+            <div class="add_btns">
+                <div class="add_btn" id="add_now">
+                    <img src="/biblioteca_front/images/add.png" class="add_icon">
+                    <p class="add_text">What I've Read</p>
+                </div>
+                <div class="add_btn" id="add_will">
+                    <img src="/biblioteca_front/images/add.png" class="add_icon">
+                    <p class="add_text">My Reading List</p>
+                </div>
+                <div class="add_btn" id="add_finished">
+                    <img src="/biblioteca_front/images/add.png" class="add_icon">
+                    <p class="add_text">Finished Reads</p>
+                </div>
             </div>
-            <div class="add_btn" id="add_finished">
-                <img src="/biblioteca_front/images/add.png" class="add_icon">
-                <p class="add_text">Add to Finished Reads</p>
-            </div>
-            </div>
-            <span id="closePopup" class="close">&times;</span>
-            
-            
         </div>
-    </div>
 
 
-    <script src="/biblioteca_front/js/explore.js" defer></script>
+        <script src="/biblioteca_front/js/explore.js" defer></script>
 </body>
+
 </html>

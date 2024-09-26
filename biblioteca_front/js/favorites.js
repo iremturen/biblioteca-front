@@ -4,36 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const accountItem = document.getElementById('account');
     const favoritesItem = document.getElementById('favorites');
     const fav_button = document.querySelectorAll('.fav_button');
+    const favorites_list= document.getElementById('favorites_list');
 
-    
-    function redirectTo(url) {
-        window.location.href = url;
-    }
+    fetch('http://localhost:8080/api/favorite/books/1200')
+    .then(response => response.json())
+    .then(favorites => {
+       favorites.forEach(favorite => {
+        const bookItem = document.createElement('div');
+        bookItem.classList.add('favorites_item');
 
-    homepageItem.addEventListener('click', () => {
-        redirectTo('homepage.html'); 
-    });
+        const bookImage = document.createElement('img');
+        bookImage.classList.add('book_image');
+        if (favorite.image) {
+            bookImage.src = `data:image/jpeg;base64,${favorite.image}`;
+        } else {
+            bookImage.src = '/biblioteca_front/images/image_not_found.png'; 
+        }              
+        bookItem.appendChild(bookImage);
 
-    exploreItem.addEventListener('click', () => {
-        redirectTo('explore.html'); 
-    });
-
-    accountItem.addEventListener('click', () => { 
-        redirectTo('account.html'); 
-    });
-
-    favoritesItem.addEventListener('click', () => {
-        redirectTo('favorites.html'); 
-    });
-
-    fav_button.forEach((fav_button) => {
-        fav_button.addEventListener('click', () => {
-            if (fav_button.getAttribute('src') === '/images/fav_hover.png') {
-                fav_button.setAttribute('src', '/images/fav_book.png');
-            } else {
-                fav_button.setAttribute('src', '/images/fav_hover.png');
-            }
-        });
-    });
-
-});
+        const favImage = document.createElement('img');
+        favImage.classList.add('fav_button');
+        favImage.src = '/biblioteca_front/images/fav_hover.png';
+        bo

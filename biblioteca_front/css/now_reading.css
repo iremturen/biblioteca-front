@@ -92,11 +92,6 @@ html, body {
 
 }
 
-.book_item:hover{
-    box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-}
-
 .book_image{
     width: 100px;
     height:150px;
@@ -126,10 +121,10 @@ html, body {
 .search{
     width: 20%;
     height: 40px;
-    border-bottom: 1px solid rgb(196, 196, 196);
-    border-top: 1px solid rgb(255, 255, 255);
-    border-left: 1px solid rgb(255, 255, 255);
-    border-right: 1px solid rgb(255, 255, 255);   
+    border-bottom: 1.5px solid rgb(196, 196, 196);
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
     float: right;
     color: rgb(108, 108, 108);
     font-family: 'Gill Sans', sans-serif;
@@ -148,7 +143,7 @@ html, body {
     margin-left: 30px;
     width: 500px;
     height: 150px;
-    background-color: #ffffff;
+    background-color: transparent
 }
 
 
@@ -183,4 +178,112 @@ html, body {
     display: flex;
     height: 10px;
     margin-bottom: 6px;
+}
+
+.progress_container {
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    margin-top: 35px;
+    margin-left: 20px;
+    display: flex;
+    padding-top: 5px;
+
+}
+
+progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    border: none;
+    background-color: #eee; 
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #dbdbdb; 
+    border-radius: 15px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #f04765; 
+    border-radius: 15px 0 0 15px; 
+}
+
+progress::-moz-progress-bar {
+    background-color: #f04765;
+}
+
+.progress_per {
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: center;
+    margin-top: -5px;
+    margin-left: 8px;
+}
+
+#page{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 15px;
+    width: 80px;
+    height: 20px;
+    color: rgb(124, 124, 124);
+    text-align: left;
+    border: 1.5px solid rgb(196, 196, 196);
+    border-radius: 8px;
+    padding-left: 10px;
+    
+}
+.button{
+    margin-left: 10px;
+    font-size: 15px;
+    width: 60px;
+    height: 25px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    border: 1.5px solid rgb(154, 154, 154);
+    border-radius: 8px;
+    background-color: rgb(154, 154, 154);
+    margin-bottom: 10px;
+    margin-top: 30px;}
+
+.button:hover{
+    background-color: rgb(197, 197, 197);
+    border: 1.5px solid rgb(197, 197, 197);
+}
+
+.func_btn{
+    display: flex;
+    margin-left: 20px;
+    width: 165px;
+    height: 30px;
+    border: 1.5px solid rgb(154, 154, 154);
+    border-radius: 8px;
+    background-color: rgb(154, 154, 154);
+    margin-top: 20px;
+}
+
+.btn_text{
+    font-size: 17px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+.btn_image{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.func_btn:hover{
+    background-color: rgb(197, 197, 197);
+    border: 1.5px solid rgb(197, 197, 197);
 }

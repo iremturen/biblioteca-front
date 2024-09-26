@@ -193,25 +193,26 @@ html, body {
 
 .book_image{
     width: 120px;
-    height: 160px;
-    margin-left: 30%;
+    height: 180px;
+    margin-left: 55px;
     margin-top: 40px;
+    border: 1px solid rgb(214, 214, 214);
 
 }
 
 .book_title{
     height: 20px;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
     text-align: center;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .book_author{
-    margin-top: -10px;
+    margin-top: 10px;
     height: 10px;
-    font-size: 15px;
+    font-size: 12px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
     text-align: center;
