@@ -1,0 +1,221 @@
+.main{
+margin-bottom: 50px;
+}
+
+.top{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+}
+
+.bottom{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 100px;
+    margin-top: 10px;
+}
+
+.back{
+    display: flex;
+}
+
+#back_logo{
+    width: 45px;
+    height: 45px;
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+
+.back_text{
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(127, 127, 127);
+}
+
+.back_text:hover{
+    text-decoration: underline;
+}
+
+.book_info{
+    display: flex;
+    border-radius: 10px 10px 0 0;
+    background-image: linear-gradient(rgb(101, 101, 101), rgb(255, 255, 255));
+    height: 300px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#collection_img{
+    width: 220px;
+    height: 220px;
+    margin-top: 50px;
+    margin-left: 100px;
+    border-radius: 10px;
+}
+
+#collection_title{
+    width: 100%;
+    font-size: 30px;
+    margin-top: 120px;
+    margin-left: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+#description{
+    width: 700px;
+    height: 60px;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(159, 159, 159);
+    text-align: left;
+    word-wrap: break-word;
+    margin-left: 30px;
+}
+
+#collection_date{
+    width: 100%;
+    font-size: 12px;
+    margin-left: 30px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(92, 92, 92);
+}
+
+.search{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+}
+
+#search_input{
+    width: 300px;
+    height: 40px;
+    border-bottom: 1.5px solid rgb(196, 196, 196);
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    padding-left: 20px;
+    margin-left: 55%;
+    color: rgb(111, 109, 109);
+}
+
+#search_input:placeholder-shown{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(196, 194, 195);
+}
+
+#search_logo{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    border: 2px solid #949494;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+#search_logo:hover{
+    background-color: rgb(235, 235, 235);
+}
+
+#add_book{
+    width: 45px;
+    height: 45px;
+    margin-left: 60px;
+}
+
+#edit_collection{
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+#more{
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+#books_list{
+    flex-wrap: wrap;
+    width: 100%;
+    height: 200px;
+    margin-top: 70px;
+    background-color: transparent;
+}
+
+.list_titles{
+    display: flex;
+    width: 90%;
+    height: 30px;
+    margin-left: 5%;
+    border-bottom: 1.5px solid rgb(196, 196, 196);
+}
+
+.title{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(135, 135, 135);
+    margin-top: 5px;
+    
+}
+
+.books{
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+
+#book_item{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 130px;
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+#book_item:hover{
+    background-color: #d1d1d189;
+}
+
+.item_text{
+    font-size: 16px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(133, 133, 133);
+    margin-left: 80px;
+    margin-top: 60px;
+    text-align: left;
+}
+
+.item_img{
+    width: 80px;
+    height: 110px;
+    margin-left: 70px;
+    margin-top: 10px;
+}
+
+#item_num{
+    margin-left: 90px;
+}
+
+#item_title{
+    margin-left: 230px;
+    margin-right: 130px;
+}
+
+#item_author{
+    margin-right: 240px;
+}
+
+#item_house{
+    margin-right: 140px;
+}
