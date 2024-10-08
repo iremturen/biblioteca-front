@@ -14,11 +14,10 @@
             <p class="back_text" id="back_text">Back Collections</p>
         </div>
         <div class="book_info">
-            <img id="collection_img" src="/biblioteca_front/images/book.jpg">
+            <img id="collection_img" src="/biblioteca_front/images/image_not_found.png">
             <div class="titles">
-                <p id="collection_title">titleeeetile</p>
-                <p id="description">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>    
-                <p id="collection_date">23.04.2000</p>
+                <p id="collection_title">#title#</p>
+                <p id="description">#description#</p>    
             </div>
             </div>
     </div>
@@ -27,8 +26,15 @@
             <img id="add_book" src="/biblioteca_front/images/add_book.png">
             <img id="edit_collection" src="/biblioteca_front/images/edit.png">
             <img id="more" src="/biblioteca_front/images/dots_pink.png">
+            <div id="dropdown_content">
+             <a id="delete_coll"><img src="/biblioteca_front/images/delete.png">Delete</a>
+             <a id="share_coll"><img src="/biblioteca_front/images/share.png">Share</a>
+             <a id="export_coll"><img src="/biblioteca_front/images/export.png">Export</a>
+            </div>
             <input id="search_input" type="text" placeholder="Search">
             <img id="search_logo" src="/biblioteca_front/images/search2.png">
+           <p id="sort_text">Sort by</p>
+            <img id="sort_by" src="/biblioteca_front/images/sort.png">
         </div>
 
         <div id="books_list">
@@ -47,12 +53,43 @@
                     <p id="book_author" class="item_text">Fyodor Mihayloviç Dostoyevski</p>
                     <p id="book_publishing" class="item_text">İş Bankası Kültür Yayınları</p>
                     <p id="book_page" class="item_text">671</p>
+                    <img id="remove_book" src="/biblioteca_front/images/remove_book.png">
                 </div>
             </div>
         </div>
     </div>
     </div>
 
+    <div id="remove_popup">
+        <div class="remove_popup_content">
+            <p class="remove_text">Are you sure you want to remove this book?</p>
+            <button id="confirm_remove">Yes</button>
+            <button id="cancel_remove">No</button>
+        </div>
+    </div>
+
+    <div id="remove_collection_popup">
+        <div class="remove_collection_content">
+            <p class="remove_text">Are you sure you want to delete collection?</p>
+            <button id="confirm_delete">Yes</button>
+            <button id="cancel_delete">No</button>
+        </div>
+    </div>
+
+    <div id="edit_popup">
+        <div class="edit_popup_content">
+            <div class="img_side">
+                <img id="edit_img" src="/biblioteca_front/images/book.jpg">
+                <img id="edit_logo" src="/biblioteca_front/images/edit_img.png">
+            </div>
+            <div class="inputs">
+                <textarea id="popup_title" maxlength="45"></textarea>
+                <textarea id="popup_descripiton" maxlength="200"></textarea>
+                <div id="save_btn">Save</div>
+            </div>
+            <img id="close_popup" src="/biblioteca_front/images/close.png"></img>
+        </div>
+    </div>
     <script src="/biblioteca_front/js/collection_detail.js" defer></script>
 </body>
 </html>
