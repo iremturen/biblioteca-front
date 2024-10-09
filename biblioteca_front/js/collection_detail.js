@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const back_logo = document.getElementById('back_logo');
     const back_text = document.getElementById('back_text');
-    const remove_book = document.getElementById('remove_book');
     const remove_popup = document.getElementById('remove_popup');
     const confirm_remove = document.getElementById('confirm_remove');
     const cancel_remove = document.getElementById('cancel_remove');
@@ -16,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const delete_coll = document.getElementById('delete_coll');
     const remove_collection_popup = document.getElementById('remove_collection_popup');
     const cancel_delete_coll = document.getElementById('cancel_delete');
+    const books_div = document.getElementById('books');
 
     const collectionId = localStorage.getItem('collectionId');
     fetch(`http://localhost:8080/api/collections/${collectionId}`)
@@ -32,10 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     back_text.addEventListener('click', () => {
         window.location.href = 'collections.html';
-    });
-
-    remove_book.addEventListener('click', () => {
-        remove_popup.style.display = 'flex'; 
     });
 
     confirm_remove.addEventListener('click', () => {
@@ -88,7 +84,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    
+    fetch(`http://localhost:8080/api/collection_books/${collectionId}`)
+    .then(response => response.json())
+    .then(books => {
+        let counter = 1;
+        books.forEach(book => {
+            const book_item= document.createElement('div');
+            book_item.classList.add('book_item');
+            book_item.setAttribute('id', 'book_item');
+
+            const book_number = document.createElement('p');
+            book_number.classList.add('item_text');
+            book_number.setAttribute('id', 'book_num');
+            book_number.textContent = counter++;  
+            book_item.appendChild(book_number);
+
+            const book_image = document.createElement('img');
+            book_image.classList.add('item_img');
+            book_image.setAttribute('id', 'book_img');
+            if (book.image) {
+                book_image.src = `data:image/jpeg;base64,${book.image}`;
+            } else {
+                book_image.src = '/biblioteca_front/images/image_not_found.png'; 
+            }
+            book_item.appendChild(book_image);
+
+            const book_name = document.createElement('p');
+            book_name.classList.add('item_text');
+            book_name.setAttribute('id', 'book_name');
+            book_name.textContent = book.book_name;
+            book_item.appendChild(book_name);
+
+            const book_author = document.createElement('p');
+            book_author.classList.add('item_text');
+            book_author.setAttribute('id', 'book_author');
+            book_author.textContent = book.author;
+            book_item.appendChild(book_author);
+
+            const book_publishing = document.createElement('p');
+            book_publishing.classList.add('item_text');
+            book_publishing.setAttribute('id', 'book_publishing');
+            book_publishing.textContent = book.publishing_house;
+            book_item.appendChild(book_publishing);
+
+            const book_page = document.createElement('p');
+            book_page.classList.add('item_text');
+            book_page.setAttribute('id', 'book_page');
+            book_page.textContent = book.book_page;
+            book_item.appendChild(book_page);
+
+            const remove_book_img = document.createElement('img');
+            remove_book_img.setAttribute('id', 'remove_book');
+            remove_book_img.src = '/biblioteca_front/images/remove_book.png';
+            book_item.appendChild(remove_book_img);
+
+            books_div.appendChild(book_item);
+
+            remove_book_img.addEventListener('click', () => {
+                remove_popup.style.display = 'flex'; 
+            });
+        });
+
+    });
 
 });
 
