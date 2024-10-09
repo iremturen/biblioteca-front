@@ -72,4 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
             collectionItem.appendChild(collectionDescription);
 
             collectionItem.addEventListener('click', () => {    
-         
+                const collectionId = collection.collectionId;
+                localStorage.setItem('collectionId', collectionId);
+                window.location.href = 'collection_detail.html';           
+             });
+
+            coll_div.appendChild(collectionItem);
+        });
+    });
+});
