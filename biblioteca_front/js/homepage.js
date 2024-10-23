@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const new_releases = document.getElementById('new_releases');
     const now_item = document.getElementById('now_item');
     const will_item = document.getElementById('will_item');
+    const finished_item = document.getElementById('finished_item');
     const logo_text = document.querySelector('.logo_text');
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
@@ -56,6 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     will_item.addEventListener('click', () => {
         redirectTo('will_read.html');
+    });
+
+    finished_item.addEventListener('click', () => {
+        redirectTo('finished_books.html');
     });
 
     fetch('http://localhost:8080/api/user_books/now_reading/count/1200')
