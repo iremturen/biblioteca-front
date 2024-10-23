@@ -7,9 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const collectionsItem = document.getElementById('collections');
     const new_releases = document.getElementById('new_releases');
     const now_item = document.getElementById('now_item');
-
+    const will_item = document.getElementById('will_item');
+    const logo_text = document.querySelector('.logo_text');
+    const menu = document.querySelector('.menu');
+    const dashboard = document.querySelector('.dashboard');
+    
     function redirectTo(url) {
         window.location.href = url;
+    }
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        darkMode();
+    }
+
+    function darkMode() {
+        menu.style.backgroundColor = '#373737';
+        dashboard.style.backgroundColor = '#373737';
+        logo_text.style.color = '#f3f3f3';
     }
 
     homepageItem.addEventListener('click', () => {
@@ -38,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     now_item.addEventListener('click', () => {  
         redirectTo('now_reading.html');
+    });
+
+    will_item.addEventListener('click', () => {
+        redirectTo('will_read.html');
     });
 
     fetch('http://localhost:8080/api/user_books/now_reading/count/1200')

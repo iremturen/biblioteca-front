@@ -158,10 +158,11 @@ html, body {
     width: 100%;
     display: flex;
     margin-top: -20px;
-    margin-left: 5px;
+    margin-left: 60px;
     position: relative;
     overflow: hidden;
     border-radius: 30px;
+    padding-left: 10px;
 }
 
 .custom-line {
@@ -178,7 +179,7 @@ html, body {
     color: rgb(111, 109, 109);
     text-align: left;
     margin-top: 30px;
-    margin-left: 50px;
+    margin-left: 100px;
 }
 
 .book_item{
@@ -224,17 +225,36 @@ html, body {
     text-align: center;
 }
 
-.arrow {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    margin-right: 50px;
-}
-
-.next_arrow {
+.arrows {
+    width: 100%;
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
+
+}
+
+.right_arrow {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-right: 50px;
+    margin-left: 1000px;
+
+}
+
+.right_arrow:hover {
+    scale: 1.2;
+}
+
+.prev_arrow {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transform: rotate(180deg);
+    margin-left: 4px;
+}
+
+.prev_arrow:hover {
+    scale: 1.2;
 }

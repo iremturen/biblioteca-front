@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const favoritesItem = document.getElementById('favorites');
     const fav_button = document.querySelectorAll('.fav_button');
     const favorites_list= document.getElementById('favorites_list');
+    const logo_text = document.querySelector('.logo_text');
+    const menu = document.querySelector('.menu');
+    const dashboard = document.querySelector('.dashboard');
+    
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        darkMode();
+    }
+
+    function darkMode() {
+        menu.style.backgroundColor = '#373737';
+        dashboard.style.backgroundColor = '#373737';
+        logo_text.style.color = '#f3f3f3';
+    }
 
     fetch('http://localhost:8080/api/favorite/books/1200')
     .then(response => response.json())

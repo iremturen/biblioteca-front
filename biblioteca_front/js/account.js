@@ -4,13 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const accountItem = document.getElementById('account');
     const favoritesItem = document.getElementById('favorites');
     const settingsItem = document.getElementById('settings');
-    const updateButton = document.getElementById('save_button'); 
+    const updateButton = document.getElementById('save_button');
     const name_title = document.getElementById('name_title');
     const email_title = document.getElementById('email_title');
     const profile_picture = document.getElementById('profile_picture');
     const savedColor = localStorage.getItem('profileBackgroundColor');
+    const logo_text = document.querySelector('.logo_text');
+    const menu = document.querySelector('.menu');
+    const dashboard = document.querySelector('.dashboard');
 
     let user_name = "";
+
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        darkMode();
+    }
+
+    function darkMode() {
+        menu.style.backgroundColor = '#373737';
+        dashboard.style.backgroundColor = '#373737';
+        logo_text.style.color = '#f3f3f3';
+    }
 
     function redirectTo(url) {
         window.location.href = url;
@@ -22,23 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     homepageItem.addEventListener('click', () => {
-        redirectTo('homepage.html'); 
+        redirectTo('homepage.html');
     });
 
     exploreItem.addEventListener('click', () => {
-        redirectTo('explore.html'); 
+        redirectTo('explore.html');
     });
 
-    accountItem.addEventListener('click', () => { 
-        redirectTo('account.html'); 
+    accountItem.addEventListener('click', () => {
+        redirectTo('account.html');
     });
 
     favoritesItem.addEventListener('click', () => {
-        redirectTo('favorites.html'); 
+        redirectTo('favorites.html');
     });
 
     settingsItem.addEventListener('click', () => {
-        redirectTo('settings.html'); 
+        redirectTo('settings.html');
     });
 
 
@@ -56,31 +69,31 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('birth_date').value = data.birth_date;
             document.getElementById('city').value = data.city;
             document.getElementById('country').value = data.country;
-            
+
         })
         .catch(error => console.error('Error:', error));
 
 
-        updateButton.addEventListener('click', () => {
-            const userId = 1200; 
-            const updatedUser = {
-                username: document.getElementById('username').value,
-                name: document.getElementById('name').value,
-                surname: document.getElementById('surname').value,
-                email: document.getElementById('email').value,
-                tel_no: document.getElementById('tel_no').value,
-                birth_date: document.getElementById('birth_date').value,
-                city: document.getElementById('city').value,
-                country: document.getElementById('country').value
-            };
-    
-            fetch(`http://localhost:8080/api/users/${userId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updatedUser)
-            })
+    updateButton.addEventListener('click', () => {
+        const userId = 1200;
+        const updatedUser = {
+            username: document.getElementById('username').value,
+            name: document.getElementById('name').value,
+            surname: document.getElementById('surname').value,
+            email: document.getElementById('email').value,
+            tel_no: document.getElementById('tel_no').value,
+            birth_date: document.getElementById('birth_date').value,
+            city: document.getElementById('city').value,
+            country: document.getElementById('country').value
+        };
+
+        fetch(`http://localhost:8080/api/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedUser)
+        })
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -93,9 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('User updated successfully');
             })
             .catch(error => console.error('Error:', error));
-        });
+    });
 
-        
 
 });
-

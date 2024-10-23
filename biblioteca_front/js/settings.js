@@ -30,75 +30,76 @@ function redirectTo(url) {
 }
 
 homepageItem.addEventListener('click', () => {
-    redirectTo('homepage.html'); 
+    redirectTo('homepage.html');
 });
 
 exploreItem.addEventListener('click', () => {
-    redirectTo('explore.html'); 
+    redirectTo('explore.html');
 });
 
 accountItem.addEventListener('click', () => {
-    redirectTo('account.html'); 
+    redirectTo('account.html');
 });
 
 favoritesItem.addEventListener('click', () => {
-    redirectTo('favorites.html'); 
+    redirectTo('favorites.html');
 });
 
 settingsItem.addEventListener('click', () => {
-    redirectTo('settings.html'); 
+    redirectTo('settings.html');
 });
 
 faq.addEventListener('click', () => {
-    fetch('http://localhost:8080/api/settings/faq')
-    .then(response => response.json())
-    .then(faq => {
-        faq.forEach(faqItem => {
-            const faqItemElement = document.createElement('div');
-            faqItemElement.classList.add('faq_item');
-
-            const faqTitle = document.createElement('p');
-            faqTitle.classList.add('title');
-            faqTitle.textContent = faqItem.title;
-            faqItemElement.appendChild(faqTitle);
-
-            const faqContent = document.createElement('p');
-            faqContent.classList.add('content');
-            faqContent.textContent = faqItem.content;
-            faqItemElement.appendChild(faqContent);
-
-            faq_main.appendChild(faqItemElement);
-        });
-    });
     popup_faq.style.display = 'flex';
+    fetch('http://localhost:8080/api/settings/faq')
+        .then(response => response.json())
+        .then(faq => {
+            faq.forEach(faqItem => {
+                const faqItemElement = document.createElement('div');
+                faqItemElement.classList.add('faq_item');
+
+                const faqTitle = document.createElement('p');
+                faqTitle.classList.add('title');
+                faqTitle.textContent = faqItem.title;
+                faqItemElement.appendChild(faqTitle);
+
+                const faqContent = document.createElement('p');
+                faqContent.classList.add('content');
+                faqContent.textContent = faqItem.content;
+                faqItemElement.appendChild(faqContent);
+
+                faq_main.appendChild(faqItemElement);
+            });
+        });
 });
 
 line_info.addEventListener('click', () => {
-    fetch('http://localhost:8080/api/settings/support')
-    .then(response => response.json())
-    .then(support => {
-        support.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('item');
-
-            const title = document.createElement('p');
-            title.classList.add('title_info');
-            title.textContent = item.title;
-            itemElement.appendChild(title);
-
-            const content = document.createElement('p');
-            content.classList.add('content_info');
-            content.textContent = item.content;
-            itemElement.appendChild(content);
-
-            content_main.appendChild(itemElement);
-        });
-    });
     popup_cont.style.display = 'flex';
+    fetch('http://localhost:8080/api/settings/support')
+        .then(response => response.json())
+        .then(support => {
+            support.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('item');
+
+                const title = document.createElement('p');
+                title.classList.add('title_info');
+                title.textContent = item.title;
+                itemElement.appendChild(title);
+
+                const content = document.createElement('p');
+                content.classList.add('content_info');
+                content.textContent = item.content;
+                itemElement.appendChild(content);
+
+                content_main.appendChild(itemElement);
+            });
+        });
 });
 
 
 feedback_form.addEventListener('click', () => {
+    popup_feed.style.display = 'flex';
     const itemElement = document.createElement('div');
     itemElement.classList.add('item');
 
@@ -109,7 +110,7 @@ feedback_form.addEventListener('click', () => {
 
     const message = document.createElement('input');
     message.classList.add('message_input');
-    message.placeholder = 'Enter your feedback here...'; 
+    message.placeholder = 'Enter your feedback here...';
     itemElement.appendChild(message);
 
     const send_button = document.createElement('div');
@@ -118,8 +119,6 @@ feedback_form.addEventListener('click', () => {
     itemElement.appendChild(send_button);
 
     popup_feed.appendChild(itemElement);
-    
-    popup_feed.style.display = 'flex';
 });
 
 
@@ -139,9 +138,11 @@ window.addEventListener('click', (event) => {
 slider.addEventListener('click', () => {
     slider.classList.toggle('active');
 
-    if (slider_container.style.backgroundColor === 'rgb(194, 194, 194)') {
+    if (localStorage.getItem('darkMode') !== 'disabled') {
+        localStorage.setItem('darkMode', 'disabled'); 
         slider_container.style.backgroundColor = 'rgb(255, 255, 255)';
     } else {
+        localStorage.setItem('darkMode', 'enabled'); 
         slider_container.style.backgroundColor = 'rgb(194, 194, 194)';
     }
 });
