@@ -323,7 +323,7 @@ html, body {
     border: 2px solid rgb(133, 133, 133);
 }
 
-.popup {
+#popup_faq, #popup_cont, #popup_feed{
     display: none; 
     position: fixed;
     left: 0;
@@ -337,7 +337,7 @@ html, body {
 }
 
 
-.popup-content_support {
+.content_main, .feed_main {
     background-color: white;
     padding: 20px;
     border-radius: 60px;
@@ -347,51 +347,14 @@ html, body {
     position: relative;
 }
 
-.popup_faq {
-    display: none; 
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup_cont {
-    display: none; 
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-faq{
+.faq_main{
     background-color: white;
-    padding: 20px;
-    border-radius: 60px;
+    border-radius: 40px;
+    padding-top: 30px;
     text-align: center;
-    width: 70%;
-    max-height: 100%; 
-    overflow-y: auto; 
-    position: relative;
-}
-
-.popup-content_support{
-    background-color: white;
-    padding: 20px;
-    border-radius: 60px;
-    text-align: center;
-    width: 40%;
-    height: 38%;
-    position: relative;
+    width: 50%;
+    height: 80%;
+    position: relative;  
 }
 
 .faq_item{
@@ -436,4 +399,55 @@ html, body {
     text-align: left;
     margin-top: 5px;
     margin-left: 25px;
+}
+
+.title_feedback{
+    font-size: 20px;
+    font-family: 'Gill Sans', sans-serif;
+    color:  rgb(240, 71, 101);
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.message_input{
+    height: 100px ;
+    width: 400px;
+    margin-right: 60px;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 20px;
+    border-radius: 12px;
+    border: 1px solid rgb(189, 189, 189);
+    background-color: rgb(241, 241, 241);
+    text-align: left;
+    color: rgb(111, 109, 109);
+    word-wrap: break-word;
+    resize: none;
+}
+
+.send_btn{
+    height: 30px ;
+    width: 20%;
+    margin-left: 50px;
+    margin-top: 20px;
+    padding-top: 11px ;
+    border-radius: 16px;
+    text-align: center;
+    background-color: rgb(150, 150, 150);
+    color: white;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    border: none;
+}
+
+.warning{
+    display: none;
+    font-size: 12px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(165, 165, 165);
+    text-align: left;
+    margin-top: 1px;
+    margin-left: 50px;
 }

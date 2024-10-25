@@ -289,7 +289,7 @@ progress::-moz-progress-bar {
 }
 
 .success_message{
-    width: 300px;
+    width: 500px;
     margin-top: 30px;
     background-color: transparent;
     display: flex;
@@ -303,6 +303,7 @@ progress::-moz-progress-bar {
 }
 
 .success_message_text{
+    width: 500px;
     font-size: 23px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(97, 255, 105);
@@ -312,7 +313,7 @@ progress::-moz-progress-bar {
 }
 
 .error_message{
-    width: 300px;
+    width: 500px;
     margin-top: 30px;
     background-color: transparent;
     display: flex;
@@ -332,6 +333,7 @@ progress::-moz-progress-bar {
     text-align: left;
     margin-top: 5px;
     margin-left: 5px;
+    width: 500px;
 }
 
 .books{

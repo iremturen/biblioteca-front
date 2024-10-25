@@ -192,10 +192,12 @@
 }
 
 .item_img{
-    width: 80px;
+    width: 70px;
     height: 110px;
     margin-top: 10px;
     margin-left: -40px;
+    border: 1px solid rgb(196, 196, 196);
+
 }
 
 #item_num{

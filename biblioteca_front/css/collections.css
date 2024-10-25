@@ -82,20 +82,22 @@ html, body {
 }
 
 .coll_div{
-    width: 1000px;
+    display: flex;
+    width: 100%;
     height: 100%;
-    margin-top: 150px;
     margin-left: 60px;
-    padding-bottom: 50px;
+    flex-wrap: wrap; 
+    justify-content: flex-start;
+    gap: 20px;
 }
 
 .collections_item{
-    width: 100%;
-    height: 200px;
+    width: 500px;
+    height: 150px;
     background-color: rgb(255, 255, 255);
     margin-top: 70px;
     border-radius: 5px;
-    border: 0.5px solid rgb(158, 158, 158);
+    border: 0.5px solid rgb(224, 224, 224);
     margin-bottom: -50px;
 }
 
@@ -105,8 +107,8 @@ html, body {
 }
 
 .cover{
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin-top: 20px;
     margin-left: 20px;
     border-radius: 10px;
@@ -114,7 +116,7 @@ html, body {
 }
 
 .item_num {
-    width: 120px;
+    width: 100px;
     height: 25px;
     background-color: rgb(240, 71, 101);
     border-radius: 10px 0 0 10px;
@@ -122,7 +124,6 @@ html, body {
     font-family: 'Gill Sans', sans-serif;
     color: rgb(255, 255, 255);
     text-align: center;
-    margin-top: 150px;
     margin-left: 10px;
     float: right;
     padding-top: 5px;
@@ -144,10 +145,9 @@ html, body {
     font-family: 'Gill Sans', sans-serif;
     color: rgb(121, 120, 120);
     text-align: left;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    margin-top: -100px;
-}
+    margin-left: 50px;
+    margin-top: 50px;
+    }
 
 #new_btn{
     width: 150px;
@@ -157,28 +157,15 @@ html, body {
     color: white;
     font-family: 'Gill Sans', sans-serif;
     border: none;
-    border-radius: 8px;
-    margin-left: 100%;
-    margin-top: -55px;
+    border-radius: 28px;
     float: right;
+    margin-right: 50px;
+    margin-top: -70px;
     padding-top: 12px;
-    padding-left: 12px;
+    padding-left: 25px;
 }
 
 #new_btn:hover{
     background-color: rgb(233, 46, 80);
     color: white;
-}
-
-.description{
-    width: 50%;
-    height: 100px;
-    font-size: 15px;
-    font-family: 'Gill Sans', sans-serif;
-    color: rgb(121, 120, 120);
-    text-align: left;
-    margin-top: 80px;
-    margin-left: -100px;
-    float: left;
-    word-wrap: break-word;
 }

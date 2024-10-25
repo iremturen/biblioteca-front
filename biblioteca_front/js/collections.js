@@ -66,11 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             collectionTitle.textContent = collection.collection_name;
             collectionItem.appendChild(collectionTitle);
 
-            const collectionDescription = document.createElement('div');
-            collectionDescription.classList.add('description');
-            collectionDescription.textContent = collection.description;
-            collectionItem.appendChild(collectionDescription);
-
             collectionItem.addEventListener('click', () => {    
                 const collectionId = collection.collectionId;
                 localStorage.setItem('collectionId', collectionId);

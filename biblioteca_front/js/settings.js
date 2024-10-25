@@ -23,10 +23,12 @@ const purple = document.getElementById('purple');
 
 slider_container.style.backgroundColor = 'rgb(255, 255, 255)';
 
-//alert("1.popup ların design değişitir 2.account pic renk değiştirme 3.dark mode 4.change pass backend 5.feedback backend")
-
 function redirectTo(url) {
     window.location.href = url;
+}
+
+function closePopup(popup) {
+    popup.style.display = 'none';
 }
 
 homepageItem.addEventListener('click', () => {
@@ -108,30 +110,33 @@ feedback_form.addEventListener('click', () => {
     title_feed.textContent = 'Send us your feedback :)';
     itemElement.appendChild(title_feed);
 
-    const message = document.createElement('input');
+    const message = document.createElement('textarea');
     message.classList.add('message_input');
-    message.placeholder = 'Enter your feedback here...';
+    message.placeholder = 'Enter your feedback here...'; 
+    message.setAttribute('type', 'text');
+    message.setAttribute('maxlength', '300');
     itemElement.appendChild(message);
+
+    const warning = document.createElement('p');
+    warning.classList.add('warning');
+    warning.textContent = 'The maximum character limit is 300.';
+    itemElement.appendChild(warning);
+
+    message.addEventListener('input', () => {
+        const length = message.value.length;
+        if (length == 300) {
+            warning.style.display = 'flex';
+        } else {
+            warning.style.display = 'none';
+        } 
+    });
 
     const send_button = document.createElement('div');
     send_button.classList.add('send_btn');
     send_button.textContent = 'Send';
     itemElement.appendChild(send_button);
 
-    popup_feed.appendChild(itemElement);
-});
-
-
-window.addEventListener('click', (event) => {
-    if (popup_faq && !event.target.closest('#popup_faq') && popup_faq.style.display === 'flex') {
-        popup_faq.style.display = 'none';
-    }
-    if (popup_cont && !event.target.closest('#popup_cont') && popup_cont.style.display === 'flex') {
-        popup_cont.style.display = 'none';
-    }
-    if (popup_feed && !event.target.closest('#popup_feed') && popup_feed.style.display === 'flex') {
-        popup_feed.style.display = 'none';
-    }
+    feed_main.appendChild(itemElement);
 });
 
 
@@ -147,6 +152,9 @@ slider.addEventListener('click', () => {
     }
 });
 
+popup_faq.addEventListener('click', () => closePopup(popup_faq));
+popup_cont.addEventListener('click', () => closePopup(popup_cont));
+popup_feed.addEventListener('click', () => closePopup(popup_feed));
 
 function setColor(color) {
     localStorage.setItem('profileBackgroundColor', color);

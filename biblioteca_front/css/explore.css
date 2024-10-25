@@ -15,7 +15,7 @@ html, body {
 .dashboard{
     background-color: rgb(255, 255, 255);
     width: 80%;
-    margin-left: 20%; 
+    margin-left: 25%; 
     height: 100%;
     border-right: 2px solid gray; 
     display: flex;
@@ -113,7 +113,7 @@ html, body {
     margin-left: 20%; 
     height: 100px;
     background-color: transparent;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 
 .input_search{
@@ -169,8 +169,8 @@ html, body {
 }
 
 .book_image{
-    width: 50%;
-    height: 60%;
+    width: 120px;
+    height: 180px;
     margin-left: 25%;
     margin-top: 40px;
     border: 1px solid rgb(196, 196, 196);
@@ -325,15 +325,6 @@ html, body {
 
 #add_now{
     margin-top: 50px;
-}
-
-.search_title{
-    font-size: 30px;
-    font-family: 'Gill Sans', sans-serif;
-    color: rgb(111, 109, 109);
-    text-align: left;
-    margin-left: 60px;
-    margin-top: 60px;
 }
 
 .add_btns{
