@@ -4,6 +4,7 @@ const accountItem = document.getElementById('account');
 const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
+let url = "http://localhost:8080/api/user_books/will_read/1200";
 
 function redirectTo(url) {
     window.location.href = url;
@@ -29,37 +30,57 @@ settingsItem.addEventListener('click', () => {
     redirectTo('settings.html');
 });
 
-fetch('http://localhost:8080/api/user_books/will_read/1200')
-    .then(response => response.json())
-    .then(faq => {
-        faq.forEach(bookItem => {
-             
-            const book_item = document.createElement('div');
-            book_item.classList.add('book_item');
-            books.appendChild(book_item);
+search.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        searchFunc();
+    }
+});
 
-            const book_image = document.createElement('img');
-            book_image.classList.add('book_image');
-            book_image.src = `data:image/jpeg;base64,${bookItem.book.image}`;
-            book_item.appendChild(book_image);
+function getBooks() {
+    books.innerHTML = '';
+    fetch(url)
+        .then(response => response.json())
+        .then(faq => {
+            faq.forEach(bookItem => {
 
-            const book_title = document.createElement('p');
-            book_title.classList.add('book_title');
-            book_title.textContent = bookItem.book.book_name;
-            book_item.appendChild(book_title);
+                const book_item = document.createElement('div');
+                book_item.classList.add('book_item');
+                books.appendChild(book_item);
 
-            const funcs= document.createElement('div');
-            funcs.classList.add('funcs');
-            book_item.appendChild(funcs);
+                const book_image = document.createElement('img');
+                book_image.classList.add('book_image');
+                book_image.src = `data:image/jpeg;base64,${bookItem.book.image}`;
+                book_item.appendChild(book_image);
 
-            const start = document.createElement('img');
-            start.classList.add('start_icon');
-            start.src = '/biblioteca_front/images/start_book_list.png';
-            funcs.appendChild(start);
+                const book_title = document.createElement('p');
+                book_title.classList.add('book_title');
+                book_title.textContent = bookItem.book.book_name;
+                book_item.appendChild(book_title);
 
-            const remove = document.createElement('img');
-            remove.classList.add('delete_item');
-            remove.src = '/biblioteca_front/images/remove_book_list.png';
-            funcs.appendChild(remove);
+                const funcs = document.createElement('div');
+                funcs.classList.add('funcs');
+                book_item.appendChild(funcs);
+
+                const start = document.createElement('img');
+                start.classList.add('start_icon');
+                start.src = '/biblioteca_front/images/start_book_list.png';
+                funcs.appendChild(start);
+
+                const remove = document.createElement('img');
+                remove.classList.add('delete_item');
+                remove.src = '/biblioteca_front/images/remove_book_list.png';
+                funcs.appendChild(remove);
+            });
         });
-    });
+}
+getBooks();
+
+function searchFunc() {
+    const input = search.value.trim();
+    if (input === "") {
+        url = `http://localhost:8080/api/user_books/will_read/1200`;
+    } else {
+        url = `http://localhost:8080/api/user_books/search/1200?type=2&pattern=${input}`;
+    }
+    getBooks();
+}
