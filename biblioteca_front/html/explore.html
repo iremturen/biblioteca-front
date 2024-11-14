@@ -54,13 +54,28 @@
     <div id="popup" class="popup">
         <div class="popup-content">
             <div class="left_side">
-                <img src="/biblioteca_front/images/fav_book.png" class="fav_button" id="fav_button">
+                <img src="/biblioteca_front/images/fav_book.png" title="Add Favorite" class="fav_button" id="fav_button">
                 <img id="popupImage" class="popup-image" src="" alt="Book Image">
+                <div class="add_btns">
+                    <div class="add_btn" id="add_now">
+                        <img src="/biblioteca_front/images/add.png" class="add_icon">
+                        <p class="add_text">Add What I've Read</p>
+                    </div>
+                    <div class="add_btn" id="add_will">
+                        <img src="/biblioteca_front/images/add.png" class="add_icon">
+                        <p class="add_text">Add My Reading List</p>
+                    </div>
+                    <div class="add_btn" id="add_finished">
+                        <img src="/biblioteca_front/images/add.png" class="add_icon">
+                        <p class="add_text">Add Finished Reads</p>
+                    </div>
+                </div>
             </div>
             <div class="right_side">
                 <p id="popupTitle" class="popup_title"> </p>
-                <p class="info_title">Author:</p>
-                <p id="popupAuthor" class="info_main"></p>
+                <p id="popupAuthor" class="author_text"></p>
+                <textarea id="popupDescription" class="popup_description" readonly></textarea>
+            
                 <p class="info_title">Book Page:</p>
                 <p id="popupBookPage" class="info_main"></p>
                 <p class="info_title">Publishing House:</p>
@@ -70,20 +85,6 @@
                 <p class="info_title">Language:</p>
                 <p id="popupLang" class="info_main"></p>
                 <span id="closePopup" class="close">&times;</span>
-            </div>
-            <div class="add_btns">
-                <div class="add_btn" id="add_now">
-                    <img src="/biblioteca_front/images/add.png" class="add_icon">
-                    <p class="add_text">Add What I've Read</p>
-                </div>
-                <div class="add_btn" id="add_will">
-                    <img src="/biblioteca_front/images/add.png" class="add_icon">
-                    <p class="add_text">Add My Reading List</p>
-                </div>
-                <div class="add_btn" id="add_finished">
-                    <img src="/biblioteca_front/images/add.png" class="add_icon">
-                    <p class="add_text">Add Finished Reads</p>
-                </div>
             </div>
         </div>
 

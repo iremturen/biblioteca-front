@@ -21,8 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const empty_text = document.getElementById('empty_text');
     const search_logo = document.getElementById('search_logo');
     const search_input = document.getElementById('search_input');
+    const edit_img = document.getElementById('edit_img');
+    const popup_title = document.getElementById('popup_title');
+    const popup_description = document.getElementById('popup_description');
 
-
+    const save_btn = document.getElementById('save_btn');
+    const cancel_btn = document.getElementById('cancel_btn');
+    const add_book = document.getElementById('add_book');
+    const add_popup = document.getElementById('add_popup');
+    const add_close_popup = document.getElementById('add_close_popup');
+    const popup_books = document.getElementById('popup_books');
+    const add_books_btn = document.getElementById('add_books_btn');
+    const cover_photo_input = document.getElementById('cover_photo_input');
+    let selectedBooks = [];
+    
     const collectionId = localStorage.getItem('collectionId');
     let url = `http://localhost:8080/api/collection_books/${collectionId}`;
 
@@ -32,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
             collection_img.setAttribute('src', `data:image/jpeg;base64,${collection_info.cover}`);
             collection_title.innerHTML = collection_info.collection_name;
             description.innerHTML = collection_info.description;
+
+            edit_img.setAttribute('src', `data:image/jpeg;base64,${collection_info.cover}`);
+            popup_title.value = collection_info.collection_name;
+            popup_description.value = collection_info.description;
         });
 
     back_logo.addEventListener('click', () => {
@@ -55,6 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     close_popup.addEventListener('click', () => {
+        edit_popup.style.display = 'none';
+    });
+
+    cancel_btn.addEventListener('click', () => {
         edit_popup.style.display = 'none';
     });
 
@@ -82,6 +102,81 @@ document.addEventListener('DOMContentLoaded', () => {
         remove_collection_popup.style.display = 'none';
     });
 
+    add_book.addEventListener('click', () => {
+        add_popup.style.display = 'flex';
+
+        fetch('http://localhost:8080/api/books')
+            .then(response => response.json())
+            .then(books => {
+                books.forEach(book => {
+                    const add_book_item = document.createElement('div');
+                    add_book_item.classList.add('add_book_item');
+                    popup_books.appendChild(add_book_item);
+
+                    const book_item_img = document.createElement('img');
+                    book_item_img.classList.add('book_item_img');
+                    book_item_img.src = `data:image/jpeg;base64,${book.image}`;
+                    add_book_item.appendChild(book_item_img);
+
+                    const popup_book_info = document.createElement('div');
+                    popup_book_info.classList.add('popup_book_info');
+                    add_book_item.appendChild(popup_book_info);
+
+                    const popup_book_title = document.createElement('p');
+                    popup_book_title.classList.add('popup_book_title');
+                    popup_book_title.textContent = book.book_name;
+                    popup_book_info.appendChild(popup_book_title);
+
+                    const popup_book_author = document.createElement('p');
+                    popup_book_author.classList.add('popup_book_author');
+                    popup_book_author.textContent = book.author;
+                    popup_book_info.appendChild(popup_book_author);
+
+                    const add_checkbox = document.createElement('input');
+                    add_checkbox.setAttribute('type', 'checkbox');
+                    add_checkbox.classList.add('add_checkbox');
+                    add_checkbox.dataset.bookId = book.id;
+                    add_checkbox.setAttribute('id', 'add_checkbox');
+                    add_book_item.appendChild(add_checkbox);
+
+                    add_checkbox.addEventListener('change', (event) => {
+                        updateSelectedBooks(event, book.bookId);
+                    });
+                });
+            });
+    });
+
+    function updateSelectedBooks(event, bookId) {
+        if (event.target.checked) {
+            selectedBooks.push(bookId);
+        } else {
+            selectedBooks = selectedBooks.filter(id => id !== bookId);
+        }
+    }
+
+    add_books_btn.addEventListener('click', () => {
+        fetch(`http://localhost:8080/api/collection_books/add/${collectionId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(selectedBooks)
+        })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                    return response.json();
+                } else {
+                    throw new Error('Failed to add books to collection');
+                }
+            })
+            
+    });
+
+    add_close_popup.addEventListener('click', () => {
+        add_popup.style.display = 'none';
+    });
+
     window.onclick = function (event) {
         if (event.target == remove_popup) {
             remove_popup.style.display = 'none';
@@ -89,6 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
             edit_popup.style.display = 'none';
         } else if (event.target == remove_collection_popup) {
             remove_collection_popup.style.display = 'none';
+        } else if (event.target == add_popup) {
+            add_popup.style.display = 'none';
         }
     }
 
@@ -101,8 +198,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         getBooks();
     });
+    
+    cover_photo_input.addEventListener('change', () => {
+        const file = cover_photo_input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                edit_img.src = e.target.result; 
+            };
+            reader.readAsDataURL(file); 
+        }
+    });
 
-    search_input.addEventListener('keyup',(event) => {
+    save_btn.addEventListener('click', () => {
+        const base64Image = edit_img.src.split(",")[1];
+        const update = {
+            collection_name: popup_title.value,
+            description: popup_description.value,
+            cover: base64Image
+        };
+
+        fetch(`http://localhost:8080/api/collections/update/${collectionId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(update)
+        })
+
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                    return response.json();
+                } else {
+                    throw new Error('Failed to update collection');
+                }
+            })
+
+    });
+
+    search_input.addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
             search_logo.click();
         }
@@ -180,7 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     getBooks();
 
-    let default_sort= document.getElementById('default');
     sort_text.addEventListener('mouseover', () => {
         sort_dropdown.style.display = 'flex';
     });

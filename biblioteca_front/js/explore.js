@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupImage = document.getElementById('popupImage');
     const popupTitle = document.getElementById('popupTitle');
 
+    const popupDescription = document.getElementById('popupDescription');
     const popupAuthor = document.getElementById('popupAuthor');
     const popupBookPage = document.getElementById('popupBookPage');
     const popupPHouse = document.getElementById('popupPHouse');
@@ -76,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 popupImage.src = `data:image/jpeg;base64,${bookDetails.image}`;
                             } else {
                                 popupImage.src = '/biblioteca_front/images/image_not_found.png'; 
-                            }   
+                            } 
+                            popupDescription.textContent = bookDetails.description;  
                             popupTitle.textContent = bookDetails.book_name;
                             popupAuthor.textContent = bookDetails.author;
                             popupBookPage.textContent = bookDetails.book_page;

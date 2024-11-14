@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
     <link rel="stylesheet" href="/biblioteca_front/css/collection_detail.css">
 </head>
+
 <body>
     <div class="main">
-    <div class="top">
-        <div class="back">
-            <img id="back_logo" src="/biblioteca_front/images/coll_back.png">
-            <p class="back_text" id="back_text">Back Collections</p>
+        <div class="top">
+            <div class="back">
+                <img id="back_logo" src="/biblioteca_front/images/coll_back.png">
+                <p class="back_text" id="back_text">Back Collections</p>
+            </div>
+            <div class="book_info">
+                <img id="collection_img" src="/biblioteca_front/images/image_not_found.png">
+                <div class="titles">
+                    <p id="collection_title">#title#</p>
+                    <p id="description">#description#</p>
+                </div>
+            </div>
         </div>
-        <div class="book_info">
-            <img id="collection_img" src="/biblioteca_front/images/image_not_found.png">
-            <div class="titles">
-                <p id="collection_title">#title#</p>
-                <p id="description">#description#</p>    
-            </div>
-            </div>
-    </div>
-    <div class="bottom">
-        <div class="search">
-            <img id="add_book" src="/biblioteca_front/images/add_book.png">
-            <img id="edit_collection" src="/biblioteca_front/images/edit.png">
-            <img id="more" src="/biblioteca_front/images/dots_pink.png">
-            <div id="dropdown_content">
-             <a id="delete_coll"><img src="/biblioteca_front/images/delete.png">Delete</a>
-             <a id="share_coll"><img src="/biblioteca_front/images/share.png">Share</a>
-             <a id="export_coll"><img src="/biblioteca_front/images/export.png">Export</a>
-            </div>
-            <input id="search_input" type="text" placeholder="Search">
-            <img id="search_logo" src="/biblioteca_front/images/search2.png">
-           <p id="sort_text">Sort by</p>
-            <img id="sort_by" src="/biblioteca_front/images/sort.png">
-            <div id="sort_dropdown">
-                <a id="sort_title">Title</a>
-                <a id="sort_author">Author</a>
-                <a id="sort_house">Publishing House</a>
-                <a id="sort_page">Page</a>
-                <a id="sort_date">Addition Date</a>
-            </div>
-                
-        </div>
+        <div class="bottom">
+            <div class="search">
+                <img id="add_book" src="/biblioteca_front/images/add_book.png">
+                <img id="edit_collection" src="/biblioteca_front/images/edit.png">
+                <img id="more" src="/biblioteca_front/images/dots_pink.png">
+                <div id="dropdown_content">
+                    <a id="delete_coll"><img src="/biblioteca_front/images/delete.png">Delete</a>
+                    <a id="share_coll"><img src="/biblioteca_front/images/share.png">Share</a>
+                    <a id="export_coll"><img src="/biblioteca_front/images/export.png">Export</a>
+                </div>
+                <input id="search_input" type="text" placeholder="Search">
+                <img id="search_logo" src="/biblioteca_front/images/search2.png">
+                <p id="sort_text">Sort by</p>
+                <img id="sort_by" src="/biblioteca_front/images/sort.png">
+                <div id="sort_dropdown">
+                    <a id="sort_title">Title</a>
+                    <a id="sort_author">Author</a>
+                    <a id="sort_house">Publishing House</a>
+                    <a id="sort_page">Page</a>
+                    <a id="sort_date">Addition Date</a>
+                </div>
 
-        <div id="books_list">
-            <div class="list_titles">
-                <p class="title" id="item_num">#</p>
-                <p class="title" id="item_title">Title</p>
-                <p class="title" id="item_author">Author</p>
-                <p class="title" id="item_house">Publishing House</p>
-                <p class="title" id="item_page">Page</p>
             </div>
-            <div id="books">
-                <p class="empty_text" id="empty_text">collection is empty.</p>
+
+            <div id="books_list">
+                <div class="list_titles">
+                    <p class="title" id="item_num">#</p>
+                    <p class="title" id="item_title">Title</p>
+                    <p class="title" id="item_author">Author</p>
+                    <p class="title" id="item_house">Publishing House</p>
+                    <p class="title" id="item_page">Page</p>
+                </div>
+                <div id="books">
+                    <p class="empty_text" id="empty_text">collection is empty.</p>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div id="remove_popup">
@@ -79,17 +81,38 @@
     <div id="edit_popup">
         <div class="edit_popup_content">
             <div class="img_side">
-                <img id="edit_img" src="/biblioteca_front/images/book.jpg">
+                <img id="edit_img">
                 <img id="edit_logo" src="/biblioteca_front/images/edit_img.png">
+                <input type="file" id="cover_photo_input" />
             </div>
             <div class="inputs">
                 <textarea id="popup_title" maxlength="45"></textarea>
-                <textarea id="popup_descripiton" maxlength="200"></textarea>
+                <textarea id="popup_description" maxlength="200"></textarea>
+               <div class="btns">
+                <div id="cancel_btn">Cancel</div>
                 <div id="save_btn">Save</div>
+               </div>
             </div>
             <img id="close_popup" src="/biblioteca_front/images/close.png"></img>
         </div>
     </div>
+
+
+    <div id="add_popup">
+        <div class="add_popup_content">
+            <div class="popup_top">
+                <p class="title_add_popup">Add Book to Collection</p>
+                <img id="add_close_popup" src="/biblioteca_front/images/close.png"></img>    
+            </div>
+            <input id="add_search" placeholder="Search"></input>
+            <div id="popup_books">
+               
+            </div>
+            <div class="add_books_btn" id="add_books_btn">Add Books</div>
+        </div>
+    </div>
+
     <script src="/biblioteca_front/js/collection_detail.js" defer></script>
 </body>
+
 </html>

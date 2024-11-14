@@ -64,14 +64,23 @@ function getBooks() {
                 const start = document.createElement('img');
                 start.classList.add('start_icon');
                 start.src = '/biblioteca_front/images/start_book_list.png';
+                start.title = "Start Reading";
                 funcs.appendChild(start);
 
                 const remove = document.createElement('img');
                 remove.classList.add('delete_item');
                 remove.src = '/biblioteca_front/images/remove_book_list.png';
+                remove.title = "Remove from list";
                 funcs.appendChild(remove);
+
+              
+
+
+            
+                
             });
         });
+
 }
 getBooks();
 

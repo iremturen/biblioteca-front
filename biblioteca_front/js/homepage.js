@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo_text = document.querySelector('.logo_text');
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
-    
+
     function redirectTo(url) {
         window.location.href = url;
     }
@@ -28,30 +28,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     homepageItem.addEventListener('click', () => {
-        redirectTo('homepage.html'); 
+        redirectTo('homepage.html');
     });
 
     exploreItem.addEventListener('click', () => {
-        redirectTo('explore.html'); 
+        redirectTo('explore.html');
     });
 
     accountItem.addEventListener('click', () => {
-        redirectTo('account.html'); 
+        redirectTo('account.html');
     });
 
     favoritesItem.addEventListener('click', () => {
-        redirectTo('favorites.html'); 
+        redirectTo('favorites.html');
     });
 
     settingsItem.addEventListener('click', () => {
-        redirectTo('settings.html'); 
+        redirectTo('settings.html');
     });
 
     collectionsItem.addEventListener('click', () => {
         redirectTo('collections.html');
     });
 
-    now_item.addEventListener('click', () => {  
+    now_item.addEventListener('click', () => {
         redirectTo('now_reading.html');
     });
 
@@ -64,26 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     fetch('http://localhost:8080/api/user_books/now_reading/count/1200')
-    .then(response => response.text())
-    .then(count => {
-        const countElement = document.getElementById('dashboard_item_number_now');
-        countElement.textContent = count;
-    })
+        .then(response => response.text())
+        .then(count => {
+            const countElement = document.getElementById('dashboard_item_number_now');
+            countElement.textContent = count;
+        })
 
     fetch('http://localhost:8080/api/user_books/will_read/count/1200')
-    .then(response => response.text())
-    .then(count => {
-        const countElement = document.getElementById('dashboard_item_number_will');
-        countElement.textContent = count;
-    })
+        .then(response => response.text())
+        .then(count => {
+            const countElement = document.getElementById('dashboard_item_number_will');
+            countElement.textContent = count;
+        })
 
     fetch('http://localhost:8080/api/user_books/finished/count/1200')
-    .then(response => response.text())
-    .then(count => {
-        const countElement = document.getElementById('dashboard_item_number_finised');
-        countElement.textContent = count;
-    })
-    
+        .then(response => response.text())
+        .then(count => {
+            const countElement = document.getElementById('dashboard_item_number_finised');
+            countElement.textContent = count;
+        })
+
 
     fetch('http://localhost:8080/api/books/new_releases')
         .then(response => response.json())
@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (book.image) {
                     bookImage.src = `data:image/jpeg;base64,${book.image}`;
                 } else {
-                    bookImage.src = '/biblioteca_front/images/image_not_found.png'; 
-                }              
+                    bookImage.src = '/biblioteca_front/images/image_not_found.png';
+                }
                 bookItem.appendChild(bookImage);
 
                 bookItem.dataset.bookId = book.bookId;

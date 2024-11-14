@@ -102,8 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .then(data => {
-                console.log('User updated successfully:', data);
-                alert('User updated successfully');
+           console.log('User updated successfully:', data);
             })
             .catch(error => console.error('Error:', error));
     });
