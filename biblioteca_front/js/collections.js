@@ -9,7 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const new_btn = document.getElementById('new_btn');
     const create_popup = document.getElementById('create_popup');
     const close_popup = document.getElementById('close_popup');
-
+    const cancel_btn = document.getElementById('cancel_btn');
+    const save_btn = document.getElementById('save_btn');
+    const popup_title = document.getElementById('popup_title');
+    const popup_description = document.getElementById('popup_description');
+    const message_popup= document.getElementById('message_popup');
+    
     function redirectTo(url) {
         window.location.href = url;
     }
@@ -46,11 +51,43 @@ document.addEventListener('DOMContentLoaded', () => {
         create_popup.style.display = 'none';
     });
 
-    window.onclick = function (event) {
-        if (event.target == create_popup) {
-            create_popup.style.display = 'none';
-        } 
-    }
+    cancel_btn.addEventListener('click', () => {
+        create_popup.style.display = 'none';
+    });
+
+    cover_photo_input.addEventListener('change', () => {
+        const file = cover_photo_input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                edit_img.src = e.target.result; 
+            };
+            reader.readAsDataURL(file); 
+        }
+    });
+
+    save_btn.addEventListener('click', () => {
+        fetch('http://localhost:8080/api/collections', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                collection_name: popup_title.value,
+                description: popup_description.value,
+                cover: edit_img.src.split(",")[1],
+                userId:1200
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                message_popup.style.display = 'flex';
+                setTimeout(() => {
+                    location.reload(); 
+                }, 3000);
+            }
+        });
+    });
 
     fetch('http://localhost:8080/api/collections/user_collection/1200')
         .then(response => response.json())

@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup_books = document.getElementById('popup_books');
     const add_books_btn = document.getElementById('add_books_btn');
     const cover_photo_input = document.getElementById('cover_photo_input');
+    const confirm_delete= document.getElementById('confirm_delete');
     let selectedBooks = [];
     
     const collectionId = localStorage.getItem('collectionId');
@@ -235,6 +236,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
 
+    });
+
+    confirm_delete.addEventListener('click', () => {
+        fetch(`http://localhost:8080/api/collections/${collectionId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    message_popup.style.display = 'flex';
+                    setTimeout(() => {
+                        window.location.href = 'collections.html';
+                    }, 3000);
+                }
+            });
     });
 
     search_input.addEventListener('keyup', (event) => {
