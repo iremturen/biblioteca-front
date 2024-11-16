@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const add_books_btn = document.getElementById('add_books_btn');
     const cover_photo_input = document.getElementById('cover_photo_input');
     const confirm_delete= document.getElementById('confirm_delete');
+    const confirm_remove_book = document.getElementById('confirm_remove_book');
     let selectedBooks = [];
     
     const collectionId = localStorage.getItem('collectionId');
@@ -258,6 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const sort = document.querySelectorAll('#sort_dropdown a');
+    sort.forEach(link => {
+        link.addEventListener('click', (event) => {
+            const sortParam = link.id.replace('sort_', '');
+            url = `http://localhost:8080/api/collection_books/${collectionId}?sortBy=${sortParam}`;
+            getBooks();
+        });
+    });
+
     function getBooks() {
         fetch(url)
             .then(response => response.json())
@@ -322,13 +332,36 @@ document.addEventListener('DOMContentLoaded', () => {
                     books_div.appendChild(book_item);
 
                     remove_book_img.addEventListener('click', () => {
+                        confirm_remove.dataset.bookId = book.bookId;
                         remove_popup.style.display = 'flex';
                     });
-                });
 
+                   
+
+                });
             });
     }
     getBooks();
+
+    confirm_remove.addEventListener('click', () => {
+        const bookId = confirm_remove.dataset.bookId;
+        fetch(`http://localhost:8080/api/collection_books/remove`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                collectionId: collectionId,
+                bookId: bookId
+            })
+        })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                    return response.json();
+                }
+            });
+    });
 
     sort_text.addEventListener('mouseover', () => {
         sort_dropdown.style.display = 'flex';
