@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo_text = document.querySelector('.logo_text');
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
-
+    const prevArrow = document.getElementById('prev_arrow');
+    const rightArrow = document.getElementById('right_arrow');
+    const books_container = document.getElementById('books_container');
     function redirectTo(url) {
         window.location.href = url;
     }
@@ -84,36 +86,60 @@ document.addEventListener('DOMContentLoaded', () => {
             countElement.textContent = count;
         })
 
+    let currentIndex = 0;
+    const booksPerPage = 5;
+    let books = [];
 
     fetch('http://localhost:8080/api/books/new_releases')
         .then(response => response.json())
-        .then(books => {
-            books.forEach(book => {
-                const bookItem = document.createElement('div');
-                bookItem.classList.add('book_item');
+        .then(data => {
+            books = data;
+            displayBooks(currentIndex);
+        });
 
-                const bookImage = document.createElement('img');
-                bookImage.classList.add('book_image');
-                if (book.image) {
-                    bookImage.src = `data:image/jpeg;base64,${book.image}`;
-                } else {
-                    bookImage.src = '/biblioteca_front/images/image_not_found.png';
-                }
-                bookItem.appendChild(bookImage);
+    function displayBooks(index) {
+        books_container.innerHTML = '';
+        const visibleBooks = books.slice(index, index + booksPerPage);
+        visibleBooks.forEach(book => {
+            const bookItem = document.createElement('div');
+            bookItem.classList.add('book_item');
 
-                bookItem.dataset.bookId = book.bookId;
+            const bookImage = document.createElement('img');
+            bookImage.classList.add('book_image');
+            if (book.image) {
+                bookImage.src = `data:image/jpeg;base64,${book.image}`;
+            } else {
+                bookImage.src = '/biblioteca_front/images/image_not_found.png';
+            }
+            bookItem.appendChild(bookImage);
 
-                const bookTitle = document.createElement('p');
-                bookTitle.classList.add('book_title');
-                bookTitle.textContent = book.book_name;
-                bookItem.appendChild(bookTitle);
+            bookItem.dataset.bookId = book.bookId;
 
-                const bookAuthor = document.createElement('p');
-                bookAuthor.classList.add('book_author');
-                bookAuthor.textContent = book.author;
-                bookItem.appendChild(bookAuthor);
+            const bookTitle = document.createElement('p');
+            bookTitle.classList.add('book_title');
+            bookTitle.textContent = book.book_name;
+            bookItem.appendChild(bookTitle);
 
-                new_releases.appendChild(bookItem);
-            });
-        })
+            const bookAuthor = document.createElement('p');
+            bookAuthor.classList.add('book_author');
+            bookAuthor.textContent = book.author;
+            bookItem.appendChild(bookAuthor);
+
+            books_container.appendChild(bookItem);
+        });
+    }
+
+    rightArrow.addEventListener('click', () => {
+        if (currentIndex + booksPerPage < books.length) {
+            currentIndex += booksPerPage;
+            displayBooks(currentIndex);
+        }
+    });
+
+    prevArrow.addEventListener('click', () => {
+        if (currentIndex - booksPerPage >= 0) {
+            currentIndex -= booksPerPage;
+            displayBooks(currentIndex);
+        }
+    });
 });

@@ -171,6 +171,7 @@ html, body {
     margin-top: 40px; 
     margin-bottom: 0; 
     width: 50%; 
+    height: 10px;
 }
 
 .new_releases_title{
@@ -185,7 +186,7 @@ html, body {
 .book_item{
     width: 180px;
     height: 240px;
-    margin-top: 25px;
+    margin-top: 8px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -225,22 +226,12 @@ html, body {
     text-align: center;
 }
 
-.arrows {
-    width: 100%;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-
-}
-
 .right_arrow {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    margin-right: 50px;
-    margin-left: 1000px;
-
+    margin-top: 140px;
+    margin-right: 20px;
 }
 
 .right_arrow:hover {
@@ -252,9 +243,31 @@ html, body {
     height: 30px;
     cursor: pointer;
     transform: rotate(180deg);
-    margin-left: 4px;
+    margin-top: 140px;
 }
 
 .prev_arrow:hover {
     scale: 1.2;
+}
+
+.books_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    padding-left: 10px;
+    margin-bottom: 40px;
+}
+
+.new_releases_note{
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+    margin-left: 100px;
+    margin-top: -15px;
 }
