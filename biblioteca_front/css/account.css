@@ -1,42 +1,43 @@
-
-html, body {
-    height: 100%; 
+html,
+body {
+    height: 100%;
     margin: 0;
 }
 
-.main{
+.main {
     display: flex;
 }
 
-.menu{
+.menu {
     background-color: rgb(255, 255, 255);
-    width: 20%; 
+    width: 20%;
     height: 100%;
     position: fixed
 }
 
-.dashboard{
+.dashboard {
     background-color: rgb(255, 255, 255);
     width: 80%;
-    margin-left: 20%; 
+    margin-left: 20%;
     height: 100%;
 }
 
 
-.menu_item{
-    height: 40px ;
+.menu_item {
+    height: 40px;
     width: 70%;
     margin-top: 20px;
     margin-left: 50px;
-    padding-top: 10px ;
+    padding-top: 10px;
     border-radius: 20px;
 
 }
 
-.menu_item:hover{
+.menu_item:hover {
     background-color: rgb(212, 209, 209);
 }
-.menu_items{
+
+.menu_items {
     margin-top: 35px;
 }
 
@@ -49,7 +50,7 @@ html, body {
     margin-top: 2px;
 }
 
-.menu_item_text{
+.menu_item_text {
     font-size: 20px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
@@ -58,15 +59,15 @@ html, body {
 
 }
 
-.icon{
+.icon {
     height: 80px;
-    width: 90%; 
+    width: 90%;
     margin-top: 50px;
     background-color: transparent;
     margin-left: 70px;
 }
 
-.logo_image{
+.logo_image {
     float: left;
     width: 60px;
     height: 60px;
@@ -74,14 +75,14 @@ html, body {
     margin-top: -28px;
 }
 
-.logo_text{
+.logo_text {
     font-size: 30px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(240, 71, 101);
     text-align: left;
 }
 
-.logout_button{
+.logout_button {
     width: 70px;
     height: 40px;
     margin-top: 90%;
@@ -94,12 +95,12 @@ html, body {
     font-family: 'Gill Sans', sans-serif;
 }
 
-.logout_button:hover{
+.logout_button:hover {
     background-color: rgb(255, 113, 139);
     border: 1px solid rgb(255, 113, 139);
 }
 
-.logout_image{
+.logout_image {
     height: 30px;
     width: 30px;
     float: right;
@@ -107,46 +108,48 @@ html, body {
     margin-top: 5px;
 }
 
-.input_text{
+.input_text {
     width: 50%;
     height: 40px;
     margin-left: 20px;
-    border-radius: 20px;
-    background-color: rgb(236, 235, 235);
-    border: 1px solid rgb(196, 194, 195);
+    border-bottom: 1px solid rgb(196, 194, 195);
+    border-top: none;
+    border-left: none;
+    border-right: none;
     padding-left: 20px;
     margin-left: 15%;
     color: rgb(111, 109, 109);
+    margin-top: -12px;
 }
 
-.input_text:placeholder-shown{
-    font-size: 15px;
+.input_text:placeholder-shown {
+    font-size: 12px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(196, 194, 195);
 }
 
-.save_button{
+.save_button {
     width: 25%;
     height: 35px;
     margin-top: 50px;
-    margin-left: 45%;
+    margin-left: 35%;
     margin-bottom: 100px;
-    border-radius: 20px;
+    border-radius: 5px;
     text-align: center;
-    background-color: rgb(156, 148, 150);
-    border: 1px solid rgb(140, 137, 137);
+    background-color: rgb(178, 178, 178);
+    border: 1px solid rgb(178, 178, 178);
     color: white;
     font-size: 20px;
     font-family: 'Gill Sans', sans-serif;
     padding-top: 7px;
 }
 
-.save_button:hover{
+.save_button:hover {
     background-color: rgb(196, 194, 195);
     border: 1px solid rgb(196, 194, 195);
 }
 
-.page_title{
+.page_title {
     font-size: 30px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
@@ -155,67 +158,86 @@ html, body {
     margin-left: 10%;
 }
 
-.input_title{
-    font-size: 20px;
+.input_title {
+    font-size: 15px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
     text-align: left;
-    margin-top: 20px;
     margin-left: 15%;
-    
 }
 
-
-.full_name{
-    margin-left: 5%;
-    width: 40%;
-float: left;
+.personal {
+    margin-left: 100px;
+    width: 80%;
+    height: 300px;
+    border: 2px solid rgb(240, 240, 240);
+    border-radius: 20px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-
-.other_info{
-    width: 40%;
-    float: left;
-}
-
-.profile_image{
-    width: 100px;
+.other_info {
+    width: 80%;
+    margin-left: 100px;
     height: 100px;
-    margin-left: 30px;
-    margin-top: 25px;
+    margin-top: 20px;
+    border: 2px solid rgb(240, 240, 240);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+ 
 }
 
-.profile_picture{
+.input_group {
     display: flex;
-    width: 150px;
-    height: 150px;
+    flex-direction: column;
+}
+
+.profile_image {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
+}
+
+.top {
     margin-left: 125px;
     margin-bottom: 30px;
-    background-color: rgb(240, 71, 101);
-}  
-
-.acc_title{
-    height: 100px;
-    width: 100%;
-    margin-top: 30px;
-    margin-left: 50px;
+    display: flex;
 }
 
-.name_title{
-    font-size: 28px;
+
+.custom-button {
+    background-color: rgb(240, 71, 101);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.section_title{
+    font-size: 20px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
     text-align: left;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 50px;
+    margin-left: 10%;
 }
 
-.email_title{
-    font-size: 20px;
+.warning{
+    display: none;
+    font-size: 15px;
     font-family: 'Gill Sans', sans-serif;
-    color: rgb(157, 157, 157);
+    color: rgb(240, 71, 101);
     text-align: left;
-    margin-left: 20px;
-    margin-top: -20px;
+    margin-top: 10px;
+    margin-left: 10%;
 }

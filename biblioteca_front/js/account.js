@@ -5,14 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const favoritesItem = document.getElementById('favorites');
     const settingsItem = document.getElementById('settings');
     const updateButton = document.getElementById('save_button');
-    const name_title = document.getElementById('name_title');
-    const email_title = document.getElementById('email_title');
-    const profile_picture = document.getElementById('profile_picture');
+    const profile_image = document.getElementById('profile_image');
     const savedColor = localStorage.getItem('profileBackgroundColor');
     const logo_text = document.querySelector('.logo_text');
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
-
+    const cover_photo_input = document.getElementById('cover_photo_input');
     let user_name = "";
 
     if (localStorage.getItem('darkMode') === 'enabled') {
@@ -30,9 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (savedColor) {
-        profile_picture.style.backgroundColor = savedColor;
+        profile_image.style.border = `5px solid ${savedColor}`;
     }
-
 
     homepageItem.addEventListener('click', () => {
         redirectTo('homepage.html');
@@ -60,15 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             document.getElementById('username').value = data.username;
             document.getElementById('name').value = data.name;
-            user_name = data.name + " " + data.surname;
-            name_title.innerHTML = user_name;
             document.getElementById('surname').value = data.surname;
             document.getElementById('email').value = data.email;
-            email_title.innerHTML = data.email;
             document.getElementById('tel_no').value = data.tel_no;
             document.getElementById('birth_date').value = data.birth_date;
             document.getElementById('city').value = data.city;
             document.getElementById('country').value = data.country;
+            document.getElementById('profile_image').src = `data:image/jpeg;base64,${data.profile_image}`;
 
         })
         .catch(error => console.error('Error:', error));
@@ -76,15 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateButton.addEventListener('click', () => {
         const userId = 1200;
+        const base64Image = profile_image.src.split(",")[1];
+        const username = document.getElementById('username').value;
+        const name = document.getElementById('name').value;
+        const surname = document.getElementById('surname').value;
+        const email = document.getElementById('email').value;
+        const warning = document.getElementById('warning');
+
+        if (!username || !name || !surname || !email) {
+            warning.style.display = 'block'; 
+            return; 
+        } else {
+            warning.style.display = 'none'; 
+        }
         const updatedUser = {
-            username: document.getElementById('username').value,
-            name: document.getElementById('name').value,
-            surname: document.getElementById('surname').value,
-            email: document.getElementById('email').value,
+            username,
+            name,
+            surname,
+            email,
             tel_no: document.getElementById('tel_no').value,
             birth_date: document.getElementById('birth_date').value,
             city: document.getElementById('city').value,
-            country: document.getElementById('country').value
+            country: document.getElementById('country').value,
+            profile_image: base64Image
         };
 
         fetch(`http://localhost:8080/api/users/${userId}`, {
@@ -101,11 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Failed to update user');
                 }
             })
-            .then(data => {
-           console.log('User updated successfully:', data);
-            })
-            .catch(error => console.error('Error:', error));
     });
 
+    cover_photo_input.addEventListener('change', () => {
+        const file = cover_photo_input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                profile_image.src = e.target.result; 
+            };
+            reader.readAsDataURL(file); 
+        }
+    });
 
 });

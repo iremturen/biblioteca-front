@@ -160,9 +160,9 @@ function setColor(color) {
     localStorage.setItem('profileBackgroundColor', color);
 }
 
-pink.addEventListener('click', () => setColor('pink'));
-green.addEventListener('click', () => setColor('green'));
-blue.addEventListener('click', () => setColor('blue'));
-yellow.addEventListener('click', () => setColor('yellow'));
-orange.addEventListener('click', () => setColor('orange'));
-purple.addEventListener('click', () => setColor('purple'));
+pink.addEventListener('click', () => setColor('#f04765'));
+green.addEventListener('click', () => setColor('#58d68d'));
+blue.addEventListener('click', () => setColor('#85c1e9'));
+yellow.addEventListener('click', () => setColor('#f7dc6f'));
+orange.addEventListener('click', () => setColor('#f39c12'));
+purple.addEventListener('click', () => setColor('#a569bd'));

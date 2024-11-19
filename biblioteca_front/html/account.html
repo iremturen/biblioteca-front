@@ -1,79 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
     <link rel="stylesheet" href="/biblioteca_front/css/account.css">
 </head>
+
 <body>
 
     <div class="main">
         <div class="menu">
             <div class="icon">
-                <img src="/biblioteca_front/images/logo.png" class="logo_image" >
+                <img src="/biblioteca_front/images/logo.png" class="logo_image">
                 <div class="logo_text">iblioteca</div>
             </div>
             <div class="menu_items">
-            <div class="menu_item" id="homepage">
-                <img src="/biblioteca_front/images/home.png" class="menu_icon">
-                <div class="menu_item_text">Homepage</div>
-            </div>
-            <div class="menu_item" id="explore">
-                <img src="/biblioteca_front/images/search.png" class="menu_icon">
-                <div class="menu_item_text">Explore</div>
-            </div>
-            <div class="menu_item" id="collections">
-                <img src="/biblioteca_front/images/collection.png" class="menu_icon">
-                <div class="menu_item_text">Collections</div>
-            </div>
-            <div class="menu_item" id="favorites">
-                <img src="/biblioteca_front/images/fav.png"class="menu_icon">
-                <div class="menu_item_text">Favorites</div>
-            </div>
-            <div class="menu_item" id="settings">
-                <img src="/biblioteca_front/images/settings.png" class="menu_icon">
-                <div class="menu_item_text">Settings</div>
-            </div>
-            <div class="menu_item" id="account">
-                <img src="/biblioteca_front/images/person.png" class="menu_icon">
-                <div class="menu_item_text">My Account</div>
-            </div>
-        </div>
-        </div>
-        <div class="dashboard">
-            <p class="page_title">My Account</p>
-            <div class="profile_picture" id="profile_picture">
-                <img src="/biblioteca_front/images/whale.png" class="profile_image">
-                <div class="acc_title">
-                    <p class="name_title" id="name_title"></p>
-                    <p class="email_title" id="email_title"></p>
+                <div class="menu_item" id="homepage">
+                    <img src="/biblioteca_front/images/home.png" class="menu_icon">
+                    <div class="menu_item_text">Homepage</div>
+                </div>
+                <div class="menu_item" id="explore">
+                    <img src="/biblioteca_front/images/search.png" class="menu_icon">
+                    <div class="menu_item_text">Explore</div>
+                </div>
+                <div class="menu_item" id="collections">
+                    <img src="/biblioteca_front/images/collection.png" class="menu_icon">
+                    <div class="menu_item_text">Collections</div>
+                </div>
+                <div class="menu_item" id="favorites">
+                    <img src="/biblioteca_front/images/fav.png" class="menu_icon">
+                    <div class="menu_item_text">Favorites</div>
+                </div>
+                <div class="menu_item" id="settings">
+                    <img src="/biblioteca_front/images/settings.png" class="menu_icon">
+                    <div class="menu_item_text">Settings</div>
+                </div>
+                <div class="menu_item" id="account">
+                    <img src="/biblioteca_front/images/person.png" class="menu_icon">
+                    <div class="menu_item_text">My Account</div>
                 </div>
             </div>
-           <div class="full_name" >
-            <p class="input_title">Username *</p>
-            <input id="username" class="input_text" type="text"></input>
-            <p class="input_title">Name *</p>
-            <input id="name" class="input_text" type="text"></input>
-            <p class="input_title">Surname *</p>
-            <input id="surname" class="input_text" type="text"></input>
-            <p class="input_title">Email *</p>
-            <input id="email" class="input_text" type="email"></input>  
-         </div>
-         <div class="other_info">  
-            <p class="input_title">Tel Number</p>
-            <input id="tel_no" class="input_text" type="tel"></input>  
-            <p class="input_title">Birth Date</p>
-            <input id="birth_date" class="input_text" type="date"></input> 
-            <p class="input_title">City</p>
-            <input id="city" class="input_text" type="text"></input> 
-            <p class="input_title">Country</p>
-            <input id="country" class="input_text" type="text"></input>
-            <div id="save_button" class="save_button">Save</div>
-         </div>
+        </div>
+        <div class="dashboard">
+            <p class="page_title">My Profile</p>
+            <div class="top" id="top">
+                <div class="profile_pic">
+                    <img src="/biblioteca_front/images/add_pic.png" class="profile_image" id="profile_image">
+                    <input type="file" id="cover_photo_input" accept=".jpg, .jpeg, .png" />
+                    <label for="cover_photo_input" class="custom-button">Change Cover Photo</label>
+                </div>
+
+            </div>
+            <div class="infos">
+                <p class="section_title">Personal Information</p>
+                <div class="personal">
+                    <div class="input_group">
+                        <p class="input_title">Name *</p>
+                        <input id="name" class="input_text" type="text"></input>
+                    </div>
+                    <div class="input_group">
+                        <p class="input_title">Surname *</p>
+                        <input id="surname" class="input_text" type="text"></input>
+                    </div>
+                    <div class="input_group">
+                        <p class="input_title">Username *</p>
+                        <input id="username" class="input_text" type="text"></input>
+                    </div>
+                    <div class="input_group">
+                        <p class="input_title">Email *</p>
+                        <input id="email" class="input_text" type="email"></input>
+                    </div>
+                    <div class="input_group">
+                        <p class="input_title">Tel Number</p>
+                        <input id="tel_no" class="input_text" type="tel"></input>
+                    </div>
+                    <div class="input_group">
+                        <p class="input_title">Birth Date</p>
+                        <input id="birth_date" class="input_text" type="date"></input>
+                    </div>
+                </div>
+                <p class="warning" id="warning">Please fill in all the required fields!</p>
+                <p class="section_title">Address</p>
+                <div class="other_info">
+                    <div class="input_group">
+                        <p class="input_title">City</p>
+                        <input id="city" class="input_text" type="text"></input>
+                    </div>
+                    <div class="input_group">
+                        <p class="input_title">Country</p>
+                        <input id="country" class="input_text" type="text"></input>
+                    </div>
+                </div>
+                <div id="save_button" class="save_button">Save Changes</div>
+            </div>
         </div>
     </div>
 
     <script src="/biblioteca_front/js/account.js" defer></script>
 </body>
+
 </html>
