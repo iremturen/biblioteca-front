@@ -1,0 +1,38 @@
+body{
+    background-color: #646464;
+}
+
+.title{
+    color: white;
+    font-size: 50px;
+    margin-left: 20px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.title2{
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.top input{
+    margin-left: 300px;
+    padding: 5px 25px;
+    margin-top: -10px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 10px;
+    height: 60px;
+    width: 800px;
+    border: 1px solid white;
+    background-color: transparent;
+}
+
+.top input::placeholder {
+    color: white;
+    opacity: 1;
+}

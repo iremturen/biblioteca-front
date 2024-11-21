@@ -15,9 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevArrow = document.getElementById('prev_arrow');
     const rightArrow = document.getElementById('right_arrow');
     const books_container = document.getElementById('books_container');
+    const rec_button = document.getElementById('rec_button');
     function redirectTo(url) {
         window.location.href = url;
     }
+
+    //alert('Yapılacaklar- 1.favoriler 2.dark mode 3.şifre değiştrme 4.login 5.register 6.okudum okicam bitti işlemleri 7.coll_det kitap ekleme arama 8.collec. share');
 
     if (localStorage.getItem('darkMode') === 'enabled') {
         darkMode();
@@ -28,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         dashboard.style.backgroundColor = '#373737';
         logo_text.style.color = '#f3f3f3';
     }
+
+    rec_button.addEventListener('click', () => {
+        redirectTo('recommendation.html');
+    });
 
     homepageItem.addEventListener('click', () => {
         redirectTo('homepage.html');
