@@ -5,7 +5,7 @@ const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
 const search = document.getElementById('search');
-let url = "http://localhost:8080/api/user_books/finished/1200";
+let url = `http://localhost:8080/api/user_books/1200?status=FINISHED`; 
 
 
 function redirectTo(url) {

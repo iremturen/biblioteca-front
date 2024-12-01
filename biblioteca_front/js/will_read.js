@@ -4,7 +4,7 @@ const accountItem = document.getElementById('account');
 const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
-let url = "http://localhost:8080/api/user_books/will_read/1200";
+let url = `http://localhost:8080/api/user_books/1200?status=WILL_READ`; 
 
 function redirectTo(url) {
     window.location.href = url;

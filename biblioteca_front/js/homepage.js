@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightArrow = document.getElementById('right_arrow');
     const books_container = document.getElementById('books_container');
     const rec_button = document.getElementById('rec_button');
+    let userId = 1200;
+    
     function redirectTo(url) {
         window.location.href = url;
     }
-
-    //alert('Yapılacaklar- 1.favoriler 2.dark mode 3.şifre değiştrme 4.login 5.register 6.okudum okicam bitti işlemleri 7.coll_det kitap ekleme arama 8.collec. share');
 
     if (localStorage.getItem('darkMode') === 'enabled') {
         darkMode();
@@ -72,26 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
         redirectTo('finished_books.html');
     });
 
-    fetch('http://localhost:8080/api/user_books/now_reading/count/1200')
-        .then(response => response.text())
-        .then(count => {
-            const countElement = document.getElementById('dashboard_item_number_now');
-            countElement.textContent = count;
-        })
+    function bookCountsByStatus(userId, status, element) {
+        fetch(`http://localhost:8080/api/user_books/count/${userId}?status=${status}`)
+            .then(response => response.json())
+            .then(count => {
+                const countElement = document.getElementById(element);
+                if (countElement) {
+                    countElement.textContent = count;
+                }
+            })
+            .catch(error => console.error('Error fetching book count:', error));
+    }
 
-    fetch('http://localhost:8080/api/user_books/will_read/count/1200')
-        .then(response => response.text())
-        .then(count => {
-            const countElement = document.getElementById('dashboard_item_number_will');
-            countElement.textContent = count;
-        })
-
-    fetch('http://localhost:8080/api/user_books/finished/count/1200')
-        .then(response => response.text())
-        .then(count => {
-            const countElement = document.getElementById('dashboard_item_number_finised');
-            countElement.textContent = count;
-        })
+    bookCountsByStatus(userId, 'NOW_READING', 'dashboard_item_number_now');
+    bookCountsByStatus(userId, 'WILL_READ', 'dashboard_item_number_will');
+    bookCountsByStatus(userId, 'FINISHED', 'dashboard_item_number_finised');
 
     let currentIndex = 0;
     const booksPerPage = 5;

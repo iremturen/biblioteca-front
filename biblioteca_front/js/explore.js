@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupPHouse = document.getElementById('popupPHouse');
     const popupPYear = document.getElementById('popupPYear');
     const popupLang = document.getElementById('popupLang');
-    const fav_button = document.querySelectorAll('.fav_button');
     const input_search=document.getElementById('input_search');
     const search_button=document.getElementById('search_button');
     let url= "http://localhost:8080/api/books";
+    let userId = 1200;
 
     search_button.addEventListener('click', () => {
         const searchInput = input_search.value.trim();
@@ -86,16 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             popupPYear.textContent = bookDetails.publishing_year;
                             popupLang.textContent = bookDetails.language;
                             popup.style.display = 'flex';
+                            const fav_button = document.getElementById('fav_button');
+                            checkIfFavorite(bookId, userId, fav_button);
 
-                            fav_button.forEach((fav_button) => {
-                                fav_button.addEventListener('click', () => {
-                                    if (fav_button.getAttribute('src') === '/images/fav_hover.png') {
-                                        fav_button.setAttribute('src', '/biblioteca_front/images/fav_book.png');
-                                    } else {
-                                        fav_button.setAttribute('src', '/biblioteca_front/images/fav_hover.png');
-                                    }
-                                });
-                            });
                         })
                         .catch(error => console.error('Error fetching book details:', error));
                 
@@ -106,6 +99,49 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error fetching books:', error));
     }
+
+    function checkIfFavorite(bookId, userId, fav_button) {
+        fetch(`http://localhost:8080/api/favorite/${bookId}?userId=${userId}`)
+            .then(response => response.json())
+            .then(favorite => {
+                if (favorite) {
+                    fav_button.src = '/biblioteca_front/images/fav_hover.png';
+                } else {
+                    fav_button.src = '/biblioteca_front/images/fav_book.png';
+                }
+
+                fav_button.onclick = () => {
+                    if (fav_button.getAttribute('src').includes('fav_hover.png')) {
+                        removeFromFavorites(bookId, userId, fav_button);
+                    } else {
+                        addToFavorites(bookId, userId, fav_button);
+                    }
+                };
+                
+            })
+
+    }
+
+    function addToFavorites(bookId, userId, fav_button) {
+        fetch(`http://localhost:8080/api/favorite/add/user/${userId}/book/${bookId}`, {
+            method: 'POST'
+        })
+        .then(() => {
+            fav_button.setAttribute('src', '/biblioteca_front/images/fav_hover.png'); 
+        })
+        .catch(error => console.error('Error adding to favorites:', error));
+    }
+
+    function removeFromFavorites(bookId, userId, fav_button) {
+        fetch(`http://localhost:8080/api/favorite/remove/user/${userId}/book/${bookId}`, {
+            method: 'POST'
+        })
+        .then(() => {
+            fav_button.setAttribute('src', '/biblioteca_front/images/fav_book.png'); 
+        })
+        .catch(error => console.error('Error removing from favorites:', error));
+    }
+
     getBooks();
 
     function redirectTo(url) {
@@ -134,9 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /*
-    search_button.addEventListener('click', () => {
-    fetch(`http://localhost:8080/api/books/search/${input_search.textContent}`)
 
-    });*/
+
 });

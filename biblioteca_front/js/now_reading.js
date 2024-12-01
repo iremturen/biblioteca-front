@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const booksDiv = document.getElementById('books');
     const top = document.getElementById('top');
     const search = document.getElementById('search');
-    let url = "http://localhost:8080/api/user_books/now_reading/1200";
+    let url = `http://localhost:8080/api/user_books/1200?status=NOW_READING`; 
 
     function redirectTo(url) {
         window.location.href = url;
