@@ -53,7 +53,9 @@ settingsItem.addEventListener('click', () => {
 
 faq.addEventListener('click', () => {
     popup_faq.style.display = 'flex';
-    fetch('http://localhost:8080/api/settings/faq')
+    const infoType = 'FAQ'; 
+    const url = `http://localhost:8080/api/settings?infoType=${infoType}`;
+    fetch(url)
         .then(response => response.json())
         .then(faq => {
             faq.forEach(faqItem => {
@@ -77,7 +79,9 @@ faq.addEventListener('click', () => {
 
 line_info.addEventListener('click', () => {
     popup_cont.style.display = 'flex';
-    fetch('http://localhost:8080/api/settings/support')
+    const infoType = 'SUPPORT'; 
+    const url = `http://localhost:8080/api/settings?infoType=${infoType}`;
+    fetch(url)
         .then(response => response.json())
         .then(support => {
             support.forEach(item => {

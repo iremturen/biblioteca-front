@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         favImage.addEventListener('click', () => {
             if (favImage.getAttribute('src') === '/biblioteca_front/images/fav_hover.png') {
                 fetch(`http://localhost:8080/api/favorite/remove/user/1200/book/${book_id}`, {
-                    method: 'POST',
+                    method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
                     }
