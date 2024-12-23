@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const booksDiv = document.getElementById('books');
     const top = document.getElementById('top');
     const search = document.getElementById('search');
-    let url = `http://localhost:8080/api/user_books/1200?status=NOW_READING`; 
+    let url = `http://localhost:8080/api/user_books/1200?status=1`; 
 
     function redirectTo(url) {
         window.location.href = url;
@@ -217,8 +217,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     removeBtnText.textContent = 'Remove Book';
                     removeBtnDiv.appendChild(removeBtnText);
 
-
                     booksDiv.appendChild(book_item);
+
+                    removeBtnDiv.addEventListener('click', () => {
+                        fetch(`http://localhost:8080/api/user_books/delete/${book.bookId}?userId=${book.userId}&type=NOW_READING`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    showSuccessMessage('Book removed successfully!');
+                                    setTimeout(() => {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    showErrorMessage('Failed to remove book.');
+                                }
+                            });
+                    });
 
                 });
             });
@@ -228,9 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function searchFunc() {
         const input = search.value.trim();
         if (input === "") {
-            url = `http://localhost:8080/api/user_books/now_reading/1200`;
+            url = `http://localhost:8080/api/user_books/1200?status=1`;
         } else {
-            url = `http://localhost:8080/api/user_books/search/1200?type=1&pattern=${input}`;
+            url = `http://localhost:8080/api/user_books/1200?status=1&pattern=${input}`;
         }
         getBooks();
     }

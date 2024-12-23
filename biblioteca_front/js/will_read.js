@@ -4,7 +4,7 @@ const accountItem = document.getElementById('account');
 const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
-let url = `http://localhost:8080/api/user_books/1200?status=WILL_READ`; 
+let url = `http://localhost:8080/api/user_books/1200?status=2`; 
 
 function redirectTo(url) {
     window.location.href = url;
@@ -47,6 +47,11 @@ function getBooks() {
                 book_item.classList.add('book_item');
                 books.appendChild(book_item);
 
+                const close = document.createElement('img');
+                close.classList.add('remove_book');
+                close.src = "/biblioteca_front/images/close.png";
+                book_item.appendChild(close);
+                
                 const book_image = document.createElement('img');
                 book_image.classList.add('book_image');
                 book_image.src = `data:image/jpeg;base64,${bookItem.book.image}`;
@@ -67,17 +72,11 @@ function getBooks() {
                 start.title = "Start Reading";
                 funcs.appendChild(start);
 
-                const remove = document.createElement('img');
-                remove.classList.add('delete_item');
-                remove.src = '/biblioteca_front/images/remove_book_list.png';
-                remove.title = "Remove from list";
-                funcs.appendChild(remove);
-
-              
-
-
-            
-                
+                const text_start = document.createElement('p');
+                text_start.classList.add('start_text');
+                text_start.textContent = 'Start Reading';
+                funcs.appendChild(text_start);
+  
             });
         });
 
@@ -87,9 +86,9 @@ getBooks();
 function searchFunc() {
     const input = search.value.trim();
     if (input === "") {
-        url = `http://localhost:8080/api/user_books/will_read/1200`;
+        url = `http://localhost:8080/api/user_books/1200?status=2`;
     } else {
-        url = `http://localhost:8080/api/user_books/search/1200?type=2&pattern=${input}`;
+        url = `http://localhost:8080/api/user_books/1200?status=2&pattern=${input}`;
     }
     getBooks();
 }

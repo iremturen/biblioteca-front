@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     search_button.addEventListener('click', () => {
         const searchInput = input_search.value.trim();
         if (searchInput !== "") {
-            url = `http://localhost:8080/api/books/search?pattern=${searchInput}`;
+            url = `http://localhost:8080/api/books?pattern=${searchInput}`;
         }else {
             url = "http://localhost:8080/api/books"; 
         }

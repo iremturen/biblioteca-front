@@ -5,7 +5,7 @@ const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
 const search = document.getElementById('search');
-let url = `http://localhost:8080/api/user_books/1200?status=FINISHED`; 
+let url = `http://localhost:8080/api/user_books/1200?status=3`; 
 
 
 function redirectTo(url) {
@@ -68,6 +68,29 @@ function getBooks() {
                 date.textContent = bookItem.updated_at;
                 book_item.appendChild(date);
 
+                const comment= document.createElement('div');
+                comment.classList.add('comment');
+                comment.textContent = 'Share your thoughts';
+                book_item.appendChild(comment);
+
+                close.addEventListener('click', () => {
+                    fetch(`http://localhost:8080/api/user_books/delete/${bookItem.bookId}?userId=${bookItem.userId}&type=FINISHED`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            showSuccessMessage('Book removed successfully!');
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 2000);
+                        } else {
+                            showErrorMessage('Failed to remove book.');
+                        }
+                    });
+                });
             });
         });
 }
@@ -77,9 +100,9 @@ getBooks();
 function searchFunc() {
     const input = search.value.trim();
     if (input === "") {
-        url = `http://localhost:8080/api/user_books/finished/1200`;
+        url = `http://localhost:8080/api/user_books/1200?status=3`;
     } else {
-        url = `http://localhost:8080/api/user_books/search/1200?type=3&pattern=${input}`;
+        url = `http://localhost:8080/api/user_books/1200?status=3&pattern=${input}`;
     }
     getBooks();
 }

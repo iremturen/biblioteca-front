@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (input == "") {
             url = `http://localhost:8080/api/collection_books/${collectionId}`;
         } else {
-            url = `http://localhost:8080/api/collection_books/search/${collectionId}?pattern=${input}`;
+            url = `http://localhost:8080/api/collection_books/${collectionId}?pattern=${input}`;
         }
         getBooks();
     });
