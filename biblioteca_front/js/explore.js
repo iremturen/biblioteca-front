@@ -2,9 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
-    const favoritesItem = document.querySelector('.favorites');
     const dashboard = document.querySelector('.dashboard');
-    const book_container = document.getElementById('book_container');
 
     const popup = document.getElementById('popup');
     const closePopup = document.getElementById('closePopup');
@@ -19,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupLang = document.getElementById('popupLang');
     const input_search=document.getElementById('input_search');
     const search_button=document.getElementById('search_button');
+
+    const add_now=document.getElementById('add_now');
+    const add_will=document.getElementById('add_will');
+    const add_finished=document.getElementById('add_finished');
+    const msg_div=document.getElementById('msg_div');
+
     let url= "http://localhost:8080/api/books";
     let userId = 1200;
 
@@ -88,6 +92,57 @@ document.addEventListener('DOMContentLoaded', () => {
                             popup.style.display = 'flex';
                             const fav_button = document.getElementById('fav_button');
                             checkIfFavorite(bookId, userId, fav_button);
+
+                            add_now.addEventListener('click', () => {
+                                fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=1&userId=${userId}`, {
+                                    method: 'POST'
+                                })
+                                .then(() => {
+                                    setTimeout(() => {
+                                        msg_div.style.display = 'flex'; 
+                                        setTimeout(() => {
+                                            msg_div.style.display = 'none'; 
+                                        }, 3000); 
+                                    }, 3000); 
+                                })
+                                .catch((error) => {
+                                    console.error('Hata oluştu:', error);
+                                });
+                            });
+                        
+                            add_will.addEventListener('click', () => {
+                                fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=2&userId=${userId}`, {
+                                    method: 'POST'
+                                })
+                                .then(() => {
+                                    setTimeout(() => {
+                                        msg_div.style.display = 'flex'; 
+                                        setTimeout(() => {
+                                            msg_div.style.display = 'none'; 
+                                        }, 3000); 
+                                    }, 3000); 
+                                })
+                                .catch((error) => {
+                                    console.error('Hata oluştu:', error);
+                                });
+                            });
+                        
+                            add_finished.addEventListener('click', () => {
+                                fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=3&userId=${userId}`, {
+                                    method: 'POST'
+                                })
+                                .then(() => {
+                                    setTimeout(() => {
+                                        msg_div.style.display = 'flex'; 
+                                        setTimeout(() => {
+                                            msg_div.style.display = 'none'; 
+                                        }, 3000); 
+                                    }, 3000); 
+                                })
+                                .catch((error) => {
+                                    console.error('Hata oluştu:', error);
+                                });
+                            });
 
                         })
                         .catch(error => console.error('Error fetching book details:', error));
