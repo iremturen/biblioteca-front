@@ -1,4 +1,7 @@
+import { AuthManager } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
@@ -24,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const msg_div=document.getElementById('msg_div');
 
     let url= "http://localhost:8080/api/books";
+    const token = localStorage.getItem('authToken'); 
     let userId = 1200;
 
     search_button.addEventListener('click', () => {
@@ -43,7 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function getBooks() {
-     fetch(url)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
         .then(response => response.json())
         .then(books => {
             dashboard.innerHTML = '';
@@ -74,7 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 bookItem.addEventListener('click', () => {
                     const bookId = bookItem.dataset.bookId;
-                    fetch(`http://localhost:8080/api/books/${bookId}`)
+                    fetch(`http://localhost:8080/api/books/${bookId}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    })
                         .then(response => response.json())
                         .then(bookDetails => {
                             if (book.image) {
@@ -95,7 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             add_now.addEventListener('click', () => {
                                 fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=1&userId=${userId}`, {
-                                    method: 'POST'
+                                    method: 'POST',
+                                    headers: {
+                                        'Authorization': `Bearer ${token}`,
+                                        'Content-Type': 'application/json'
+                                    }
                                 })
                                 .then(() => {
                                     setTimeout(() => {
@@ -112,7 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                             add_will.addEventListener('click', () => {
                                 fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=2&userId=${userId}`, {
-                                    method: 'POST'
+                                    method: 'POST',
+                                    headers: {
+                                        'Authorization': `Bearer ${token}`,
+                                        'Content-Type': 'application/json'
+                                    }
                                 })
                                 .then(() => {
                                     setTimeout(() => {
@@ -129,7 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                             add_finished.addEventListener('click', () => {
                                 fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=3&userId=${userId}`, {
-                                    method: 'POST'
+                                    method: 'POST',
+                                    headers: {
+                                        'Authorization': `Bearer ${token}`,
+                                        'Content-Type': 'application/json'
+                                    }
                                 })
                                 .then(() => {
                                     setTimeout(() => {
@@ -179,7 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addToFavorites(bookId, userId, fav_button) {
         fetch(`http://localhost:8080/api/favorite/add/user/${userId}/book/${bookId}`, {
-            method: 'POST'
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
         })
         .then(() => {
             fav_button.setAttribute('src', '/biblioteca_front/images/fav_hover.png'); 
@@ -189,7 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function removeFromFavorites(bookId, userId, fav_button) {
         fetch(`http://localhost:8080/api/favorite/remove/user/${userId}/book/${bookId}`, {
-            method: 'POST'
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
         })
         .then(() => {
             fav_button.setAttribute('src', '/biblioteca_front/images/fav_book.png'); 

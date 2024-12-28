@@ -1,3 +1,7 @@
+import { AuthManager } from './auth.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+AuthManager.checkToken();
 const homepageItem = document.getElementById('homepage');
 const exploreItem = document.getElementById('explore');
 const accountItem = document.getElementById('account');
@@ -20,6 +24,8 @@ const blue = document.getElementById('blue');
 const yellow = document.getElementById('yellow');
 const orange = document.getElementById('orange');
 const purple = document.getElementById('purple');
+
+const token = localStorage.getItem('authToken'); 
 
 slider_container.style.backgroundColor = 'rgb(255, 255, 255)';
 
@@ -55,7 +61,13 @@ faq.addEventListener('click', () => {
     popup_faq.style.display = 'flex';
     const infoType = 'FAQ'; 
     const url = `http://localhost:8080/api/settings?infoType=${infoType}`;
-    fetch(url)
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
         .then(response => response.json())
         .then(faq => {
             faq.forEach(faqItem => {
@@ -81,7 +93,13 @@ line_info.addEventListener('click', () => {
     popup_cont.style.display = 'flex';
     const infoType = 'SUPPORT'; 
     const url = `http://localhost:8080/api/settings?infoType=${infoType}`;
-    fetch(url)
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
         .then(response => response.json())
         .then(support => {
             support.forEach(item => {
@@ -170,3 +188,5 @@ blue.addEventListener('click', () => setColor('#85c1e9'));
 yellow.addEventListener('click', () => setColor('#f7dc6f'));
 orange.addEventListener('click', () => setColor('#f39c12'));
 purple.addEventListener('click', () => setColor('#a569bd'));
+
+});

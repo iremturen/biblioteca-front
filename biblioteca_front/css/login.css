@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     background-color: #d1d1d1;
+    background-image: url(../images/Picture1.jpg);
 }
 
 .main {
@@ -72,7 +73,7 @@
     background-color: rgb(133, 133, 133);
     font-size: 16px;
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 8px;
     text-align: center;
 }
 
@@ -83,9 +84,9 @@
 .register {
     width: 50%;
     font-family: 'Gill Sans', sans-serif;
-    color: black;
+    color: rgb(255, 76, 109);
     font-size: 15px;
-    margin-top: 30px;
+    margin-top: 10px;
     text-align: center;
     
 }

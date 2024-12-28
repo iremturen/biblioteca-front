@@ -134,21 +134,22 @@ html, body {
 }
 
 .books {
-    margin-top: 40px;
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap; 
     justify-content: flex-start;
+    margin-bottom: 100px;
 }
 
 .book_item {
     width: 200px;
     height: 250px;
-    margin-top: 25px;
+    margin-top: 80px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     margin-left: 60px;
+
 }
 
 .book_image {

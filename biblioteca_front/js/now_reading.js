@@ -1,4 +1,7 @@
+import { AuthManager } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
@@ -7,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const booksDiv = document.getElementById('books');
     const top = document.getElementById('top');
     const search = document.getElementById('search');
+
+    const token = localStorage.getItem('authToken'); 
     let url = `http://localhost:8080/api/user_books/1200?status=1`; 
 
     function redirectTo(url) {
@@ -41,7 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getBooks() {
         booksDiv.innerHTML = '';
-        fetch(url)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, 
+                'Content-Type': 'application/json'
+            }
+        })
             .then(response => response.json())
             .then(books => {
                 books.forEach(book => {
@@ -175,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             method: 'PUT',
                             headers: {
                                 'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
                             },
                         })
                             .then(response => {
@@ -224,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             method: 'DELETE',
                             headers: {
                                 'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`,
                             },
                         })
                             .then(response => {

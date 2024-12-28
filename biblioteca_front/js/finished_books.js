@@ -1,3 +1,7 @@
+import { AuthManager } from './auth.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
 const homepageItem = document.getElementById('homepage');
 const exploreItem = document.getElementById('explore');
 const accountItem = document.getElementById('account');
@@ -5,6 +9,8 @@ const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
 const search = document.getElementById('search');
+
+const token = localStorage.getItem('authToken'); 
 let url = `http://localhost:8080/api/user_books/1200?status=3`; 
 
 
@@ -40,7 +46,13 @@ search.addEventListener('keyup', (event) => {
 
 function getBooks() {
     books.innerHTML = '';
-    fetch(url)
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
         .then(response => response.json())
         .then(data => {
             data.forEach(bookItem => {
@@ -78,6 +90,7 @@ function getBooks() {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
                         },
                     })
                     .then(response => {
@@ -106,3 +119,4 @@ function searchFunc() {
     }
     getBooks();
 }
+});

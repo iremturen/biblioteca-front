@@ -1,4 +1,7 @@
+import { AuthManager } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
@@ -8,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo_text = document.querySelector('.logo_text');
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
-    
+    const token = localStorage.getItem('authToken'); 
+
     if (localStorage.getItem('darkMode') === 'enabled') {
         darkMode();
     }
@@ -19,7 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
         logo_text.style.color = '#f3f3f3';
     }
 
-    fetch('http://localhost:8080/api/favorite/books/1200')
+    fetch('http://localhost:8080/api/favorite/books/1200', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
     .then(response => response.json())
     .then(favorites => {
        favorites.forEach(favorite => {
@@ -61,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(`http://localhost:8080/api/favorite/remove/user/1200/book/${book_id}`, {
                     method: 'DELETE',
                     headers: {
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 });
@@ -69,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(`http://localhost:8080/api/favorite/add/user/1200/book/${book_id}`, {
                     method: 'POST',
                     headers: {
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 });

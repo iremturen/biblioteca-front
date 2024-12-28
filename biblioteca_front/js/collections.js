@@ -1,4 +1,7 @@
+import { AuthManager } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
@@ -15,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup_description = document.getElementById('popup_description');
     const message_popup= document.getElementById('message_popup');
     
+    const token = localStorage.getItem('authToken'); 
+
     function redirectTo(url) {
         window.location.href = url;
     }
@@ -70,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('http://localhost:8080/api/collections', {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -89,8 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    fetch('http://localhost:8080/api/collections/user_collection/1200')
-        .then(response => response.json())
+    fetch('http://localhost:8080/api/collections/user_collection/1200', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
         .then(data => {
             data.forEach(collection => {
                 const collectionItem = document.createElement('div');
@@ -106,8 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 collectionItem.appendChild(cover);
                 collectionItem.dataset.collectionId = collection.collectionId;
 
-                fetch(`http://localhost:8080/api/collection_books/count/${collection.collectionId}`)
-                    .then(response => response.json())
+                fetch(`http://localhost:8080/api/collection_books/count/${collection.collectionId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
                     .then(count => {
                         const bookCount = document.createElement('p');
                         bookCount.classList.add('item_num');

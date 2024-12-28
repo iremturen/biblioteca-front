@@ -1,4 +1,7 @@
+import { AuthManager } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
@@ -11,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
     const cover_photo_input = document.getElementById('cover_photo_input');
-    let user_name = "";
+    const token = localStorage.getItem('authToken'); 
 
     if (localStorage.getItem('darkMode') === 'enabled') {
         darkMode();
@@ -51,8 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
         redirectTo('settings.html');
     });
 
-
-    fetch('http://localhost:8080/api/users/1200')
+    fetch('http://localhost:8080/api/users/1200', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
         .then(response => response.json())
         .then(data => {
             document.getElementById('username').value = data.username;
@@ -99,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`http://localhost:8080/api/users/${userId}`, {
             method: 'PUT',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(updatedUser)

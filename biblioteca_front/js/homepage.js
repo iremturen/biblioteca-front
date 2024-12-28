@@ -1,11 +1,13 @@
+import { AuthManager } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
     const favoritesItem = document.getElementById('favorites');
     const settingsItem = document.getElementById('settings');
     const collectionsItem = document.getElementById('collections');
-    const new_releases = document.getElementById('new_releases');
     const now_item = document.getElementById('now_item');
     const will_item = document.getElementById('will_item');
     const finished_item = document.getElementById('finished_item');
@@ -17,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const books_container = document.getElementById('books_container');
     const rec_button = document.getElementById('rec_button');
     let userId = 1200;
-    
+    const token = localStorage.getItem('authToken'); 
+
     function redirectTo(url) {
         window.location.href = url;
     }
@@ -73,7 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function bookCountsByStatus(userId, status, element) {
-        fetch(`http://localhost:8080/api/user_books/count/${userId}?status=${status}`)
+        if (!token) {
+            alert('No token found, please log in first.');
+            return;
+        }
+
+        fetch(`http://localhost:8080/api/user_books/count/${userId}?status=${status}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, 
+                'Content-Type': 'application/json'
+            }
+        })
             .then(response => response.json())
             .then(count => {
                 const countElement = document.getElementById(element);
@@ -92,12 +106,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const booksPerPage = 5;
     let books = [];
 
-    fetch('http://localhost:8080/api/books/new_releases')
+    function fetchBooks() {
+        if (!token) {
+            //alert('No token found, please log in first.');
+            return;
+        }
+
+        fetch('http://localhost:8080/api/books/new_releases', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
         .then(response => response.json())
         .then(data => {
             books = data;
             displayBooks(currentIndex);
-        });
+        })
+        .catch(error => console.error('Error fetching new releases:', error));
+    }
+    fetchBooks();
 
     function displayBooks(index) {
         books_container.innerHTML = '';

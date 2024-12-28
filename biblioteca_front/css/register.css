@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d1d1d1;
+    background-color: #b9b8b8;
 }
 
 .main {
@@ -71,10 +71,10 @@
     border-radius: 20px;
     color: #ffffff;
     font-family: 'Gill Sans', sans-serif;
-    background-color: rgb(133, 133, 133);
+    background-color: rgb(255, 76, 109);
     font-size: 16px;
     margin-left: 70px;
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
 }
 
@@ -118,7 +118,7 @@
 .sign_in {
     width: 50%;
     font-family: 'Gill Sans', sans-serif;
-    color: black;
+    color: rgb(255, 76, 109);
     font-size: 15px;
     margin-top: 15px;
     text-align: center;

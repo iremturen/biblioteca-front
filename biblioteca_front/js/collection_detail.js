@@ -1,4 +1,7 @@
+import { AuthManager } from './auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
+    AuthManager.checkToken();
     const back_logo = document.getElementById('back_logo');
     const back_text = document.getElementById('back_text');
     const remove_popup = document.getElementById('remove_popup');
@@ -37,11 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirm_remove_book = document.getElementById('confirm_remove_book');
     let selectedBooks = [];
     
+    const token = localStorage.getItem('authToken'); 
     const collectionId = localStorage.getItem('collectionId');
     let url = `http://localhost:8080/api/collection_books/${collectionId}`;
 
-    fetch(`http://localhost:8080/api/collections/${collectionId}`)
-        .then(response => response.json())
+    fetch(`http://localhost:8080/api/collections/${collectionId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
         .then(collection_info => {
             collection_img.setAttribute('src', `data:image/jpeg;base64,${collection_info.cover}`);
             collection_title.innerHTML = collection_info.collection_name;
@@ -107,7 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
     add_book.addEventListener('click', () => {
         add_popup.style.display = 'flex';
 
-        fetch('http://localhost:8080/api/books')
+        fetch('http://localhost:8080/api/books', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
             .then(response => response.json())
             .then(books => {
                 books.forEach(book => {
@@ -160,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`http://localhost:8080/api/collection_books/add/${collectionId}`, {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(selectedBooks)
@@ -223,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`http://localhost:8080/api/collections/update/${collectionId}`, {
             method: 'PUT',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(update)
@@ -241,7 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     confirm_delete.addEventListener('click', () => {
         fetch(`http://localhost:8080/api/collections/${collectionId}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
         })
             .then(response => {
                 if (response.ok) {
@@ -269,7 +291,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function getBooks() {
-        fetch(url)
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
             .then(response => response.json())
             .then(books => {
                 let counter = 1;
@@ -348,6 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`http://localhost:8080/api/collection_books/remove`, {
             method: 'DELETE',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
