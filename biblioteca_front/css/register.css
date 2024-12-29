@@ -118,7 +118,7 @@
 .sign_in {
     width: 50%;
     font-family: 'Gill Sans', sans-serif;
-    color: rgb(255, 76, 109);
+    color: rgb(135, 135, 135);
     font-size: 15px;
     margin-top: 15px;
     text-align: center;
@@ -127,7 +127,7 @@
 }
 
 .sign_in:hover {
-    color: #969696;
+    color: #737373;
 }
 
 .pass_info {
@@ -138,4 +138,13 @@
     margin-top: -5px;
     text-align: center;
     margin-left: -75px;
+}
+
+.error_msg{
+    width: 60%;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(255, 76, 109);
+    font-size: 15px;
+    margin-top: 10px;
+    text-align: center;
 }

@@ -1,5 +1,6 @@
 const loginButton = document.getElementById('login_button');
 const register = document.getElementById('register');
+const error_msg = document.getElementById('error_msg');
 
 loginButton.addEventListener('click', async () => {
    const username = document.querySelector('input[name="username"]').value;
@@ -20,14 +21,17 @@ loginButton.addEventListener('click', async () => {
                localStorage.setItem('authToken', data.token);
                window.location.href = 'homepage.html';
            } else {
-               alert('Invalid credentials');
+            console.error('Invalid credentials');
            }
        } catch (error) {
            console.error('Error during login:', error);
-           alert('An error occurred. Please try again.');
+           error_msg.style.display = 'flex';
+           error_msg.style.marginLeft='30px'
+           error_msg.innerHTML = 'An error occurred. Please try again.';
        }
    } else {
-       alert('Please enter both username and password.');
+     error_msg.style.display = 'flex';
+     error_msg.innerHTML = 'Please enter both username and password.';
    }
 });
 

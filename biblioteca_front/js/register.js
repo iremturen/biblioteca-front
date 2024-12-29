@@ -10,6 +10,7 @@ const bday_input = document.getElementById('bday_input');
 const password_input = document.getElementById('password_input');
 const register_button = document.getElementById('register_button');
 const sign_in = document.getElementById('sign_in');
+const error_msg = document.getElementById('error_msg');
 
 sign_in.addEventListener('click', () => {
     window.location.href = 'login.html';
@@ -28,7 +29,8 @@ register_button.addEventListener('click',  async () => {
     const password = password_input.value.trim();
 
     if (!username || !name || !surname || !email || !telNo || !country || !city || !birthDate || !password) {
-        alert("Please fill in all fields!");
+        error_msg.style.marginLeft = "-15px";
+        error_msg.innerHTML = "Please fill in all fields!";
         return;
     }
 
@@ -54,15 +56,18 @@ register_button.addEventListener('click',  async () => {
         });
 
         if (response.ok) {
-            alert("Registration is successful! ");
-            window.location.href = 'login.html'; 
+            error_msg.style.marginLeft = "-10px";
+            error_msg.innerHTML = "Registration is successful!";
+            setTimeout(() => {
+                window.location.href = 'login.html'; 
+            }, 2000);
         } else {
             const errorText = await response.text();
-            alert("Registration failed: " + errorText);
+            console.error("Registration failed: ", errorText);
         }
     } catch (error) {
         console.error("Error:", error);
-        alert("An error has occurred. Please try again later.");
+        error_msg.innerHTML = "An error has occurred. Please try again later.";
     }
 });
 });

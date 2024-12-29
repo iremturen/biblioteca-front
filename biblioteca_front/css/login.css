@@ -27,6 +27,7 @@
     border-radius: 20px;
     box-sizing: border-box;
     font-family: 'Gill Sans', sans-serif;
+    color:#646464;
     font-size: 15px;
     padding-left: 20px;
 
@@ -42,6 +43,7 @@
 .login {
     width: 100%;
     padding: 10px;
+    height: 250px;
     margin-left: 50%;
     box-sizing: border-box;
     color: #ffffff;
@@ -84,13 +86,23 @@
 .register {
     width: 50%;
     font-family: 'Gill Sans', sans-serif;
-    color: rgb(255, 76, 109);
+    color: rgb(136, 136, 136);
     font-size: 15px;
     margin-top: 10px;
     text-align: center;
-    
+    margin-left: -5px;
 }
 
 .register:hover {
-    color: #969696;
+    color: #646464;
+}
+
+.error_msg{
+    color: rgb(255, 76, 109);
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    display: none;
 }
