@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightArrow = document.getElementById('right_arrow');
     const books_container = document.getElementById('books_container');
     const rec_button = document.getElementById('rec_button');
+    const logout= document.getElementById('logout');
     let userId = 1200;
     const token = localStorage.getItem('authToken'); 
 
@@ -75,9 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
         redirectTo('finished_books.html');
     });
 
+    document.getElementById('logout').addEventListener('click', () => {
+        localStorage.removeItem('authToken'); 
+        window.location.href = 'login.html';
+    });
+
     function bookCountsByStatus(userId, status, element) {
         if (!token) {
-            alert('No token found, please log in first.');
             return;
         }
 
@@ -108,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function fetchBooks() {
         if (!token) {
-            //alert('No token found, please log in first.');
             return;
         }
 
