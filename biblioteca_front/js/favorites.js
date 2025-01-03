@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
     const token = localStorage.getItem('authToken'); 
+    const userId = localStorage.getItem('userId');
+
+    if (!userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
 
     if (localStorage.getItem('darkMode') === 'enabled') {
         darkMode();
@@ -23,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logo_text.style.color = '#f3f3f3';
     }
 
-    fetch('http://localhost:8080/api/favorite/books/1200', {
+    fetch(`http://localhost:8080/api/favorite/books/${userId}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -68,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const book_id = favorite.bookId;
         favImage.addEventListener('click', () => {
             if (favImage.getAttribute('src') === '/biblioteca_front/images/fav_hover.png') {
-                fetch(`http://localhost:8080/api/favorite/remove/user/1200/book/${book_id}`, {
+                fetch(`http://localhost:8080/api/favorite/remove/user/${userId}/book/${book_id}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -77,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 favImage.setAttribute('src', '/biblioteca_front/images/fav_book.png');
             } else {
-                fetch(`http://localhost:8080/api/favorite/add/user/1200/book/${book_id}`, {
+                fetch(`http://localhost:8080/api/favorite/add/user/${userId}/book/${book_id}`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`,

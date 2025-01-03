@@ -11,7 +11,13 @@ const books = document.getElementById('books');
 const search = document.getElementById('search');
 
 const token = localStorage.getItem('authToken'); 
-let url = `http://localhost:8080/api/user_books/1200?status=3`; 
+const userId = localStorage.getItem('userId');
+if (!userId || !token) {
+    console.error('User or token not found');
+    return;
+}
+
+let url = `http://localhost:8080/api/user_books/${userId}?status=3`; 
 
 
 function redirectTo(url) {
@@ -113,9 +119,9 @@ getBooks();
 function searchFunc() {
     const input = search.value.trim();
     if (input === "") {
-        url = `http://localhost:8080/api/user_books/1200?status=3`;
+        url = `http://localhost:8080/api/user_books/${userId}?status=3`;
     } else {
-        url = `http://localhost:8080/api/user_books/1200?status=3&pattern=${input}`;
+        url = `http://localhost:8080/api/user_books/${userId}?status=3&pattern=${input}`;
     }
     getBooks();
 }

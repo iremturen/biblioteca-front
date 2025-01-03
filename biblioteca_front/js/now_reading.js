@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const top = document.getElementById('top');
     const search = document.getElementById('search');
 
-    const token = localStorage.getItem('authToken'); 
-    let url = `http://localhost:8080/api/user_books/1200?status=1`; 
+    const token = localStorage.getItem('authToken');
+    const userId = localStorage.getItem('userId');
+
+    if (!userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
+ 
+    let url = `http://localhost:8080/api/user_books/${userId}?status=1`; 
 
     function redirectTo(url) {
         window.location.href = url;
@@ -259,9 +266,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function searchFunc() {
         const input = search.value.trim();
         if (input === "") {
-            url = `http://localhost:8080/api/user_books/1200?status=1`;
+            url = `http://localhost:8080/api/user_books/${userId}?status=1`;
         } else {
-            url = `http://localhost:8080/api/user_books/1200?status=1&pattern=${input}`;
+            url = `http://localhost:8080/api/user_books/${userId}?status=1&pattern=${input}`;
         }
         getBooks();
     }

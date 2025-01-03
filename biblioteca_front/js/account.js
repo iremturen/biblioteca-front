@@ -14,7 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.querySelector('.menu');
     const dashboard = document.querySelector('.dashboard');
     const cover_photo_input = document.getElementById('cover_photo_input');
-    const token = localStorage.getItem('authToken'); 
+    const token = localStorage.getItem('authToken');
+    const userId = localStorage.getItem('userId');
+
+    if (!userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
 
     if (localStorage.getItem('darkMode') === 'enabled') {
         darkMode();
@@ -54,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         redirectTo('settings.html');
     });
 
-    fetch('http://localhost:8080/api/users/1200', {
+    fetch(`http://localhost:8080/api/users/${userId}`, { 
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -78,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     updateButton.addEventListener('click', () => {
-        const userId = 1200;
         const base64Image = profile_image.src.split(",")[1];
         const username = document.getElementById('username').value;
         const name = document.getElementById('name').value;

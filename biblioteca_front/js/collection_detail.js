@@ -40,7 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirm_remove_book = document.getElementById('confirm_remove_book');
     let selectedBooks = [];
     
-    const token = localStorage.getItem('authToken'); 
+    const token = localStorage.getItem('authToken');
+    const userId = localStorage.getItem('userId');
+
+    if (!userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
+    
     const collectionId = localStorage.getItem('collectionId');
     let url = `http://localhost:8080/api/collection_books/${collectionId}`;
 

@@ -18,9 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightArrow = document.getElementById('right_arrow');
     const books_container = document.getElementById('books_container');
     const rec_button = document.getElementById('rec_button');
-    const logout= document.getElementById('logout');
-    let userId = 1200;
     const token = localStorage.getItem('authToken'); 
+    const userId = localStorage.getItem('userId');
+
+    if (!userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
 
     function redirectTo(url) {
         window.location.href = url;

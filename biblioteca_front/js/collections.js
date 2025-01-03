@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const message_popup= document.getElementById('message_popup');
     
     const token = localStorage.getItem('authToken'); 
+    const local_userId = localStorage.getItem('userId');
+
+    if (!local_userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
 
     function redirectTo(url) {
         window.location.href = url;
@@ -82,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 collection_name: popup_title.value,
                 description: popup_description.value,
                 cover: edit_img.src.split(",")[1],
-                userId:1200
+                userId:local_userId
             })
         })
         .then(response => {
@@ -95,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    fetch('http://localhost:8080/api/collections/user_collection/1200', {
+    fetch(`http://localhost:8080/api/collections/user_collection/${local_userId}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,

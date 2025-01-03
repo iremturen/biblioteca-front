@@ -10,7 +10,14 @@ const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
 
 const token = localStorage.getItem('authToken'); 
-let url = `http://localhost:8080/api/user_books/1200?status=2`; 
+const userId = localStorage.getItem('userId');
+
+    if (!userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
+
+let url = `http://localhost:8080/api/user_books/${userId}?status=2`; 
 
 function redirectTo(url) {
     window.location.href = url;
@@ -98,9 +105,9 @@ getBooks();
 function searchFunc() {
     const input = search.value.trim();
     if (input === "") {
-        url = `http://localhost:8080/api/user_books/1200?status=2`;
+        url = `http://localhost:8080/api/user_books/${userId}?status=2`;
     } else {
-        url = `http://localhost:8080/api/user_books/1200?status=2&pattern=${input}`;
+        url = `http://localhost:8080/api/user_books/${userId}?status=2&pattern=${input}`;
     }
     getBooks();
 }

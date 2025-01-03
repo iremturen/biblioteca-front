@@ -28,7 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let url= "http://localhost:8080/api/books";
     const token = localStorage.getItem('authToken'); 
-    let userId = 1200;
+    const userId = localStorage.getItem('userId');
+
+    if (!userId || !token) {
+        console.error('User or token not found');
+        return;
+    }
 
     search_button.addEventListener('click', () => {
         const searchInput = input_search.value.trim();
