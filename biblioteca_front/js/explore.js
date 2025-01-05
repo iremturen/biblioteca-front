@@ -189,26 +189,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkIfFavorite(bookId, userId, fav_button) {
-        fetch(`http://localhost:8080/api/favorite/${bookId}?userId=${userId}`)
-            .then(response => response.json())
-            .then(favorite => {
-                if (favorite) {
-                    fav_button.src = '/biblioteca_front/images/fav_hover.png';
+        fetch(`http://localhost:8080/api/favorite/${bookId}?userId=${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(favorite => {
+            if (favorite) {
+                fav_button.src = '/biblioteca_front/images/fav_hover.png'; 
+            } else {
+                fav_button.src = '/biblioteca_front/images/fav_book.png'; 
+            }
+    
+            fav_button.onclick = () => {
+                if (fav_button.getAttribute('src').includes('fav_hover.png')) {
+                    removeFromFavorites(bookId, userId, fav_button);
                 } else {
-                    fav_button.src = '/biblioteca_front/images/fav_book.png';
+                    addToFavorites(bookId, userId, fav_button);
                 }
-
-                fav_button.onclick = () => {
-                    if (fav_button.getAttribute('src').includes('fav_hover.png')) {
-                        removeFromFavorites(bookId, userId, fav_button);
-                    } else {
-                        addToFavorites(bookId, userId, fav_button);
-                    }
-                };
-                
-            })
-
+            };
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
+    
 
     function addToFavorites(bookId, userId, fav_button) {
         fetch(`http://localhost:8080/api/favorite/add/user/${userId}/book/${bookId}`, {
@@ -226,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function removeFromFavorites(bookId, userId, fav_button) {
         fetch(`http://localhost:8080/api/favorite/remove/user/${userId}/book/${bookId}`, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
