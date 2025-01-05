@@ -26,6 +26,7 @@
     border-radius: 20px;
     box-sizing: border-box;
     font-family: 'Gill Sans', sans-serif;
+    color: #737373;
     font-size: 15px;
     padding-left: 20px;
 
@@ -148,4 +149,45 @@
     margin-top: 10px;
     text-align: center;
     display: none;
+}
+
+#tel_input {
+    width: 59%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.iti {
+    width: 100%;
+}
+
+.iti__flag {
+    margin-right: 10px;
+}
+
+.iti__selected-flag {
+    background-color: transparent;
+    margin-right: 15px;
+    color: rgb(116, 116, 116);
+    border-radius: 20px;
+}
+
+.iti__country-list {
+    width: 300px;
+    background-color: rgb(244, 244, 244);
+    color: rgb(112, 112, 112);
+}
+
+.iti__input {
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    padding-left: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
 }
