@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     booksDiv.appendChild(book_item);
 
                     removeBtnDiv.addEventListener('click', () => {
-                        fetch(`http://localhost:8080/api/user_books/delete/${book.bookId}?userId=${book.userId}&type=NOW_READING`, {
+                        fetch(`http://localhost:8080/api/user_books/remove/${book.bookId}?userId=${book.userId}&type=1`, {
                             method: 'DELETE',
                             headers: {
                                 'Content-Type': 'application/json',
