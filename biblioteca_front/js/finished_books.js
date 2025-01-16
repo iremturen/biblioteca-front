@@ -9,6 +9,11 @@ const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
 const search = document.getElementById('search');
+const stars = document.querySelectorAll('.star');
+const popup = document.getElementById('popup');
+const close_popup = document.getElementById('close_popup');
+const send_button = document.getElementById('send_button');
+let selectedRating = 0;
 
 const token = localStorage.getItem('authToken'); 
 const userId = localStorage.getItem('userId');
@@ -44,10 +49,24 @@ settingsItem.addEventListener('click', () => {
     redirectTo('settings.html');
 });
 
+close_popup.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
 search.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
         searchFunc();
     }
+});
+
+stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        selectedRating = stars.length - index; 
+        stars.forEach(s => s.classList.remove('selected')); 
+        for (let i = stars.length - 1; i >= stars.length - selectedRating; i--) {
+            stars[i].classList.add('selected'); 
+        }
+    });
 });
 
 function getBooks() {
@@ -66,10 +85,10 @@ function getBooks() {
                 book_item.classList.add('book_item');
                 books.appendChild(book_item);
 
-                const close = document.createElement('img');
-                close.classList.add('remove_book');
-                close.src = "/biblioteca_front/images/close.png";
-                book_item.appendChild(close);
+                const remove = document.createElement('img');
+                remove.classList.add('remove_book');
+                remove.src = "/biblioteca_front/images/close.png";
+                book_item.appendChild(remove);
 
                 const book_image = document.createElement('img');
                 book_image.classList.add('book_image');
@@ -88,25 +107,28 @@ function getBooks() {
 
                 const comment= document.createElement('div');
                 comment.classList.add('comment');
-                comment.textContent = 'Share your thoughts';
+                comment.textContent = 'Share your thoughts !';
                 book_item.appendChild(comment);
 
-                close.addEventListener('click', () => {
-                    fetch(`http://localhost:8080/api/user_books/delete/${bookItem.bookId}?userId=${bookItem.userId}&type=FINISHED`, {
+                comment.addEventListener('click', () => {
+                    popup.style.display = 'flex';
+                });
+
+                remove.addEventListener('click', () => {
+                    fetch(`http://localhost:8080/api/user_books/remove/${bookItem.bookId}?userId=${userId}&type=3`, {
                         method: 'DELETE',
                         headers: {
-                            'Content-Type': 'application/json',
                             'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'            
                         },
                     })
                     .then(response => {
                         if (response.ok) {
-                            showSuccessMessage('Book removed successfully!');
                             setTimeout(() => {
                                 window.location.reload();
                             }, 2000);
                         } else {
-                            showErrorMessage('Failed to remove book.');
+                            console.error('Failed to remove book.');
                         }
                     });
                 });
