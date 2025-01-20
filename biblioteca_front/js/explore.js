@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const add_will=document.getElementById('add_will');
     const add_finished=document.getElementById('add_finished');
     const msg_div=document.getElementById('msg_div');
+    const rate_text=document.getElementById('rate_text');
 
     let url= "http://localhost:8080/api/books";
     const token = localStorage.getItem('authToken'); 
@@ -113,6 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             popup.style.display = 'flex';
                             const fav_button = document.getElementById('fav_button');
                             checkIfFavorite(bookId, userId, fav_button);
+
+                            fetch(`http://localhost:8080/api/rate/average?bookId=${bookId}`, {
+                                method: 'GET',
+                                headers: {
+                                    'Authorization': `Bearer ${token}`,
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(average => {
+                                rate_text.textContent = average;
+                            })
 
                             add_now.addEventListener('click', () => {
                                 fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=1&userId=${userId}`, {

@@ -13,7 +13,9 @@ const stars = document.querySelectorAll('.star');
 const popup = document.getElementById('popup');
 const close_popup = document.getElementById('close_popup');
 const send_button = document.getElementById('send_button');
+const thanks_msg = document.getElementById('thanks_msg');
 let selectedRating = 0;
+let bookId = 0;
 
 const token = localStorage.getItem('authToken'); 
 const userId = localStorage.getItem('userId');
@@ -69,6 +71,34 @@ stars.forEach((star, index) => {
     });
 });
 
+
+send_button.addEventListener('click', () => {
+    if (selectedRating === 0) {
+        thanks_msg.style.display = 'flex';
+        thanks_msg.style.marginLeft = '130px';
+        thanks_msg.textContent = 'Please select a rating before submitting.';
+        return;
+    }
+
+    fetch(`http://localhost:8080/api/rate/save?userId=${userId}&bookId=${bookId}&rating=${selectedRating}`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            thanks_msg.style.display = 'flex';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);         } 
+        else {
+            thanks_msg.textContent = 'Failed to save rating.';
+        }
+        });
+});
+
 function getBooks() {
     books.innerHTML = '';
     fetch(url, {
@@ -112,6 +142,7 @@ function getBooks() {
 
                 comment.addEventListener('click', () => {
                     popup.style.display = 'flex';
+                    bookId = bookItem.bookId;
                 });
 
                 remove.addEventListener('click', () => {
