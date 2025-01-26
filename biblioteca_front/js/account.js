@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
     const favoritesItem = document.getElementById('favorites');
+    const collectionsItem = document.getElementById('collections');
     const settingsItem = document.getElementById('settings');
     const updateButton = document.getElementById('save_button');
     const profile_image = document.getElementById('profile_image');
@@ -54,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     favoritesItem.addEventListener('click', () => {
         redirectTo('favorites.html');
+    });
+
+    collectionsItem.addEventListener('click', () => {
+        redirectTo('collections.html');
     });
 
     settingsItem.addEventListener('click', () => {

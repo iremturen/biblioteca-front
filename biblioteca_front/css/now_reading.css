@@ -306,7 +306,7 @@ progress::-moz-progress-bar {
     width: 500px;
     font-size: 23px;
     font-family: 'Gill Sans', sans-serif;
-    color: rgb(97, 255, 105);
+    color: rgb(115, 115, 115);
     text-align: left;
     margin-top: 5px;
     margin-left: 5px;
@@ -329,7 +329,7 @@ progress::-moz-progress-bar {
 .error_message_text{
     font-size: 23px;
     font-family: 'Gill Sans', sans-serif;
-    color: rgb(255, 58, 58);
+    color: rgb(115, 115, 115);
     text-align: left;
     margin-top: 5px;
     margin-left: 5px;

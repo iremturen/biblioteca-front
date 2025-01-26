@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
+    const collectionsItem = document.getElementById('collections');
     const favoritesItem = document.getElementById('favorites');
+    const settingsItem = document.getElementById('settings');
     const fav_button = document.querySelectorAll('.fav_button');
     const favorites_list= document.getElementById('favorites_list');
     const logo_text = document.querySelector('.logo_text');
@@ -116,6 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     favoritesItem.addEventListener('click', () => {
         redirectTo('favorites.html'); 
+    });
+
+    collectionsItem.addEventListener('click', () => {
+        redirectTo('collections.html'); 
+    });
+
+    settingsItem.addEventListener('click', () => {
+        redirectTo('settings.html'); 
     });
 
 });

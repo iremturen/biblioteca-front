@@ -5,6 +5,7 @@ AuthManager.checkToken();
 const homepageItem = document.getElementById('homepage');
 const exploreItem = document.getElementById('explore');
 const accountItem = document.getElementById('account');
+const collectionsItem = document.getElementById('collections');
 const favoritesItem = document.getElementById('favorites');
 const settingsItem = document.getElementById('settings');
 const books = document.getElementById('books');
@@ -41,6 +42,10 @@ favoritesItem.addEventListener('click', () => {
 
 settingsItem.addEventListener('click', () => {
     redirectTo('settings.html');
+});
+
+collectionsItem.addEventListener('click', () => {
+    redirectTo('collections.html');
 });
 
 search.addEventListener('keyup', (event) => {

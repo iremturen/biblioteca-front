@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
-    const favoritesItem = document.getElementById('favorites');
     const collectionsItem = document.getElementById('collections');
+    const favoritesItem = document.getElementById('favorites');
+    const settingsItem = document.getElementById('settings');
     const booksDiv = document.getElementById('books');
     const top = document.getElementById('top');
     const search = document.getElementById('search');
@@ -43,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     collectionsItem.addEventListener('click', () => {
         redirectTo('collections.html');
+    });
+
+    settingsItem.addEventListener('click', () => {
+        redirectTo('settings.html');
     });
 
     search.addEventListener('keyup', (event) => {

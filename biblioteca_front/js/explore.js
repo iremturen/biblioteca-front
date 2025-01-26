@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const homepageItem = document.getElementById('homepage');
     const exploreItem = document.getElementById('explore');
     const accountItem = document.getElementById('account');
+    const collectionsItem = document.getElementById('collections');
+    const favoritesItem = document.getElementById('favorites');
+    const settingsItem = document.getElementById('settings');
     const dashboard = document.querySelector('.dashboard');
 
     const popup = document.getElementById('popup');
@@ -284,6 +287,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closePopup.addEventListener('click', () => {
         popup.style.display = 'none';
+    });
+
+    collectionsItem.addEventListener('click', () => {
+        redirectTo('collections.html'); 
+    });
+
+    favoritesItem.addEventListener('click', () => {
+        redirectTo('favorites.html'); 
+    });
+
+    settingsItem.addEventListener('click', () => {
+        redirectTo('settings.html');
     });
 
     window.addEventListener('click', (event) => {
