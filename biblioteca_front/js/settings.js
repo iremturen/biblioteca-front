@@ -137,6 +137,13 @@ feedback_form.addEventListener('click', () => {
     title_feed.textContent = 'Send us your feedback :)';
     itemElement.appendChild(title_feed);
 
+    const subject = document.createElement('input');
+    subject.classList.add('subject_input');
+    subject.placeholder = 'Subject';
+    subject.setAttribute('type', 'text');
+    subject.setAttribute('maxlength', '60');
+    itemElement.appendChild(subject);
+
     const message = document.createElement('textarea');
     message.classList.add('message_input');
     message.placeholder = 'Enter your feedback here...'; 
@@ -163,7 +170,43 @@ feedback_form.addEventListener('click', () => {
     send_button.textContent = 'Send';
     itemElement.appendChild(send_button);
 
+    const success_msg = document.createElement('p');
+    success_msg.classList.add('success_msg');
+    success_msg.textContent = 'Feedback sent successfully!';
+    itemElement.appendChild(success_msg);
+
     feed_main.appendChild(itemElement);
+
+    send_button.addEventListener('click', () => {
+        const feedback = {
+            email:localStorage.getItem('email'),
+            subject: subject.value,
+            body: message.value
+        };
+
+        const url = 'http://localhost:8080/api/feedback/send';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(feedback)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Response data: ", data); 
+                if (data.message === 'Feedback sent successfully'){
+                    success_msg.style.display = 'flex';
+                    setTimeout(() => {
+                        closePopup(popup_feed);
+                    }, 5000);
+                } else {
+                    success_msg.style.display = 'flex';
+                    success_msg.textContent = 'An error occurred. Please try again.';
+                }
+            });
+    });
 });
 
 
@@ -179,9 +222,11 @@ slider.addEventListener('click', () => {
     }
 });
 
+/*
 popup_faq.addEventListener('click', () => closePopup(popup_faq));
 popup_cont.addEventListener('click', () => closePopup(popup_cont));
 popup_feed.addEventListener('click', () => closePopup(popup_feed));
+*/
 
 function setColor(color) {
     localStorage.setItem('profileBackgroundColor', color);

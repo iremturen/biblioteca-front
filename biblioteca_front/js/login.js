@@ -20,6 +20,7 @@ loginButton.addEventListener('click', async () => {
            if (response.ok) {
                localStorage.setItem('authToken', data.token);
                localStorage.setItem('userId', data.userId);
+               localStorage.setItem('email', data.email);
                window.location.href = 'homepage.html';
            } else {
             console.error('Invalid credentials');

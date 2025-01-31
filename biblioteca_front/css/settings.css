@@ -343,7 +343,7 @@ html, body {
     border-radius: 60px;
     text-align: center;
     width: 40%;
-    height: 38%;
+    height: 45%;
     position: relative;
 }
 
@@ -411,6 +411,8 @@ html, body {
 }
 
 .message_input{
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
     height: 100px ;
     width: 400px;
     margin-right: 60px;
@@ -418,7 +420,6 @@ html, body {
     padding-left: 15px;
     padding-top: 15px;
     padding-right: 20px;
-    border-radius: 12px;
     border: 1px solid rgb(189, 189, 189);
     background-color: rgb(241, 241, 241);
     text-align: left;
@@ -427,11 +428,25 @@ html, body {
     resize: none;
 }
 
+.subject_input{
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    height: 40px ;
+    width: 420px;
+    margin-right: 60px;
+    margin-top: 10px;
+    padding-left: 15px;
+    border: 1px solid rgb(189, 189, 189);
+    background-color: rgb(241, 241, 241);
+    text-align: left;
+    color: rgb(111, 109, 109);
+}
+
 .send_btn{
     height: 30px ;
     width: 20%;
     margin-left: 50px;
-    margin-top: 20px;
+    margin-top: 15px;
     padding-top: 11px ;
     border-radius: 16px;
     text-align: center;
@@ -449,5 +464,15 @@ html, body {
     color: rgb(165, 165, 165);
     text-align: left;
     margin-top: 1px;
+    margin-left: 50px;
+}
+
+.success_msg{
+    display: none;
+    font-size: 15px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+    margin-top: 12px;
     margin-left: 50px;
 }
