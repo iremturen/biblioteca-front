@@ -25,6 +25,11 @@ const blue = document.getElementById('blue');
 const yellow = document.getElementById('yellow');
 const orange = document.getElementById('orange');
 const purple = document.getElementById('purple');
+const old_password = document.getElementById('old_password');
+const new_password = document.getElementById('new_password');
+const confirm_password = document.getElementById('confirm_password');
+const change_button = document.getElementById('change_button');
+const error_msg= document.getElementById('error_msg');
 
 const token = localStorage.getItem('authToken'); 
 
@@ -222,12 +227,6 @@ slider.addEventListener('click', () => {
     }
 });
 
-/*
-popup_faq.addEventListener('click', () => closePopup(popup_faq));
-popup_cont.addEventListener('click', () => closePopup(popup_cont));
-popup_feed.addEventListener('click', () => closePopup(popup_feed));
-*/
-
 function setColor(color) {
     localStorage.setItem('profileBackgroundColor', color);
 }
@@ -238,5 +237,57 @@ blue.addEventListener('click', () => setColor('#85c1e9'));
 yellow.addEventListener('click', () => setColor('#f7dc6f'));
 orange.addEventListener('click', () => setColor('#f39c12'));
 purple.addEventListener('click', () => setColor('#a569bd'));
+
+});
+
+change_button.addEventListener('click', () => {
+    const authToken = localStorage.getItem('authToken');
+    const old_password_value = old_password.value;
+    const new_password_value = new_password.value;
+    const confirm_password_value = confirm_password.value;
+    const url = 'http://localhost:8080/api/change_password';
+
+    if (new_password_value !== confirm_password_value) {
+        error_msg.style.display = 'flex';
+        error_msg.textContent = 'Passwords do not match.';
+        return;
+    }
+
+    if(old_password_value === '' || new_password_value === '' || confirm_password_value === '') {
+        error_msg.style.display = 'flex';
+        error_msg.textContent = 'Please fill in all fields.';
+        return;
+    }
+
+    if(new_password_value.length < 8 || confirm_password_value.length < 8 || old_password_value.length < 8) {
+        error_msg.style.display = 'flex';
+        error_msg.textContent = 'Password must be at least 8 characters long.';
+        return;
+    }
+
+    const password = {
+        currentPassword: old_password_value,
+        newPassword: new_password_value
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${authToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(password)
+    })  
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Password changed successfully') {
+            error_msg.style.display = 'flex';
+            error_msg.textContent = 'Password changed successfully.';
+        } else {
+            error_msg.style.display = 'flex';
+            error_msg.textContent = 'An error occurred. Please try again.';
+        }
+    });
+        
 
 });

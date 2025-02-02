@@ -476,3 +476,13 @@ html, body {
     margin-top: 12px;
     margin-left: 50px;
 }
+
+#error_msg{
+    display: none;
+    font-size: 12px;
+    font-family: 'Gill Sans', sans-serif;
+    color: rgb(240, 71, 101);
+    text-align: left;
+    margin-top: -2px;
+    margin-left: 50px;
+}
