@@ -99,7 +99,7 @@ register_button.addEventListener('click',  async () => {
             const errorText = await response.text();
             console.error("Registration failed: ", errorText);
 
-            if (errorText.includes('Duplicate entry')) {
+            if (errorText.includes('already registered')) {
                 error_msg.style.marginLeft = "-10px";
                 error_msg.style.display = "flex";
                 error_msg.innerHTML = "This email, username or phone number are already registered.";
