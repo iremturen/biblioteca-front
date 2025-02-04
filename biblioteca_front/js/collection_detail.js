@@ -28,6 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup_title = document.getElementById('popup_title');
     const popup_description = document.getElementById('popup_description');
 
+    const share_close_popup = document.getElementById('share_close_popup');
+    const share_popup = document.getElementById('share_popup');
+    const share_collection = document.getElementById('share_coll');
+    const shareFacebook = document.getElementById('share_facebook');
+    const shareWhatsapp = document.getElementById('share_whatsapp');
+    const shareX = document.getElementById('share_x');
+    const shareInstagram = document.getElementById('share_instagram');
+    const shareTelegram = document.getElementById('share_telegram');
+    const link_input = document.getElementById('link_input');
+    const copy_btn = document.getElementById('copy_btn');
+    const copy_msg = document.getElementById('copy_msg');
+
     const save_btn = document.getElementById('save_btn');
     const cancel_btn = document.getElementById('cancel_btn');
     const add_book = document.getElementById('add_book');
@@ -415,5 +427,48 @@ document.addEventListener('DOMContentLoaded', () => {
         sort_dropdown.style.display = 'none';
     });
 
+    share_collection.addEventListener('click', () => {
+        const link = window.location.href;
+        share_popup.style.display = 'flex';
+        link_input.value = link;
+
+        shareFacebook.addEventListener('click', () => {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`, "_blank");
+        });
+    
+        shareWhatsapp.addEventListener('click', () => {
+            window.open(`https://wa.me/?text=${encodeURIComponent(link)}`, "_blank");
+        });
+    
+        shareX.addEventListener('click', () => {
+            window.open(`https://x.com/intent/tweet?url=${encodeURIComponent(link)}`, "_blank");
+        });
+    
+        shareInstagram.addEventListener('click', () => {
+            window.open(`https://www.instagram.com/?url=${encodeURIComponent(link)}`, "_blank");
+        });
+    
+        shareTelegram.addEventListener('click', () => {
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}`, "_blank");
+        });
+
+        copy_btn.addEventListener('click', () => {
+            link_input.select();
+            link_input.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            copy_msg.style.display = 'flex';
+            setTimeout(() => {
+                copy_msg.style.display = 'none';
+            }, 3000);
+        });
+
+        share_close_popup.addEventListener('click', () => {
+            share_popup.style.display = 'none';
+        });
+
+    });
+
+
+    
 
 });
