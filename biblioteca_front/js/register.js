@@ -12,11 +12,6 @@ const register_button = document.getElementById('register_button');
 const sign_in = document.getElementById('sign_in');
 const error_msg = document.getElementById('error_msg');
 
-const iti = window.intlTelInput(tel_input, {
-    separateDialCode: true, 
-    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
-});
-
 sign_in.addEventListener('click', () => {
     window.location.href = 'login.html';
 });
@@ -64,6 +59,13 @@ register_button.addEventListener('click',  async () => {
         error_msg.style.marginLeft = "-10px";
         error_msg.style.display = "flex";
         error_msg.innerHTML = "Please enter a valid phone number with country code.";
+        return;
+    }
+
+    if(bday_input.value > currentDate) {
+        error_msg.style.marginLeft = "120px";
+        error_msg.style.display = "flex";
+        error_msg.innerHTML = "Enter a valid date.";
         return;
     }
 

@@ -88,13 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error:', error));
 
 
-    updateButton.addEventListener('click', () => {
+    updateButton.addEventListener('click', async() => {
         const base64Image = profile_image.src.split(",")[1];
         const username = document.getElementById('username').value;
         const name = document.getElementById('name').value;
         const surname = document.getElementById('surname').value;
         const email = document.getElementById('email').value;
         const warning = document.getElementById('warning');
+        const telNo = document.getElementById('tel_no').value;
+        const phoneRegex = /^\+?\d{10,15}$/; 
 
         if (!username || !name || !surname || !email) {
             warning.style.display = 'block'; 
@@ -102,6 +104,29 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             warning.style.display = 'none'; 
         }
+
+        if (!isValidPhoneNumber(telNo)) {
+            warning.style.display = 'block';
+            warning.innerHTML = 'Please enter a valid phone number with a length between 4 and 15 digits.';
+            return;
+        } 
+
+        if (!phoneRegex.test(telNo)) {
+            warning.style.display = 'block';
+            warning.innerHTML = 'Please enter a valid phone number with country code.';
+            return;
+        } else {
+            warning.style.display = 'none'; 
+        }
+
+        if(birth_date.value > new Date().toISOString().split('T')[0]) {
+            warning.style.display = 'block';
+            warning.innerHTML = 'Enter a valid date.';
+            return;
+        }else{
+            warning.style.display = 'none';
+        }
+        
         const updatedUser = {
             username,
             name,
@@ -114,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
             profile_image: base64Image
         };
 
-        fetch(`http://localhost:8080/api/users/${userId}`, {
+        try {
+        const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -122,13 +148,28 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(updatedUser)
         })
-            .then(response => {
+           
                 if (response.ok) {
+                    popup.style.display = 'flex';
+                setTimeout(() => {
+                    location.reload(); 
+                }, 3000);
                     return response.json();
                 } else {
+                    const errorText = await response.text(); 
+                     if (errorText.includes('already in use')) {
+                        warning.style.display = "flex";
+                        warning.innerHTML = "This email, username or phone number is already in use.";
+                    } 
                     throw new Error('Failed to update user');
                 }
-            })
+            
+            
+        }catch (error) {
+                console.error("Error:", error);
+                error_msg.style.display="flex";
+                error_msg.innerHTML = "An error has occurred. Please try again later.";
+            }
     });
 
     cover_photo_input.addEventListener('change', () => {
@@ -141,5 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsDataURL(file); 
         }
     });
+
+    function isValidPhoneNumber(phoneNumber) {
+        const phoneLength = phoneNumber.replace(/\D/g, '').length; 
+        return phoneLength >= 4 && phoneLength <= 15; 
+    }
 
 });
