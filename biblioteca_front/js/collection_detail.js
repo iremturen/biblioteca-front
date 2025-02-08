@@ -47,11 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const add_close_popup = document.getElementById('add_close_popup');
     const popup_books = document.getElementById('popup_books');
     const add_books_btn = document.getElementById('add_books_btn');
+    const add_search = document.getElementById('add_search');
     const cover_photo_input = document.getElementById('cover_photo_input');
-    const confirm_delete= document.getElementById('confirm_delete');
+    const confirm_delete = document.getElementById('confirm_delete');
     const confirm_remove_book = document.getElementById('confirm_remove_book');
     let selectedBooks = [];
-    
+
     const token = localStorage.getItem('authToken');
     const userId = localStorage.getItem('userId');
 
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('User or token not found');
         return;
     }
-    
+
     const collectionId = localStorage.getItem('collectionId');
     let url = `http://localhost:8080/api/collection_books/${collectionId}`;
 
@@ -70,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
+        .then(response => response.json())
         .then(collection_info => {
             collection_img.setAttribute('src', `data:image/jpeg;base64,${collection_info.cover}`);
             collection_title.innerHTML = collection_info.collection_name;
@@ -135,8 +136,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     add_book.addEventListener('click', () => {
         add_popup.style.display = 'flex';
+        fetchBooks();
+    });
 
-        fetch('http://localhost:8080/api/books', {
+    add_search.addEventListener('keyup', (event) => {
+        if (event.key === "Enter") {
+            fetchBooks();
+        }
+    });
+
+    const booksUrl = 'http://localhost:8080/api/books';
+
+    function fetchBooks() {
+        let url = booksUrl;
+
+        if (add_search.value.trim() != "") {
+            url = `http://localhost:8080/api/books?pattern=${add_search.value}`;
+        }
+
+        fetch(url, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -145,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(response => response.json())
             .then(books => {
+                popup_books.innerHTML = "";
                 books.forEach(book => {
                     const add_book_item = document.createElement('div');
                     add_book_item.classList.add('add_book_item');
@@ -181,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 });
             });
-    });
+    }
 
     function updateSelectedBooks(event, bookId) {
         if (event.target.checked) {
@@ -208,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Failed to add books to collection');
                 }
             })
-            
+
     });
 
     add_close_popup.addEventListener('click', () => {
@@ -236,15 +255,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         getBooks();
     });
-    
+
     cover_photo_input.addEventListener('change', () => {
         const file = cover_photo_input.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = (e) => {
-                edit_img.src = e.target.result; 
+                edit_img.src = e.target.result;
             };
-            reader.readAsDataURL(file); 
+            reader.readAsDataURL(file);
         }
     });
 
@@ -383,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         remove_popup.style.display = 'flex';
                     });
 
-                   
+
 
                 });
             });
@@ -435,19 +454,19 @@ document.addEventListener('DOMContentLoaded', () => {
         shareFacebook.addEventListener('click', () => {
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`, "_blank");
         });
-    
+
         shareWhatsapp.addEventListener('click', () => {
             window.open(`https://wa.me/?text=${encodeURIComponent(link)}`, "_blank");
         });
-    
+
         shareX.addEventListener('click', () => {
             window.open(`https://x.com/intent/tweet?url=${encodeURIComponent(link)}`, "_blank");
         });
-    
+
         shareInstagram.addEventListener('click', () => {
             window.open(`https://www.instagram.com/?url=${encodeURIComponent(link)}`, "_blank");
         });
-    
+
         shareTelegram.addEventListener('click', () => {
             window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}`, "_blank");
         });
@@ -469,6 +488,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    
+
 
 });
