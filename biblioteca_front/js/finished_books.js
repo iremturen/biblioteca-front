@@ -29,7 +29,12 @@ let url = `http://localhost:8080/api/user_books/${userId}?status=3`;
 
 
 function redirectTo(url) {
-    window.location.href = url;
+    const transitionOverlay = document.querySelector(".transition-overlay");
+    transitionOverlay.classList.add("active");
+
+    setTimeout(() => {
+        window.location.href = url;
+    }, 500);
 }
 
 homepageItem.addEventListener('click', () => {

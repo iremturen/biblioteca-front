@@ -36,7 +36,12 @@ const token = localStorage.getItem('authToken');
 slider_container.style.backgroundColor = 'rgb(255, 255, 255)';
 
 function redirectTo(url) {
-    window.location.href = url;
+    const transitionOverlay = document.querySelector(".transition-overlay");
+    transitionOverlay.classList.add("active");
+
+    setTimeout(() => {
+        window.location.href = url;
+    }, 500);
 }
 
 function closePopup(popup) {

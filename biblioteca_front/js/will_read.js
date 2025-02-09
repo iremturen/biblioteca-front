@@ -21,7 +21,12 @@ const userId = localStorage.getItem('userId');
 let url = `http://localhost:8080/api/user_books/${userId}?status=2`; 
 
 function redirectTo(url) {
-    window.location.href = url;
+    const transitionOverlay = document.querySelector(".transition-overlay");
+    transitionOverlay.classList.add("active");
+
+    setTimeout(() => {
+        window.location.href = url;
+    }, 500);
 }
 
 homepageItem.addEventListener('click', () => {
@@ -113,7 +118,7 @@ function getBooks() {
                             if (response.ok) {
                                 setTimeout(() => {
                                     redirectTo('now_reading.html');
-                                }, 3000);
+                                }, 2000);
                             } else {
                                 console.error('Error');
                             }
