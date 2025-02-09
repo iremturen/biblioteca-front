@@ -101,6 +101,24 @@ function getBooks() {
                 text_start.textContent = 'Start Reading';
                 funcs.appendChild(text_start);
   
+                funcs.addEventListener('click', () => {
+                    fetch(`http://localhost:8080/api/user_books/add/${bookItem.bookId}?userId=${bookItem.userId}&status=1`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
+                        },
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                setTimeout(() => {
+                                    redirectTo('now_reading.html');
+                                }, 3000);
+                            } else {
+                                console.error('Error');
+                            }
+                        });
+                });
             });
         });
 

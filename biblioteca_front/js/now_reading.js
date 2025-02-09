@@ -242,6 +242,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     removeBtnDiv.appendChild(removeBtnText);
 
                     booksDiv.appendChild(book_item);
+                    
+                    finishBtnDiv.addEventListener('click', () => {
+                        fetch(`http://localhost:8080/api/user_books/add/${book.bookId}?userId=${book.userId}&status=3`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`,
+                            },
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    showSuccessMessage('Book status changed successfully!');
+                                    setTimeout(() => {
+                                        redirectTo('finished_books.html');
+                                    }, 2000);
+                                } else {
+                                    showErrorMessage('Failed to changed status.');
+                                }
+                            });
+                    });
 
                     removeBtnDiv.addEventListener('click', () => {
                         fetch(`http://localhost:8080/api/user_books/remove/${book.bookId}?userId=${book.userId}&type=1`, {

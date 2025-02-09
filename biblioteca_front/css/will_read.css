@@ -184,8 +184,12 @@ body {
     height: 40px;
     display: flex;
     margin-top: 10px ; 
-    background-color: rgb(240, 71, 101);
+    background-color: rgba(240, 71, 102, 0.84);
     border-radius: 15px;
+}
+
+.funcs:hover{
+    background-color: rgb(240, 71, 101);;
 }
 
 .remove_book{
