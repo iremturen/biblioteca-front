@@ -270,7 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
     getBooks();
 
     function redirectTo(url) {
+        const transitionOverlay = document.querySelector(".transition-overlay");
+    transitionOverlay.classList.add("active");
+
+    setTimeout(() => {
         window.location.href = url;
+    }, 500);
     }
 
     homepageItem.addEventListener('click', () => {

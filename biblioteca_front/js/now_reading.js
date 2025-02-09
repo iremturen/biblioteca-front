@@ -23,7 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let url = `http://localhost:8080/api/user_books/${userId}?status=1`; 
 
     function redirectTo(url) {
+        const transitionOverlay = document.querySelector(".transition-overlay");
+    transitionOverlay.classList.add("active");
+
+    setTimeout(() => {
         window.location.href = url;
+    }, 500);
     }
 
     homepageItem.addEventListener('click', () => {

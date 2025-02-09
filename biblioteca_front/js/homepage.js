@@ -27,7 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function redirectTo(url) {
-        window.location.href = url;
+        const transitionOverlay = document.querySelector(".transition-overlay");
+        transitionOverlay.classList.add("active");
+    
+        setTimeout(() => {
+            window.location.href = url;
+        }, 500);    
     }
 
     if (localStorage.getItem('darkMode') === 'enabled') {

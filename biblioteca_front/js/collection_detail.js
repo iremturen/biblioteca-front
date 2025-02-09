@@ -83,11 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     back_logo.addEventListener('click', () => {
+        const transitionOverlay = document.querySelector(".transition-overlay");
+    transitionOverlay.classList.add("active");
+
+    setTimeout(() => {
         window.location.href = 'collections.html';
+    }, 500);
     });
 
     back_text.addEventListener('click', () => {
+        const transitionOverlay = document.querySelector(".transition-overlay");
+    transitionOverlay.classList.add("active");
+
+    setTimeout(() => {
         window.location.href = 'collections.html';
+    }, 500);
     });
 
     confirm_remove.addEventListener('click', () => {
