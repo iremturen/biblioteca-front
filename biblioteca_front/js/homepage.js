@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rec_button = document.getElementById('rec_button');
     const token = localStorage.getItem('authToken'); 
     const userId = localStorage.getItem('userId');
+    const wheel_btn= document.getElementById('wheel_btn');
 
     if (!userId || !token) {
         console.error('User or token not found');
@@ -47,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rec_button.addEventListener('click', () => {
         redirectTo('recommendation.html');
+    });
+
+    wheel_btn.addEventListener('click', () => {
+        redirectTo('wheel.html');
     });
 
     homepageItem.addEventListener('click', () => {

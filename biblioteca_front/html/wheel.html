@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="/biblioteca_front/css/wheel.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="top">
+            <img id="back_img" src="/biblioteca_front/images/go-back.png">
+            <img id="reload" src="/biblioteca_front/images/reload.png">
+            <p class="title">Spin the wheel and find your next book!</p>
+        </div>
+        <div class="content">
+            <div id="container">
+                <div id="spin_btn">Spin</div>
+                <div id="wheel">
+
+                </div>
+            </div>
+            <div class="inputs">
+                <div id="buttons">
+                    <div id="will_read_btn" class="add_btn">
+                        <img src="/biblioteca_front/images/plus_pink.png" class="plus_img">
+                        <p class="btn_text">Add Will Read List</p>
+                    </div>
+                    <div id="search_btn" class="add_btn">
+                        <img src="/biblioteca_front/images/search_pink.png" class="plus_img">
+                        <p class="btn_text">Search</p>
+                    </div>
+                </div>
+                <div class="manuel">
+                    <input id="manuel_input">
+                    <div id="manuel_add">Add</div>
+                </div>
+                <div class="wheel_edit_container">
+                    <textarea id="item_list"></textarea>
+                    <div class="funcs">
+                        <div id="sort" class="func">
+                            <img class="func-img" src="/biblioteca_front/images/sorting.png">
+                            <p class="func-text">Sort</p>
+                        </div>
+                        <div id="clear" class="func">
+                            <img class="func-img" src="/biblioteca_front/images/clear.png">
+                            <p class="func-text">Clear</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="result-popup" class="popup">
+        <div class="popup-content">
+            <img id="close-result-popup" src="/biblioteca_front/images/close.png">
+            <p class="title-popup">Congratulations!</p>
+            <p id="selected-book" class="winner-text"></p>
+            <button id="spin-again" class="result-btn">Spin Again</button>
+        </div>
+    </div>
+    <div id="search-popup" class="popup">
+        <div class="popup-content-search">
+            <img id="close-search-popup" src="/biblioteca_front/images/close.png">
+            <div class="search-controls">
+                <input id="search_input">
+                <div id="popup_search_btn">Search</div>
+                <div id="popup_add_books_btn">Add Books</div>
+            </div>
+            <div id="popup_books">
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/biblioteca_front/js/wheel.js" defer></script>
+</body>
+
+</html>

@@ -1,42 +1,43 @@
-html, body {
-    height: 100%; 
+html,
+body {
+    height: 100%;
     margin: 0;
 }
 
-.main{
+.main {
     display: flex;
 }
 
-.menu{
+.menu {
     background-color: rgb(255, 255, 255);
-    width: 20%; 
+    width: 20%;
     height: 100%;
     position: fixed
 }
 
-.dashboard{
+.dashboard {
     background-color: rgb(255, 255, 255);
     width: 78%;
-    margin-left: 16%; 
+    margin-left: 16%;
     height: 100%;
 }
 
 
-.menu_item{
-    height: 40px ;
+.menu_item {
+    height: 40px;
     width: 70%;
     margin-top: 20px;
     margin-left: 50px;
-    padding-top: 10px ;
+    padding-top: 10px;
     border-radius: 20px;
 
 }
 
-.menu_item:hover{
+.menu_item:hover {
     background-color: rgb(212, 209, 209);
 }
 
-.menu_items{
+.menu_items {
     margin-top: 35px;
 }
 
@@ -49,7 +50,7 @@ html, body {
     margin-top: 2px;
 }
 
-.menu_item_text{
+.menu_item_text {
     font-size: 20px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
@@ -58,15 +59,15 @@ html, body {
 
 }
 
-.icon{
+.icon {
     height: 80px;
-    width: 90%; 
+    width: 90%;
     margin-top: 50px;
     background-color: transparent;
     margin-left: 70px;
 }
 
-.logo_image{
+.logo_image {
     float: left;
     width: 60px;
     height: 60px;
@@ -74,14 +75,14 @@ html, body {
     margin-top: -28px;
 }
 
-.logo_text{
+.logo_text {
     font-size: 30px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(240, 71, 101);
     text-align: left;
 }
 
-.logout_button{
+.logout_button {
     width: 70px;
     height: 40px;
     margin-top: 0%;
@@ -94,39 +95,40 @@ html, body {
     font-family: 'Gill Sans', sans-serif;
 }
 
-.logout_button:hover{
+.logout_button:hover {
     background-color: rgb(255, 113, 139);
     border: 1px solid rgb(255, 113, 139);
 }
 
-.logout_image{
+.logout_image {
     height: 30px;
     width: 30px;
     float: right;
     margin-right: 20px;
     margin-top: 5px;
 }
-.read_info{
+
+.read_info {
     height: 250px;
     width: 1200px;
 }
 
-.dashboard_item{
+.dashboard_item {
     height: 150px;
     width: 250px;
     float: left;
     border-radius: 25px;
-    background-color:  rgb(226, 226, 226);
+    background-color: rgb(226, 226, 226);
     margin-top: 40px;
-    margin-left:100px ;
+    margin-left: 100px;
 
 }
 
-.dashboard_item:hover{
+.dashboard_item:hover {
     background-color: rgb(236, 236, 236);
 }
 
-.dashboard_item_text{
+.dashboard_item_text {
     font-size: 20px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 111, 111);
@@ -135,7 +137,7 @@ html, body {
     margin-left: 20px;
 }
 
-.dashboard_item_image{
+.dashboard_item_image {
     height: 30px;
     width: 30px;
     float: right;
@@ -143,7 +145,7 @@ html, body {
     margin-top: 50px;
 }
 
-.dashboard_item_number{
+.dashboard_item_number {
     width: 30px;
     font-size: 25px;
     font-family: 'Gill Sans', sans-serif;
@@ -154,7 +156,7 @@ html, body {
     float: left;
 }
 
-.new_releases{
+.new_releases {
     height: 280px;
     width: 100%;
     display: flex;
@@ -167,15 +169,16 @@ html, body {
 }
 
 .custom-line {
-    border: none; 
-    border-top: 2px solid rgb(138, 136, 136); 
-    margin-top: 40px; 
-    margin-bottom: 0; 
-    width: 50%; 
+    border: none;
+    border-top: 2px solid rgb(138, 136, 136);
+    margin-top: 40px;
+    margin-bottom: 0;
+    width: 60%;
+    margin-left:300px;
     height: 10px;
 }
 
-.new_releases_title{
+.new_releases_title {
     font-size: 23px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(111, 109, 109);
@@ -184,7 +187,7 @@ html, body {
     margin-left: 100px;
 }
 
-.book_item{
+.book_item {
     width: 180px;
     height: 240px;
     margin-top: 8px;
@@ -195,12 +198,12 @@ html, body {
 
 }
 
-.book_item:hover{
+.book_item:hover {
     box-shadow: 0 0 25px rgba(106, 106, 106, 0.1);
     border-radius: 20px;
 }
 
-.book_image{
+.book_image {
     width: 50%;
     height: 60%;
     margin-left: 25%;
@@ -209,7 +212,7 @@ html, body {
 
 }
 
-.book_title{
+.book_title {
     height: 20px;
     font-size: 15px;
     font-family: 'Gill Sans', sans-serif;
@@ -218,7 +221,7 @@ html, body {
     margin-top: 10px;
 }
 
-.book_author{
+.book_author {
     margin-top: -10px;
     height: 10px;
     font-size: 12px;
@@ -251,7 +254,7 @@ html, body {
     scale: 1.2;
 }
 
-.books_container{
+.books_container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -264,7 +267,7 @@ html, body {
     margin-bottom: 40px;
 }
 
-.new_releases_note{
+.new_releases_note {
     font-size: 15px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(240, 71, 101);
@@ -273,14 +276,14 @@ html, body {
     margin-top: -15px;
 }
 
-.book_recommendation{
+.book_recommendation {
     height: 400px;
     width: 100%;
     margin-left: 5%;
     margin-top: 70px;
 }
 
-.rec-title{
+.rec-title {
     font-size: 40px;
     height: 20px;
     font-family: 'Courier New', sans-serif;
@@ -290,7 +293,7 @@ html, body {
     margin-left: 100px;
 }
 
-.rec-title2{
+.rec-title2 {
     font-size: 20px;
     font-family: 'Courier New', sans-serif;
     color: rgb(240, 71, 101);
@@ -304,37 +307,37 @@ html, body {
     display: inline-block;
     padding: 15px 30px;
     border-radius: 15px;
-    font-family: 'Gill Sans', sans-serif; 
-    font-size: 20px; 
-    color: white; 
-    text-align: center; 
-    cursor: pointer; 
-    border: none; 
-    background: linear-gradient(90deg, rgb(240, 71, 101), rgb(242, 175, 187)); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transition: all 0.3s ease; 
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(90deg, rgb(240, 71, 101), rgb(242, 175, 187));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
     margin-left: 200px;
     margin-top: 100px;
 }
 
 .rec-button:hover {
-    background: linear-gradient(90deg, rgb(242, 175, 187), rgb(240, 71, 101)); 
-    transform: translateY(-3px); 
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+    background: linear-gradient(90deg, rgb(242, 175, 187), rgb(240, 71, 101));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.ai_image{
+.ai_image {
     width: 350px;
     height: 350px;
     margin-left: 200px;
     margin-top: -20px;
 }
 
-.ai_image:hover{
+.ai_image:hover {
     scale: 1.1;
 }
 
-.bottom{
+.bottom {
     display: flex;
 }
 
@@ -347,7 +350,7 @@ html, body {
     margin-top: 2px;
 }
 
-.logout_text{
+.logout_text {
     font-size: 20px;
     font-family: 'Gill Sans', sans-serif;
     color: rgb(240, 71, 101);
@@ -356,16 +359,16 @@ html, body {
 
 }
 
-.logout{
-    height: 40px ;
+.logout {
+    height: 40px;
     width: 70%;
     margin-top: 20px;
     margin-left: 50px;
-    padding-top: 10px ;
+    padding-top: 10px;
     border-radius: 20px;
 }
 
-.logout:hover{
+.logout:hover {
     background-color: rgb(242, 188, 198);
 }
 
@@ -375,8 +378,8 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(240, 71, 102, 0.425); 
-    backdrop-filter: blur(10px); 
+    background: rgba(240, 71, 102, 0.425);
+    backdrop-filter: blur(10px);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease-in-out;
@@ -386,4 +389,41 @@ html, body {
 .transition-overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+.wheel {
+    width: 100%;
+    height: 130px;
+    padding-top: 40px;
+}
+
+.wheel_btn {
+    background: linear-gradient(45deg, rgb(241, 70, 70), rgb(249, 188, 75), rgb(244, 244, 87), rgb(102, 242, 102), rgb(105, 105, 240), rgb(180, 99, 237), rgb(246, 140, 246));
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 90%;
+    height: 100px;
+    margin-left: 100px;
+    display: flex;
+}
+
+.wheel_btn:hover {
+    transform: scale(1.05); 
+}
+
+.wheel_text{
+    font-family: 'Gill Sans', sans-serif;
+    font-size:30px;
+    color: white;
+    margin-left: 50px;
+}
+
+.arrow_white{
+    height: 55px;
+    width: 55px;
+    margin-left: 450px;
+    margin-top: 20px;
 }

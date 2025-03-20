@@ -12,6 +12,12 @@ const register_button = document.getElementById('register_button');
 const sign_in = document.getElementById('sign_in');
 const error_msg = document.getElementById('error_msg');
 
+const iti = window.intlTelInput(tel_input, {
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    separateDialCode: true,
+    preferredCountries: ["tr"]
+});
+
 sign_in.addEventListener('click', () => {
     window.location.href = 'login.html';
 });
