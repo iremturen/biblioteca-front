@@ -90,12 +90,22 @@ send_button.addEventListener('click', () => {
         return;
     }
 
-    fetch(`http://localhost:8080/api/rate/save?userId=${userId}&bookId=${bookId}&rating=${selectedRating}`, {
+        const ratingMessage = {
+            actionType: "ADD",
+            userId: userId,
+            bookId: bookId,
+            rating: selectedRating,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+
+    fetch(`http://localhost:8080/ratings/send`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(ratingMessage) 
     })
     .then(response => {
         if (response.ok) {

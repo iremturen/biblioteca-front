@@ -21,17 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupPHouse = document.getElementById('popupPHouse');
     const popupPYear = document.getElementById('popupPYear');
     const popupLang = document.getElementById('popupLang');
-    const input_search=document.getElementById('input_search');
-    const search_button=document.getElementById('search_button');
+    const input_search = document.getElementById('input_search');
+    const search_button = document.getElementById('search_button');
 
-    const add_now=document.getElementById('add_now');
-    const add_will=document.getElementById('add_will');
-    const add_finished=document.getElementById('add_finished');
-    const msg_div=document.getElementById('msg_div');
-    const rate_text=document.getElementById('rate_text');
+    const add_now = document.getElementById('add_now');
+    const add_will = document.getElementById('add_will');
+    const add_finished = document.getElementById('add_finished');
+    const msg_div = document.getElementById('msg_div');
+    const rate_text = document.getElementById('rate_text');
 
-    let url= "http://localhost:8080/api/books";
-    const token = localStorage.getItem('authToken'); 
+    let url = "http://localhost:8080/api/books";
+    const token = localStorage.getItem('authToken');
     const userId = localStorage.getItem('userId');
 
     if (!userId || !token) {
@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchInput = input_search.value.trim();
         if (searchInput !== "") {
             url = `http://localhost:8080/api/books?pattern=${searchInput}`;
-        }else {
-            url = "http://localhost:8080/api/books"; 
+        } else {
+            url = "http://localhost:8080/api/books";
         }
-        getBooks(); 
+        getBooks();
     });
 
-    input_search.addEventListener('keyup',(event) => {
+    input_search.addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
             search_button.click();
         }
@@ -63,145 +63,171 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => response.json())
-        .then(books => {
-            dashboard.innerHTML = '';
-            books.forEach(book => {
-                const bookItem = document.createElement('div');
-                bookItem.classList.add('book_item');
+            .then(response => response.json())
+            .then(books => {
+                dashboard.innerHTML = '';
+                books.forEach(book => {
+                    const bookItem = document.createElement('div');
+                    bookItem.classList.add('book_item');
 
-                const bookImage = document.createElement('img');
-                bookImage.classList.add('book_image');
-                if (book.image) {
-                    bookImage.src = `data:image/jpeg;base64,${book.image}`;
-                } else {
-                    bookImage.src = '/biblioteca_front/images/image_not_found.png'; 
-                }              
-                bookItem.appendChild(bookImage);
+                    const bookImage = document.createElement('img');
+                    bookImage.classList.add('book_image');
+                    if (book.image) {
+                        bookImage.src = `data:image/jpeg;base64,${book.image}`;
+                    } else {
+                        bookImage.src = '/biblioteca_front/images/image_not_found.png';
+                    }
+                    bookItem.appendChild(bookImage);
 
-                bookItem.dataset.bookId = book.bookId;
+                    bookItem.dataset.bookId = book.bookId;
 
-                const bookTitle = document.createElement('p');
-                bookTitle.classList.add('book_title');
-                bookTitle.textContent = book.book_name;
-                bookItem.appendChild(bookTitle);
+                    const bookTitle = document.createElement('p');
+                    bookTitle.classList.add('book_title');
+                    bookTitle.textContent = book.book_name;
+                    bookItem.appendChild(bookTitle);
 
-                const bookAuthor = document.createElement('p');
-                bookAuthor.classList.add('book_author');
-                bookAuthor.textContent = book.author;
-                bookItem.appendChild(bookAuthor);
+                    const bookAuthor = document.createElement('p');
+                    bookAuthor.classList.add('book_author');
+                    bookAuthor.textContent = book.author;
+                    bookItem.appendChild(bookAuthor);
 
-                bookItem.addEventListener('click', () => {
-                    const bookId = bookItem.dataset.bookId;
-                    fetch(`http://localhost:8080/api/books/${bookId}`, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${token}`,
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                        .then(response => response.json())
-                        .then(bookDetails => {
-                            if (book.image) {
-                                popupImage.src = `data:image/jpeg;base64,${bookDetails.image}`;
-                            } else {
-                                popupImage.src = '/biblioteca_front/images/image_not_found.png'; 
-                            } 
-                            popupDescription.textContent = bookDetails.description;  
-                            popupTitle.textContent = bookDetails.book_name;
-                            popupAuthor.textContent = bookDetails.author;
-                            popupBookPage.textContent = bookDetails.book_page;
-                            popupPHouse.textContent = bookDetails.publishing_house;
-                            popupPYear.textContent = bookDetails.publishing_year;
-                            popupLang.textContent = bookDetails.language;
-                            popup.style.display = 'flex';
-                            const fav_button = document.getElementById('fav_button');
-                            checkIfFavorite(bookId, userId, fav_button);
-
-                            fetch(`http://localhost:8080/api/rate/average?bookId=${bookId}`, {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                            .then(response => response.json())
-                            .then(average => {
-                                rate_text.textContent = average;
-                            })
-
-                            add_now.addEventListener('click', () => {
-                                fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=1&userId=${userId}`, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Authorization': `Bearer ${token}`,
-                                        'Content-Type': 'application/json'
-                                    }
-                                })
-                                .then(() => {
-                                    setTimeout(() => {
-                                        msg_div.style.display = 'flex'; 
-                                        setTimeout(() => {
-                                            msg_div.style.display = 'none'; 
-                                        }, 3000); 
-                                    }, 3000); 
-                                })
-                                .catch((error) => {
-                                    console.error('Hata oluştu:', error);
-                                });
-                            });
-                        
-                            add_will.addEventListener('click', () => {
-                                fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=2&userId=${userId}`, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Authorization': `Bearer ${token}`,
-                                        'Content-Type': 'application/json'
-                                    }
-                                })
-                                .then(() => {
-                                    setTimeout(() => {
-                                        msg_div.style.display = 'flex'; 
-                                        setTimeout(() => {
-                                            msg_div.style.display = 'none'; 
-                                        }, 3000); 
-                                    }, 3000); 
-                                })
-                                .catch((error) => {
-                                    console.error('Hata oluştu:', error);
-                                });
-                            });
-                        
-                            add_finished.addEventListener('click', () => {
-                                fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=3&userId=${userId}`, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Authorization': `Bearer ${token}`,
-                                        'Content-Type': 'application/json'
-                                    }
-                                })
-                                .then(() => {
-                                    setTimeout(() => {
-                                        msg_div.style.display = 'flex'; 
-                                        setTimeout(() => {
-                                            msg_div.style.display = 'none'; 
-                                        }, 3000); 
-                                    }, 3000); 
-                                })
-                                .catch((error) => {
-                                    console.error('Hata oluştu:', error);
-                                });
-                            });
-
+                    bookItem.addEventListener('click', () => {
+                        const bookId = bookItem.dataset.bookId;
+                        fetch(`http://localhost:8080/api/books/${bookId}`, {
+                            method: 'GET',
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            }
                         })
-                        .catch(error => console.error('Error fetching book details:', error));
-                
-                });
+                            .then(response => response.json())
+                            .then(bookDetails => {
+                                if (book.image) {
+                                    popupImage.src = `data:image/jpeg;base64,${bookDetails.image}`;
+                                } else {
+                                    popupImage.src = '/biblioteca_front/images/image_not_found.png';
+                                }
+                                popupDescription.textContent = bookDetails.description;
+                                popupTitle.textContent = bookDetails.book_name;
+                                popupAuthor.textContent = bookDetails.author;
+                                popupBookPage.textContent = bookDetails.book_page;
+                                popupPHouse.textContent = bookDetails.publishing_house;
+                                popupPYear.textContent = bookDetails.publishing_year;
+                                popupLang.textContent = bookDetails.language;
+                                popup.style.display = 'flex';
+                                const fav_button = document.getElementById('fav_button');
+                                checkIfFavorite(bookId, userId, fav_button);
 
-                dashboard.appendChild(bookItem);
-            });
-        })
-        .catch(error => console.error('Error fetching books:', error));
+                                const ratingMessage = {
+                                    actionType: "GET_AVERAGE",
+                                    createdAt: new Date().toISOString(),  
+                                    updatedAt: new Date().toISOString(),  
+                                    bookId: bookId
+                                    
+                                };
+
+                                fetch(`http://localhost:8080/ratings/send`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Authorization': `Bearer ${token}`,
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(ratingMessage)
+                                })
+                                    .then(response => response.json())
+                                    .then(() => {
+                                        fetch(`http://localhost:8080/ratings/average/${bookId}`, {
+                                            method: 'GET',
+                                            headers: {
+                                                'Authorization': `Bearer ${token}`,
+                                                'Content-Type': 'application/json'
+                                            }
+                                        })
+                                            .then(response => response.json())
+                                            .then(average => {
+                                                const rate_text = document.getElementById('rate_text');
+                                                rate_text.textContent = average.averageRating; 
+                                            })
+                                            .catch(error => {
+                                                console.error('Error fetching average rating:', error);
+                                            });
+                                    })
+                                    .catch(error => {
+                                        console.error('Error sending rating event to Kafka:', error);
+                                    });
+
+                                add_now.addEventListener('click', () => {
+                                    fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=1&userId=${userId}`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Authorization': `Bearer ${token}`,
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                        .then(() => {
+                                            setTimeout(() => {
+                                                msg_div.style.display = 'flex';
+                                                setTimeout(() => {
+                                                    msg_div.style.display = 'none';
+                                                }, 3000);
+                                            }, 3000);
+                                        })
+                                        .catch((error) => {
+                                            console.error('Hata oluştu:', error);
+                                        });
+                                });
+
+                                add_will.addEventListener('click', () => {
+                                    fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=2&userId=${userId}`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Authorization': `Bearer ${token}`,
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                        .then(() => {
+                                            setTimeout(() => {
+                                                msg_div.style.display = 'flex';
+                                                setTimeout(() => {
+                                                    msg_div.style.display = 'none';
+                                                }, 3000);
+                                            }, 3000);
+                                        })
+                                        .catch((error) => {
+                                            console.error('Hata oluştu:', error);
+                                        });
+                                });
+
+                                add_finished.addEventListener('click', () => {
+                                    fetch(`http://localhost:8080/api/user_books/add/${bookId}?status=3&userId=${userId}`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Authorization': `Bearer ${token}`,
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                        .then(() => {
+                                            setTimeout(() => {
+                                                msg_div.style.display = 'flex';
+                                                setTimeout(() => {
+                                                    msg_div.style.display = 'none';
+                                                }, 3000);
+                                            }, 3000);
+                                        })
+                                        .catch((error) => {
+                                            console.error('Hata oluştu:', error);
+                                        });
+                                });
+
+                            })
+                            .catch(error => console.error('Error fetching book details:', error));
+
+                    });
+
+                    dashboard.appendChild(bookItem);
+                });
+            })
+            .catch(error => console.error('Error fetching books:', error));
     }
 
     function checkIfFavorite(bookId, userId, fav_button) {
@@ -212,32 +238,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json',
             },
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(favorite => {
-            if (favorite) {
-                fav_button.src = '/biblioteca_front/images/fav_hover.png'; 
-            } else {
-                fav_button.src = '/biblioteca_front/images/fav_book.png'; 
-            }
-    
-            fav_button.onclick = () => {
-                if (fav_button.getAttribute('src').includes('fav_hover.png')) {
-                    removeFromFavorites(bookId, userId, fav_button);
-                } else {
-                    addToFavorites(bookId, userId, fav_button);
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-            };
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+                return response.json();
+            })
+            .then(favorite => {
+                if (favorite) {
+                    fav_button.src = '/biblioteca_front/images/fav_hover.png';
+                } else {
+                    fav_button.src = '/biblioteca_front/images/fav_book.png';
+                }
+
+                fav_button.onclick = () => {
+                    if (fav_button.getAttribute('src').includes('fav_hover.png')) {
+                        removeFromFavorites(bookId, userId, fav_button);
+                    } else {
+                        addToFavorites(bookId, userId, fav_button);
+                    }
+                };
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
-    
+
 
     function addToFavorites(bookId, userId, fav_button) {
         fetch(`http://localhost:8080/api/favorite/add/user/${userId}/book/${bookId}`, {
@@ -247,10 +273,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json'
             }
         })
-        .then(() => {
-            fav_button.setAttribute('src', '/biblioteca_front/images/fav_hover.png'); 
-        })
-        .catch(error => console.error('Error adding to favorites:', error));
+            .then(() => {
+                fav_button.setAttribute('src', '/biblioteca_front/images/fav_hover.png');
+            })
+            .catch(error => console.error('Error adding to favorites:', error));
     }
 
     function removeFromFavorites(bookId, userId, fav_button) {
@@ -261,33 +287,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json'
             }
         })
-        .then(() => {
-            fav_button.setAttribute('src', '/biblioteca_front/images/fav_book.png'); 
-        })
-        .catch(error => console.error('Error removing from favorites:', error));
+            .then(() => {
+                fav_button.setAttribute('src', '/biblioteca_front/images/fav_book.png');
+            })
+            .catch(error => console.error('Error removing from favorites:', error));
     }
 
     getBooks();
 
     function redirectTo(url) {
         const transitionOverlay = document.querySelector(".transition-overlay");
-    transitionOverlay.classList.add("active");
+        transitionOverlay.classList.add("active");
 
-    setTimeout(() => {
-        window.location.href = url;
-    }, 500);
+        setTimeout(() => {
+            window.location.href = url;
+        }, 500);
     }
 
     homepageItem.addEventListener('click', () => {
-        redirectTo('homepage.html'); 
+        redirectTo('homepage.html');
     });
 
     exploreItem.addEventListener('click', () => {
-        redirectTo('explore.html'); 
+        redirectTo('explore.html');
     });
 
     accountItem.addEventListener('click', () => {
-        redirectTo('account.html'); 
+        redirectTo('account.html');
     });
 
     closePopup.addEventListener('click', () => {
@@ -295,11 +321,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     collectionsItem.addEventListener('click', () => {
-        redirectTo('collections.html'); 
+        redirectTo('collections.html');
     });
 
     favoritesItem.addEventListener('click', () => {
-        redirectTo('favorites.html'); 
+        redirectTo('favorites.html');
     });
 
     settingsItem.addEventListener('click', () => {
