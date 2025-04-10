@@ -302,45 +302,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         getBooks();
     }
-
-    function showSuccessMessage(message) {
-        const msgDiv = document.createElement('div');
-        msgDiv.classList.add('success_message');
-        top.appendChild(msgDiv);
-
-        const msgImg = document.createElement('img');
-        msgImg.classList.add('success_img');
-        msgImg.src = '/biblioteca_front/images/success.png';
-        msgDiv.appendChild(msgImg);
-
-        const msgText = document.createElement('p');
-        msgText.classList.add('success_message_text');
-        msgText.textContent = message;
-        msgDiv.appendChild(msgText);
-
+    function showSuccessMessage(text) {
+        const successMsg = document.createElement("div");
+        successMsg.classList.add("success-message");
+        successMsg.textContent = text;
+        document.body.appendChild(successMsg);
+    
         setTimeout(() => {
-            msgDiv.remove();
-        }, 2000);
+            successMsg.classList.add("fade-out");
+            setTimeout(() => {
+                document.body.removeChild(successMsg);
+            }, 300);
+        }, 3000);
     }
-
-    function showErrorMessage(message) {
-        const msgDiv = document.createElement('div');
-        msgDiv.classList.add('error_message');
-        top.appendChild(msgDiv);
-
-        const msgImg = document.createElement('img');
-        msgImg.classList.add('error_img');
-        msgImg.src = '/biblioteca_front/images/error.png';
-        msgDiv.appendChild(msgImg);
-
-        const msgText = document.createElement('p');
-        msgText.classList.add('error_message_text');
-        msgText.textContent = message;
-        msgDiv.appendChild(msgText);
-
+    
+    function showErrorMessage(text) {
+        const errorMsg = document.createElement("div");
+        errorMsg.classList.add("error-message");
+        errorMsg.textContent = text;
+        document.body.appendChild(errorMsg);
+    
         setTimeout(() => {
-            msgDiv.remove();
-        }, 2000);
+            errorMsg.classList.add("fade-out");
+            setTimeout(() => {
+                document.body.removeChild(errorMsg);
+            }, 300);
+        }, 3000);
     }
+    
 
 });

@@ -18,8 +18,9 @@ body {
     font-family: 'Gill Sans', sans-serif;
     font-size: 40px;
     color: rgb(240, 71, 101);
-    margin-left: 100px;
+    margin-left: 40px;
     text-align: center;
+    margin-top: 30px;
 }
 
 #back_img {
@@ -466,13 +467,15 @@ body {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #444444;
+    background-color: #616161;
     color: white;
     padding: 12px 20px;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     z-index: 1000;
     animation: fade-in 0.3s ease;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 16px;
 }
 
 .error-message.fade-out {

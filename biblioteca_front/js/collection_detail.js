@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const remove_book_img = document.createElement('img');
                     remove_book_img.setAttribute('id', 'remove_book');
-                    remove_book_img.src = '/biblioteca_front/images/remove_book.png';
+                    remove_book_img.src = '/biblioteca_front/images/remove_book_list.png';
                     book_item.appendChild(remove_book_img);
 
                     books_div.appendChild(book_item);
