@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const close_popup = document.getElementById('close_popup');
     const send_button = document.getElementById('send_button');
     const thanks_msg = document.getElementById('thanks_msg');
+    const comment_input = document.getElementById('comment_input');
     let selectedRating = 0;
     let bookId = 0;
 
@@ -83,9 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     send_button.addEventListener('click', () => {
+        const reviewText = comment_input.value.trim();
+        const timestamp = new Date().toISOString();
+
         if (selectedRating === 0) {
             thanks_msg.style.display = 'flex';
-            thanks_msg.style.marginLeft = '130px';
+            thanks_msg.style.marginLeft = '200px';
             thanks_msg.textContent = 'Please select a rating before submitting.';
             return;
         }
@@ -95,9 +99,29 @@ document.addEventListener('DOMContentLoaded', () => {
             userId: userId,
             bookId: bookId,
             rating: selectedRating,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
+            createdAt: timestamp,
+            updatedAt: timestamp
         };
+
+        const reviewMessage = {
+            actionType: "ADD",
+            userId: userId,
+            bookId: bookId,
+            review: reviewText,
+            createdAt: timestamp,
+            updatedAt: timestamp
+        };
+
+        if (reviewText !== '') {
+            fetch(`http://localhost:8080/review/send`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reviewMessage)
+            })
+        }
 
         fetch(`http://localhost:8080/ratings/send`, {
             method: 'POST',
@@ -109,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(response => {
                 if (response.ok) {
+                    thanks_msg.style.marginLeft = '200px';
                     thanks_msg.style.display = 'flex';
                     setTimeout(() => {
                         popup.style.display = 'none';
